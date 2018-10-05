@@ -1,11 +1,13 @@
 Title 	How to Use Git and GitHub - Udacity
 Date 	2018-10-04
 Author	Young Ha
-	 
-Git : version control system 
-Github : code sharing and collaboration platform
 
  Terminology
+ 
+# Git : version control system 
+
+# Github : code sharing and collaboration platform
+
 # Version control : It refers to any system that allows for systematic versioning of content.
 
 # commit : user created checkpoint. basic building blocks of git. each one representing a version of the content at one point in time.
