@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailedInfoActivity">
+
+    <TextView
+        android:id="@+id/tvKakaoDetailInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/tvNameDetailInfo"
+        android:layout_toEndOf="@+id/ivIconDetail"
+        android:layout_toRightOf="@+id/ivIconDetail"
+        android:padding="8dp"
+        android:textSize="16dp"
+        android:text="KakaoId:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/tvKakaoDetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_below="@+id/tvNameDetail"
+        android:layout_toEndOf="@+id/tvKakaoDetailInfo"
+        android:layout_toRightOf="@+id/tvKakaoDetailInfo"
+        android:padding="8dp"
+        android:textSize="16dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <ImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="Profile Picture"
+        tools:srcCompat="@tools:sample/avatars[0]" />
+
+    <TextView
+        android:id="@+id/tvNameDetailInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_toRightOf="@+id/ivIcon"
+        android:padding="8dp"
+        android:text="Name:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_marginStart="0dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_toEndOf="@+id/tvNameDetailInfo"
+        android:layout_toRightOf="@+id/tvNameDetailInfo"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/ivIcon"
+        android:layout_above="@+id/btnBack"
+        android:text="Description" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Back" />
+
+</RelativeLayout>
