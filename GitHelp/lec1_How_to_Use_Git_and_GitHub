@@ -1,16 +1,16 @@
-Title 	How to Use Git and GitHub - Udacity
+Title 	Navigating a Commit History
 Date 	2018-10-04
 Author	Young Ha
 
  Terminology
- 
-# Git : version control system 
+	 
+ # Git : version control system 
 
-# Github : code sharing and collaboration platform
+ # Github : code sharing and collaboration platform
 
-# Version control : It refers to any system that allows for systematic versioning of content.
+ # Version control : It refers to any system that allows for systematic versioning of content.
 
-# commit : user created checkpoint. basic building blocks of git. each one representing a version of the content at one point in time.
+ # commit : user created checkpoint. basic building blocks of git. each one representing a version of the content at one point in time.
  - Git requires the user to supply commit message each time a commit is created. This makes looking through old versions useful and pleasant.
  - It's usually a good idea to keep commits small. As the diff between two versions gets bigger, it gets harder to understand and less useful. 
  - However, you don’t want to make your commits too small either. If you always save a commit every time you change a line of code, your history will be harder to read since it will have a huge number of commits over a short time period.
