@@ -29,6 +29,9 @@ public class BlankFragment3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    //Initiation of list of items
+    List<DataItem> lstData;
+
     public BlankFragment3() {
         // Required empty public constructor
     }
@@ -65,7 +68,6 @@ public class BlankFragment3 extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_blank_fragment3, container, false);
-        List<DataItem> lstData;
 
         lstData =new ArrayList<>();
 

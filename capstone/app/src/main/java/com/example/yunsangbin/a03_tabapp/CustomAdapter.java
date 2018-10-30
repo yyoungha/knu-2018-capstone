@@ -49,7 +49,7 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
             holder.ivPhoto = (ImageView)convertView.findViewById(R.id.ivIcon);
             holder.tvDescription = (TextView)convertView.findViewById(R.id.tvDescription);
             holder.tvName = (TextView)convertView.findViewById(R.id.tvName);
-            holder.tvKakaoId = (TextView)convertView.findViewById(R.id.tvKakaoDetail);
+            holder.tvKakaoId = (TextView)convertView.findViewById(R.id.tvKakao);
 
             convertView.setTag(holder);
         } else {

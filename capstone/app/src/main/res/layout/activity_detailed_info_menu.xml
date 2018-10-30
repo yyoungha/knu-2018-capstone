@@ -5,7 +5,7 @@
     android:id="@+id/tv"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailedInfoActivity">
+    tools:context=".DetailedInfoMenu">
 
     <TextView
         android:id="@+id/tvKakaoDetailInfo"
@@ -13,23 +13,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_below="@+id/tvNameDetailInfo"
-        android:layout_toEndOf="@+id/ivIconDetail"
-        android:layout_toRightOf="@+id/ivIconDetail"
+        android:layout_toEndOf="@+id/ivIcon"
         android:padding="8dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:text="KakaoId:"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
-        android:id="@+id/tvKakaoDetail"
+        android:id="@+id/tvKakao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
-        android:layout_below="@+id/tvNameDetail"
+        android:layout_below="@+id/tvNameDetailInfo"
         android:layout_toEndOf="@+id/tvKakaoDetailInfo"
-        android:layout_toRightOf="@+id/tvKakaoDetailInfo"
         android:padding="8dp"
-        android:textSize="16dp"
+        android:textSize="16sp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <ImageView
@@ -45,10 +43,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivIcon"
-        android:layout_toRightOf="@+id/ivIcon"
         android:padding="8dp"
         android:text="Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
@@ -59,10 +55,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_marginStart="0dp"
-        android:layout_marginLeft="0dp"
         android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/tvNameDetailInfo"
-        android:layout_toRightOf="@+id/tvNameDetailInfo"
         android:padding="8dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
