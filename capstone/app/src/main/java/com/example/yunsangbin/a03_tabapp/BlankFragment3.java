@@ -1,11 +1,19 @@
 package com.example.yunsangbin.a03_tabapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -23,6 +31,8 @@ public class BlankFragment3 extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    //Initiation of list of items
+    List<DataItem> lstData;
 
     public BlankFragment3() {
         // Required empty public constructor
@@ -59,7 +69,41 @@ public class BlankFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank_fragment3, container, false);
+        View view = inflater.inflate(R.layout.fragment_blank_fragment3, container, false);
+
+        lstData =new ArrayList<>();
+
+        for(int i = 0; i <20; i++) {
+            lstData.add(new DataItem(R.drawable.picasso, "Picasso was a great artist", "Pablo Picasso", "picasso123"));
+        }
+
+        ListView listView = (ListView)view.findViewById(R.id.listView);
+
+        CustomAdapter adapter = new CustomAdapter(getContext(), R.layout.itemrow, lstData);
+
+        listView.setAdapter(adapter);
+
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("TAG","CLICKED row number: "+ position);
+                Intent intent = new Intent(getActivity(),DetailedInfoMenu.class);
+                intent.putExtra("hi",position);
+                startActivity(intent);
+            }
+        });*/
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getContext(), "Clicked",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        return view;
     }
 
 }
