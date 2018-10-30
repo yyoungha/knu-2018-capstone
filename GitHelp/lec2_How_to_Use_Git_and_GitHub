@@ -1,0 +1,39 @@
+Title 	How to Use Git and GitHub - Udacity
+Date 	2018-10-06
+Author	Young Ha
+	 
+ Terminology
+# Staging area : Working directory -> Staging area(Intermediate)  -> Repository
+ It's a good idea to keep commits small with one commit per logical change.
+ Git makes it easier for you to do this by allowing you to specify exactly what changes should be committed.
+ You can add files one at a time to the staging area.
+
+# Branch : Git allows you to create labels for your commits. This labels are called branches.
+ - Remote branch : The branch which i didn't created it myself.
+
+# Merge Conflict : Git doesn't know about which code does it have to remain when merging a same file.
+<<<<<<<< HEAD : my code
+
+||||||| common ancestors
+
+>>>>>>>> master : current master code
+
+  Git command
+ # git status : shows which files have changed since the last commit.
+ # git add FILENAME : add files to the staging area
+  - It's standard Git practice to write your commit message if it were a command, which
+ # git commit (-m "COMMIT MESSAGE") : 
+ # git diff : find difference between WORKING DIRECTORY and STAGING AREA.
+  - show any changes you've made that you haven't added to the staging area yet.
+   git diff --staged : find difference between STAGING AREA and REPOSITORY(most recent commit).
+   git diff COMMIT1 COMMIT2
+ # git reset --hard : discards any changes in either the working directory or the staging area.
+  * Be VERY CAREFUL if you ever run this : Most actions in git are reversible, since you can always restore previous commits. 
+    But you've never committed the changes in your working directory or staging area. So if you run this command, you can't get those changes back.
+ # git log --graph --oneline BRANCH1 BRANCH2 : visualize the branch structure 
+ # git log -n NUMBER : only shows NUMBER commit logs
+ # git show COMMIT : show you what changes were introduced by a commit compared to its parent commit.
+ # git checkout -b NEW_BRANCH_NAME 
+  - it is equivalent to running two commands : git branch NEW_BRANCH_NAME, git checkout NEW_BRANCH_NAME
+  # git merge BRANCH1 BRANCH2 : merge two branches.
+  # git branch -d BRANCH_NAME : Delete branch. This won't delete the commits in the branch, it will only delete the label.
