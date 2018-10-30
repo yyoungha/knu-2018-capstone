@@ -60,7 +60,7 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
         holder.tvDescription.setText(dataItem.description);
         holder.tvName.setText(dataItem.name);
         holder.ivPhoto.setImageResource(dataItem.resIdThumbnail);
-        //holder.tvKakaoId.setText(dataItem.kakaoId);
+        holder.tvKakaoId.setText(dataItem.kakaoId);
 
         return convertView;
     }

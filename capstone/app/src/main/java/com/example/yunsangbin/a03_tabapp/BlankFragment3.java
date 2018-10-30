@@ -1,8 +1,10 @@
 package com.example.yunsangbin.a03_tabapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,6 +82,18 @@ public class BlankFragment3 extends Fragment {
         CustomAdapter adapter = new CustomAdapter(getContext(), R.layout.itemrow, lstData);
 
         listView.setAdapter(adapter);
+
+
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("TAG","CLICKED row number: "+ position);
+                Intent intent = new Intent(getActivity(),DetailedInfoMenu.class);
+                intent.putExtra("hi",position);
+                startActivity(intent);
+            }
+        });*/
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
