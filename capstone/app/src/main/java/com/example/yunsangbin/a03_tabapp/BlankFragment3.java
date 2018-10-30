@@ -6,6 +6,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,6 +27,8 @@ public class BlankFragment3 extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    List<DataItem> lstData;
 
 
     public BlankFragment3() {
@@ -59,7 +66,29 @@ public class BlankFragment3 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank_fragment3, container, false);
+        View view = inflater.inflate(R.layout.fragment_blank_fragment3, container, false);
+
+
+        lstData =new ArrayList<>();
+
+        for(int i = 0; i <20; i++) {
+            lstData.add(new DataItem(R.drawable.picasso,"Picasso was a great artist", "Pablo Picasso", "picasso123"));
+        }
+
+        ListView listView = (ListView)view.findViewById(R.id.listView);
+
+        CustomAdapter adapter = new CustomAdapter(getContext(), R.layout.itemrow, lstData);
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+        return view;
     }
 
 }
