@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter<DataItem> {
+public class DetailAdapter extends ArrayAdapter<DataItem> {
     private final Context context;
     private final int layoutResourceId;
     private List<DataItem> data=null;
 
 
-    public CustomAdapter(Context context, int resource, List<DataItem> objects) {
+    public DetailAdapter(Context context, int resource, List<DataItem> objects) {
         super(context, resource, objects);
 
         this.layoutResourceId = resource;
@@ -32,32 +32,35 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
         ImageView ivPhoto;
         TextView tvDescription;
         TextView tvName;
+        TextView tvKakaoId;
     }
 
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        DataHolder holder =null;
+        DetailAdapter.DataHolder holder =null;
         if(convertView==null) {
             LayoutInflater inflater = ((Activity) context).getLayoutInflater();
 
             convertView = inflater.inflate(layoutResourceId, parent, false);
 
             holder = new DataHolder();
-            holder.ivPhoto = (ImageView)convertView.findViewById(R.id.ivIcon);
-            holder.tvDescription = (TextView)convertView.findViewById(R.id.tvDescription);
-            holder.tvName = (TextView)convertView.findViewById(R.id.tvName);
+            holder.ivPhoto = (ImageView)convertView.findViewById(R.id.ivIconDet);
+            holder.tvDescription = (TextView)convertView.findViewById(R.id.tvDescriptionDet);
+            holder.tvName = (TextView)convertView.findViewById(R.id.tvNameDet);
+            holder.tvKakaoId = (TextView)convertView.findViewById(R.id.tvKakaoDet);
 
             convertView.setTag(holder);
         } else {
-            holder =(DataHolder)convertView.getTag();
+            holder =(DetailAdapter.DataHolder)convertView.getTag();
         }
 
         DataItem dataItem =data.get(position);
         holder.tvDescription.setText(dataItem.description);
         holder.tvName.setText(dataItem.name);
         holder.ivPhoto.setImageResource(dataItem.resIdThumbnail);
+        holder.tvKakaoId.setText(dataItem.kakaoId);
 
         return convertView;
     }

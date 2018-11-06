@@ -83,23 +83,12 @@ public class BlankFragment3 extends Fragment {
 
         listView.setAdapter(adapter);
 
-
-        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("TAG","CLICKED row number: "+ position);
-                Intent intent = new Intent(getActivity(),DetailedInfoMenu.class);
-                intent.putExtra("hi",position);
-                startActivity(intent);
-            }
-        });*/
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getContext(), "Clicked",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), DetailedInfoMenu.class);
+                intent.putExtra("Chosen",position);
+                startActivity(intent);
             }
         });
 
