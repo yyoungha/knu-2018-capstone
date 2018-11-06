@@ -61,7 +61,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
-        android:id="@+id/tvDescription"
+        android:id="@+id/tvDescriptionDet"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_below="@+id/ivIconDet"
