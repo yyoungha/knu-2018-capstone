@@ -103,6 +103,15 @@ public class BlankFragment3 extends Fragment {
             }
         });
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), DetailedInfoMenu.class);
+                intent.putExtra("Chosen",position);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 

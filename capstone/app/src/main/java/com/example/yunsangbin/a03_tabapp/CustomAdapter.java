@@ -14,9 +14,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class CustomAdapter extends ArrayAdapter<DataItem> {
-    Context context;
-    int layoutResourceId;
-    List<DataItem> data=null;
+    private final Context context;
+    private final int layoutResourceId;
+    private List<DataItem> data=null;
 
 
     public CustomAdapter(Context context, int resource, List<DataItem> objects) {
@@ -32,7 +32,6 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
         ImageView ivPhoto;
         TextView tvDescription;
         TextView tvName;
-        TextView tvKakaoId;
     }
 
 
@@ -49,7 +48,6 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
             holder.ivPhoto = (ImageView)convertView.findViewById(R.id.ivIcon);
             holder.tvDescription = (TextView)convertView.findViewById(R.id.tvDescription);
             holder.tvName = (TextView)convertView.findViewById(R.id.tvName);
-            holder.tvKakaoId = (TextView)convertView.findViewById(R.id.tvKakao);
 
             convertView.setTag(holder);
         } else {
@@ -60,7 +58,6 @@ public class CustomAdapter extends ArrayAdapter<DataItem> {
         holder.tvDescription.setText(dataItem.description);
         holder.tvName.setText(dataItem.name);
         holder.ivPhoto.setImageResource(dataItem.resIdThumbnail);
-        //holder.tvKakaoId.setText(dataItem.kakaoId);
 
         return convertView;
     }

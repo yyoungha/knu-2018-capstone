@@ -24,7 +24,7 @@
             app:titleTextColor="@android:color/black"
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="어플리케이션 제목">
+            app:title="KNUEARTH">
 
         </android.support.v7.widget.Toolbar>
 

@@ -13,14 +13,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
         android:layout_below="@+id/tvNameDetailInfo"
-        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_toEndOf="@+id/ivIconDet"
         android:padding="8dp"
         android:textSize="16sp"
         android:text="KakaoId:"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
-        android:id="@+id/tvKakao"
+        android:id="@+id/tvKakaoDet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
@@ -31,7 +31,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <ImageView
-        android:id="@+id/ivIcon"
+        android:id="@+id/ivIconDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="Profile Picture"
@@ -44,13 +44,13 @@
         android:layout_alignParentTop="false"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/ivIcon"
+        android:layout_toEndOf="@+id/ivIconDet"
         android:padding="8dp"
         android:text="Name:"
         android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
     <TextView
-        android:id="@+id/tvName"
+        android:id="@+id/tvNameDet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="false"
@@ -64,12 +64,12 @@
         android:id="@+id/tvDescription"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/ivIcon"
-        android:layout_above="@+id/btnBack"
+        android:layout_below="@+id/ivIconDet"
+        android:layout_above="@+id/btnBackDet"
         android:text="Description" />
 
     <Button
-        android:id="@+id/btnBack"
+        android:id="@+id/btnBackDet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

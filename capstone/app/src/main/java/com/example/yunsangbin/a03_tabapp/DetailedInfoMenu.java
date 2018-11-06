@@ -20,9 +20,11 @@ public class DetailedInfoMenu extends AppCompatActivity {
 
         //TODO: change to JSON file pull data
 
+
         lstData =new ArrayList<>();
         lstData.add(new DataItem(R.drawable.picasso, "Picasso was a great artist", "Pablo Picasso", "picasso123"));
         CustomAdapter adapter = new CustomAdapter(this, R.layout.activity_detailed_info_menu, lstData);
+
 
     }
 
