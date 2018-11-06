@@ -1,16 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: hyunwook
-  Date: 2018-11-02
-  Time: 오후 7:45
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>$Title$</title>
-  </head>
-  <body>
-  HELLO KNUEARTH
-  </body>
-</html>
+<%@ page contentType="text/html; charset=EUC-KR" language="java" pageEncoding="EUC-KR" %>
+        <%--Header--%>
+        <%@include file="header.jsp" %>
+        <!-- Contents-->
+        <%@include file="content.jsp" %>
+        <!-- Footer-->
+        <%@include file="footer.jsp" %>
