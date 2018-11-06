@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-
     }
 
 
@@ -154,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                     return new BlankFragment3();
                 case 3:
                     return new BlankFragment4();
-
 
             }
             return PlaceholderFragment.newInstance(position + 1);

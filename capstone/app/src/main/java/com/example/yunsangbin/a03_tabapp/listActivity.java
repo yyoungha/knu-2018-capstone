@@ -26,7 +26,7 @@ public class listActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list2);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -52,6 +52,7 @@ public class listActivity extends AppCompatActivity {
             }
         });*/
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){

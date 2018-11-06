@@ -92,7 +92,6 @@ public class BlankFragment1 extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
                 Log.v("TAG","CLICKED row number: "+ position);
                 Intent intent = new Intent(getActivity(),listActivity.class);
                 intent.putExtra("hi",position);

@@ -23,6 +23,7 @@
             android:name=".listActivity"
             android:label="@string/title_activity_list"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DetailedInfoMenu"></activity>
     </application>
 
 </manifest>
