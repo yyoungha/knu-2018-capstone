@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -17,10 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DetailedInfoMenu extends AppCompatActivity {
-
-
-    List<DataItem> lstData;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,5 +35,17 @@ public class DetailedInfoMenu extends AppCompatActivity {
         tvName.setText("Pablo Picasso");
         ivPhoto.setImageResource(R.drawable.picasso);
         tvKakaoId.setText("picasso123");
+
+        final Button button = findViewById(R.id.btnBackDet);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+            }
+        });
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        return super.onKeyDown(keyCode, event);
     }
 }
