@@ -24,6 +24,7 @@ git push origin 브런치이름 //서버의 경우 spring
 [+] JSP/Servlet용 정적경로 수정
 [+] 이미지 테스트
 [/] webstyle.css 경로 변경
+[+] java jdk 10 ->8
 
 11.07
 [-]TEST.jsp
