@@ -6,9 +6,6 @@ And it will be upload each day of update history.
 [Design History]
 ================
 
-**[HISTORY]**
------
-
   
 | DATE  |                                 CONTENTS                                          |
 |-------|-----------------------------------------------------------------------------------|
