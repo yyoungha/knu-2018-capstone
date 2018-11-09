@@ -18,13 +18,12 @@ git push origin 브런치이름 //서버의 경우 spring
 [+]json 호출 형식 추가, localhost:8080/json
 [+]JSP div 나눔 
 
-11.06
+11.06d
 [+] servlet 의존성 추가
 [+] HelloServlet.class 추가 - servlet HttpServlet test
 [+] JSP/Servlet용 정적경로 수정
 [+] 이미지 테스트
 [/] webstyle.css 경로 변경
-[+] java jdk 10 ->8
 
 11.07
 [-]TEST.jsp
