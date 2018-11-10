@@ -14,4 +14,4 @@ And it will be upload each day of update history.
 |       | 2. DB table (contains attribute & type).docx                                      |
 | 11.10 | 1. Attached xml, png files of Having Relation ERD sketch                          |
 |       | 2. Creating init environment based on MySQL for project of "KNUEARTH"             |
-|       | 3. contains future schedule of design                                             |
+|       | 3. Contains future schedule of design                                             |
