@@ -16,3 +16,5 @@ And it will be upload each day of update history.
 |       | 2. Creating init environment based on MySQL for project of "KNUEARTH"             |
 |       | 3. Contains future schedule of design                                             |
 | 11.11 | 1. Upload summary of base Spring architecture                                     |
+| 11.12 | 1. Make a simple Example of Spring                                                |
+|       | 2. Attached used referenced docx                                                  |
