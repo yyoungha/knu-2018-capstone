@@ -15,3 +15,4 @@ And it will be upload each day of update history.
 | 11.10 | 1. Attached xml, png files of Having Relation ERD sketch                          |
 |       | 2. Creating init environment based on MySQL for project of "KNUEARTH"             |
 |       | 3. Contains future schedule of design                                             |
+| 11.11 | 1. Upload summary of base Spring architecture                                     |
