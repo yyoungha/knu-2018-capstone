@@ -1,6 +1,8 @@
 package com.example.capstone.design;
 
 
+import android.app.Activity;
+import android.graphics.Rect;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,8 +49,8 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
+        setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -71,9 +75,7 @@ public class MainActivity extends AppCompatActivity{
                         .setAction("Action", null).show();
             }
         });*/
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
