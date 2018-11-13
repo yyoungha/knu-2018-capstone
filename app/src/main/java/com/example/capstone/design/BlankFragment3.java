@@ -1,4 +1,4 @@
-package com.example.yunsangbin.a03_tabapp;
+package com.example.capstone.design;
 
 
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  * Use the {@link BlankFragment3#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment3 extends Fragment {
+public class BlankFragment3 extends Fragment { //자유게시판
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";

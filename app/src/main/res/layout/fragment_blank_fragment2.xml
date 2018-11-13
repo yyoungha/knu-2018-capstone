@@ -8,9 +8,12 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
-        android:id="@+id/imageView5"
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/map" />
+        android:name="com.google.android.gms.maps.MapFragment"
+        />
+
+
 </FrameLayout>

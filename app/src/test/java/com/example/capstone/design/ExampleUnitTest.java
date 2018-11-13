@@ -1,4 +1,4 @@
-package com.example.yunsangbin.a03_tabapp;
+package com.example.capstone.design;
 
 import org.junit.Test;
 
