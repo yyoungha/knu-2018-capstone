@@ -46,14 +46,27 @@ public class MainActivity extends AppCompatActivity{
      */
     private ViewPager mViewPager;
 
+    /*
+     * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
+     * Activity 의 resource initialize, layout & data binding 등 초기 설정 작업을 수행한다.
+     * Bundle 객체를 매개변수로 받는다. 새로 시작되는 경우 Bundle 은 null.
+     * onPause() 혹은 onStop() 상태에서 다시 시작하는 경우 Bundle 에 해당 Activity 의 이전 상태 정보가 전달된다.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        /* xml 문서를 실제 안드로이드 프로그램이 실행될 때 메모리에 올리는 과정은
+         * ADT에 포함된 AAPT(Android Asset Packaging Tool) 에 의해 수행된다.
+         * 바로 이러한 수행을 하도록 코드상에 존재하는 메소드가 setContentView()이다.
+         * 이러한 동작을 Inflation(전개)이라고 한다.
+         */
         setContentView(R.layout.activity_main);
 
+        /* setSupportActionBar 메서드는 툴바를 액티비티의 앱 바로 설정한다. */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -138,11 +151,9 @@ public class MainActivity extends AppCompatActivity{
         }
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
+    /*
+     *  PagerAdapter 인터페이스를 구현하여 각 페이지를 Fragment 로 표현한다.
      */
-
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
@@ -154,7 +165,6 @@ public class MainActivity extends AppCompatActivity{
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position)
-
             {
                 case 0:
                     return new BlankFragment4();
@@ -164,8 +174,6 @@ public class MainActivity extends AppCompatActivity{
                     return new BlankFragment2();
                 case 3:
                     return new BlankFragment3();
-
-
             }
             return PlaceholderFragment.newInstance(position + 1);
         }
