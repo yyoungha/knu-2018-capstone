@@ -4,6 +4,7 @@ package com.example.capstone.design;
 import android.app.Activity;
 import android.graphics.Rect;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -63,18 +64,18 @@ public class MainActivity extends AppCompatActivity{
          */
         setContentView(R.layout.activity_main);
 
-        /* setSupportActionBar 메서드는 툴바를 액티비티의 앱 바로 설정한다. */
+        /* setSupportActionBar 메서드는 Toolbar 를 Activity 의 Appbar 로 설정한다. */
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+        /* PagerAdapter 인터페이스를 구현하여 각 페이지를 Fragment 로 표현한다. */
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        // Set up the ViewPager with the sections adapter.
+        /* ViewPager 는 사용자가 좌우로 페이지를 넘길 수 있게 해주는 Layout manager */
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        /* TabLayout은 가로로 정렬된 탭을 보여주는 Layout */
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -129,10 +130,8 @@ public class MainActivity extends AppCompatActivity{
         public PlaceholderFragment() {
         }
 
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
+
+        // sectionNumber 가 주어지면 그에 맞는 fragment 의 새로운 instance 를 반환
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -144,16 +143,11 @@ public class MainActivity extends AppCompatActivity{
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            View rootView = inflater.inflate(R.layout.fragment_blank_fragment4, container, false);
             return rootView;
         }
     }
 
-    /*
-     *  PagerAdapter 인터페이스를 구현하여 각 페이지를 Fragment 로 표현한다.
-     */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         public SectionsPagerAdapter(FragmentManager fm) {
