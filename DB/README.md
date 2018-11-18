@@ -22,4 +22,4 @@ And it will be upload each day of update history.
 |       | 2. Made up Database file using MySQL workbench                                    |
 | 11.14 | 1. Change DAO (Mybatis -> JDBC) and construct init environment                    |
 |       | 2. Upload Version.2_ERD                                                           |
-|       | 3. Attached future design plan                                                    |
+|       | 3. Attached future d
