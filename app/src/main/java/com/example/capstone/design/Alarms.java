@@ -66,7 +66,7 @@ public class BlankFragment1 extends Fragment { //거래 부분
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_blank_fragment1, container, false);
 
-        ImageButton btn = (ImageButton) view.findViewById(R.id.btn1);
+        ImageButton btn = (ImageButton) view.findViewById(R.id.profile_background);
 
         btn.setOnClickListener(new View.OnClickListener(){
             @Override

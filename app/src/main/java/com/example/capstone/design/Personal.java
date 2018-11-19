@@ -1,11 +1,14 @@
 package com.example.capstone.design;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 
 /**
@@ -59,7 +62,54 @@ public class BlankFragment4 extends Fragment { //main화면 창
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank_fragment4, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_blank_fragment4, container, false);
+
+        //전체 공지
+
+        TextView v = (TextView) view.findViewById(R.id.notice_all);
+        v.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Notice.class);
+                startActivity(intent);
+            }
+        });
+
+        //전체 알림
+
+        Button btn_alarm = (Button) view.findViewById(R.id.btn_market);
+        btn_alarm.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Notice.class);
+                startActivity(intent);
+            }
+        });
+
+        //전체 세팅
+
+        Button btn_help = (Button) view.findViewById(R.id.btn_help);
+        btn_help.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Help.class);
+                startActivity(intent);
+            }
+        });
+
+        //메시지
+        Button btn_msg = (Button) view.findViewById(R.id.btn_msgbox);
+        btn_msg.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Message.class);
+                startActivity(intent);
+            }
+        });
+
+        //Inflate the layout for this fragment
+        return view;
     }
 
 }
