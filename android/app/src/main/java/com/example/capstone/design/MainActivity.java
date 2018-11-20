@@ -1,6 +1,5 @@
 package com.example.capstone.design;
 
-
 import android.app.Activity;
 import android.graphics.Rect;
 import android.support.design.widget.TabLayout;
@@ -115,7 +114,6 @@ public class MainActivity extends AppCompatActivity{
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position)
             {
                 case 0:

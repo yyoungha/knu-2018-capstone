@@ -1,6 +1,5 @@
 package com.example.capstone.design;
 
-
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -23,18 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment2#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class BlankFragment2 extends Fragment implements OnMapReadyCallback{ //지도부분
-
-
-
-
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,25 +33,14 @@ public class BlankFragment2 extends Fragment implements OnMapReadyCallback{ //�
     private String mParam1;
     private String mParam2;
 
-    //구글 맵
+    // 구글 맵
     private MapView mapView = null;
     private GoogleApiClient mGoogleApiClient;
-
-
-
 
     public BlankFragment2() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment2.
-     */
     // TODO: Rename and change types and number of parameters
     public static BlankFragment2 newInstance(String param1, String param2) {
         BlankFragment2 fragment = new BlankFragment2();
@@ -94,9 +71,6 @@ public class BlankFragment2 extends Fragment implements OnMapReadyCallback{ //�
         mapView.getMapAsync(this);
 
         return layout;
-
-
-
     }
 
     @Override
