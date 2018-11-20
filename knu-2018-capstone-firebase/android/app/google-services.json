@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "685317752821",
+    "firebase_url": "https://knu-2018-capstone.firebaseio.com",
+    "project_id": "knu-2018-capstone",
+    "storage_bucket": "knu-2018-capstone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685317752821:android:df73c5785093434d",
+        "android_client_info": {
+          "package_name": "com.example.capstone.design"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685317752821-cu3fur9n9kecre1haujnlotqu4nj5v2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.capstone.design",
+            "certificate_hash": "319fc56eacace3831d5829e04aa9d9f178938184"
+          }
+        },
+        {
+          "client_id": "685317752821-qagqlthm66dsgqdb1fkf2tluohfdn5hq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.capstone.design",
+            "certificate_hash": "dd4fb5b4264cf3ca3b18044090207268ef0f2eb4"
+          }
+        },
+        {
+          "client_id": "685317752821-b9stov9qn0i0v7fvaqeu7firdk5hmknk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiMtzgsHbN92ouCKxrNpDzdxWAMWTNnIQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685317752821-b9stov9qn0i0v7fvaqeu7firdk5hmknk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:685317752821:android:9f6c3d8f5e6c8319",
+        "android_client_info": {
+          "package_name": "com.example.makeastir.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "685317752821-sbiio50ejsu28j3ibtl3kff2p49id4pi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.makeastir.myapplication",
+            "certificate_hash": "00eb6614b1771871dafc2a4144e9d7213f2a2880"
+          }
+        },
+        {
+          "client_id": "685317752821-b9stov9qn0i0v7fvaqeu7firdk5hmknk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiMtzgsHbN92ouCKxrNpDzdxWAMWTNnIQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "685317752821-b9stov9qn0i0v7fvaqeu7firdk5hmknk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

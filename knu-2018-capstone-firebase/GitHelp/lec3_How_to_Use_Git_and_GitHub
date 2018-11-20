@@ -1,0 +1,35 @@
+Title 	Using GitHub to Collaborate
+Date 	2018-10-09
+Author	Young Ha
+	 
+ Terminology
+ # GitHub : It is a website that makes it easy to share an entire git repository with other people.
+  - GitHub do not automatically syncronize. You need to do it manually. 
+
+ # Remote Repository(simply 'remote') : It let's you store the location of a repository that you will want to send and receive new commits to and from.
+  - Instead of selecting each individual commit, the most common way to send receive data is by specifying a branch.
+  - Git will not send the duplicate commit.
+
+ # Forking a Repository : make a copy of sombody else's repository directly on the GitHub servers without pulling down the code to your local machine first.
+
+ # Fast-Forward Merge : This kind of merge occurs when you merge two commits, where one is ancestor of the other. 
+  - There will be no commit. Branch just moves.
+  - When merging with the button on GitHub will always make a commit anyway even if no extra information is given by making that merge commit.
+
+ # Pull request (merge request) : Someone requesting that I pull his or her branch into the master branch.
+
+ Git command
+# git --version : check that installation of git and its version.
+# git config --global user.name USERNAME
+# git config --global user.email USEREMAIL
+# git remote : list remote repository
+# git remote add REPOSITORY_NAME URL
+ - You can use any name here and it's the name that you'll use within this repository to refer to the repository on GitHub. 
+# git remote -v (v : verbose) : list remote repository with more information
+# git push REMOTE GITHUB_BRANCH : copy all of the commits reachable from your current local branch to GitHub branch.
+# git pull REMOTE GITHUB_BRANCH = (git fetch origin, git merge master origin/master)
+# git fetch origin : update all of the local copies of every branch for the origin remote.
+
+ Why branch?
+ # You could make your changes directly to the master branch in your fork, but when contributing to a public repository, it’s standard practice to make the changes in a non-master branch within the fork. 
+ This way, you can easily keep your master branch up-to-date with master of the original repository, and merge changes from master into your branch when you are ready.
