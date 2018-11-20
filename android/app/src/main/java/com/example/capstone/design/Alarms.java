@@ -13,10 +13,10 @@ import android.widget.ImageButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment1#newInstance} factory method to
+ * Use the {@link Alarms#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment1 extends Fragment { //거래 부분
+public class Alarms extends Fragment { //거래 부분
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -26,7 +26,7 @@ public class BlankFragment1 extends Fragment { //거래 부분
     private String mParam1;
     private String mParam2;
 
-    public BlankFragment1() {
+    public Alarms() {
         // Required empty public constructor
     }
 
@@ -36,11 +36,11 @@ public class BlankFragment1 extends Fragment { //거래 부분
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment1.
+     * @return A new instance of fragment Alarms.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment1 newInstance(String param1, String param2) {
-        BlankFragment1 fragment = new BlankFragment1();
+    public static Alarms newInstance(String param1, String param2) {
+        Alarms fragment = new Alarms();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -64,9 +64,11 @@ public class BlankFragment1 extends Fragment { //거래 부분
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_blank_fragment1, container, false);
+        View view = inflater.inflate(R.layout.fragment_alarms, container, false);
 
-        ImageButton btn = (ImageButton) view.findViewById(R.id.btn1);
+        //알람 부분이 들어갈 Contents
+
+        /*ImageButton btn = (ImageButton) view.findViewById(R.id.profile_background);
 
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -74,7 +76,7 @@ public class BlankFragment1 extends Fragment { //거래 부분
                 Intent intent = new Intent(getActivity(),listActivity.class);
                 startActivity(intent);
             }
-        });
+        });*/
 
         //Inflate the layout for this fragment
         return view;

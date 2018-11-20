@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Market">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.OverFlow"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Market"
+            app:titleTextColor="#ffff" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageButton
+            android:id="@+id/Electronic"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Electronic"
+            android:layout_weight="1"/>
+
+
+
+        <ImageButton
+            android:id="@+id/Bathroom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Bathroom"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/Kitchen"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Kitchen"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/Office"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Office"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/Interior"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Interior"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/Daily_supplies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Daily_supplies"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

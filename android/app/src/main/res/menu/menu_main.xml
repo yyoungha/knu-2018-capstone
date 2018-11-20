@@ -9,10 +9,17 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/Search"
+        android:id="@+id/Logout"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="Logout"
         app:showAsAction="never" />
+
+    <!--<item
+        android:id="@+id/menu_search"
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="always"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        android:title="Search" />-->
 
 
 </menu>

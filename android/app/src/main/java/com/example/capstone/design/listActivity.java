@@ -3,17 +3,21 @@ package com.example.capstone.design;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
 
-public class listActivity extends AppCompatActivity {
+public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클릭 했을때 DB정보를 뿌려주는 listview(=recylerview) 커스텀 list를 만들었음
 
+    SearchView mSearchView;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
 
@@ -23,9 +27,12 @@ public class listActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list2);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //툴바 기능 구현
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼 ,디폴트로 true만 해도 백버튼이 생김
+
+
+
 
         /*final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,LIST_ITEM);
         ListView listView = (ListView)findViewById(R.id.listView);
@@ -60,9 +67,9 @@ public class listActivity extends AppCompatActivity {
         });
     }
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) { //toolbar에 있는 기능 눌렀을 때
         switch (item.getItemId()){
-            case android.R.id.home:{
+            case android.R.id.home:{ //home버튼이 back키임
                 finish();
                 return true;
             }
@@ -76,4 +83,23 @@ public class listActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }*/
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_itemlist,menu);
+        MenuItem searchItem = menu.findItem(R.id.menu_search);
+        SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+        return true;
+    }
 }

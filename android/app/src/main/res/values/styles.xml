@@ -20,7 +20,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="AppTheme.OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <item name="android:tint">@color/colorAccent</item>
+        <item name="android:tint">#ffff</item>
     </style>
 
 </resources>
