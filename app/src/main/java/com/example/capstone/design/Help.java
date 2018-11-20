@@ -10,7 +10,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class Help extends FragmentActivity implements OnMapReadyCallback {
+public class Help extends FragmentActivity implements OnMapReadyCallback { //구글 맵을 이용한 HELP category의 2번쩨 요소
 
     private GoogleMap mMap;
 

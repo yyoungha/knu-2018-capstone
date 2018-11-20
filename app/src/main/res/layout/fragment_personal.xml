@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlankFragment4">
+    tools:context=".Personal">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -79,7 +79,7 @@
         android:layout_below="@+id/text_notice"
         android:layout_alignParentStart="true"
         android:layout_marginStart="0dp"
-        android:layout_marginTop="57dp"
+        android:layout_marginTop="62dp"
         android:text="CATEGORY"
         android:textSize="20dp" />
 

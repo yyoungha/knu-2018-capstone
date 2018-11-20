@@ -6,45 +6,9 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".Personal">
+    tools:context=".Alarms">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <ImageButton
-        android:id="@+id/profile_background"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <ImageButton
-        android:id="@+id/img2"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <ImageButton
-        android:id="@+id/img3"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <ImageButton
-        android:id="@+id/img4"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <ImageButton
-        android:id="@+id/img5"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
-
-    <ImageButton
-        android:id="@+id/img6"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
 
 
 

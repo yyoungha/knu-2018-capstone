@@ -18,13 +18,6 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 public class MainActivity extends AppCompatActivity{
 
     /**
@@ -155,13 +148,11 @@ public class MainActivity extends AppCompatActivity{
 
             {
                 case 0:
-                    return new BlankFragment4();
+                    return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
                 case 1:
-                    return new BlankFragment1();
+                    return new Alarms(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:
-                    return new BlankFragment2();
-                case 3:
-                    return new BlankFragment3();
+                    return new Board(); //게시판
 
 
             }
@@ -170,8 +161,8 @@ public class MainActivity extends AppCompatActivity{
 
         @Override
         public int getCount() {
-            // Show 4 total pages.
-            return 4;
+            // Show 3 total pages.
+            return 3;
         }
     }
 }

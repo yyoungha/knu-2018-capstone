@@ -9,7 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#f5eccf"
+        android:background="@color/colorPrimary"
         android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
@@ -19,7 +19,7 @@
             android:theme="@style/AppTheme.OverFlow"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:title="전자제품"
-            app:titleTextColor="@android:color/black" />
+            app:titleTextColor="#ffff" />
 
     </android.support.design.widget.AppBarLayout>
 

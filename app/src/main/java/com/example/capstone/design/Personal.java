@@ -13,10 +13,10 @@ import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link BlankFragment4#newInstance} factory method to
+ * Use the {@link Personal#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BlankFragment4 extends Fragment { //main화면 창
+public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 화면으로 넘어감
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -27,7 +27,7 @@ public class BlankFragment4 extends Fragment { //main화면 창
     private String mParam2;
 
 
-    public BlankFragment4() {
+    public Personal() {
         // Required empty public constructor
     }
 
@@ -37,11 +37,11 @@ public class BlankFragment4 extends Fragment { //main화면 창
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment BlankFragment4.
+     * @return A new instance of fragment Personal.
      */
     // TODO: Rename and change types and number of parameters
-    public static BlankFragment4 newInstance(String param1, String param2) {
-        BlankFragment4 fragment = new BlankFragment4();
+    public static Personal newInstance(String param1, String param2) {
+        Personal fragment = new Personal();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -63,7 +63,7 @@ public class BlankFragment4 extends Fragment { //main화면 창
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_blank_fragment4, container, false);
+        View view = inflater.inflate(R.layout.fragment_personal, container, false);
 
         //전체 공지
 
@@ -76,13 +76,13 @@ public class BlankFragment4 extends Fragment { //main화면 창
             }
         });
 
-        //전체 알림
+        //마켓
 
-        Button btn_alarm = (Button) view.findViewById(R.id.btn_market);
-        btn_alarm.setOnClickListener(new View.OnClickListener(){
+        Button btn_market = (Button) view.findViewById(R.id.btn_market);
+        btn_market.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Notice.class);
+                Intent intent = new Intent(getActivity(),Market.class);
                 startActivity(intent);
             }
         });
