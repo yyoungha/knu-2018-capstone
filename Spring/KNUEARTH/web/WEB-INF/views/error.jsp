@@ -8,10 +8,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>KNUEARTH - ERROR 404</title>
+    <title>KNUEARTH - ERROR 404 NOT FOUND</title>
 </head>
 <body>
-ERROR 404<a href="/">[HOME]</a></br>
+ERROR 404<a href="/">[RETURN TO KNUEARTH]</a></br>
 <img src="img/error.jpg">
 </body>
 </html>
