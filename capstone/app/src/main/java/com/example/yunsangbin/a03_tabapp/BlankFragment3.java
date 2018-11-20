@@ -94,5 +94,4 @@ public class BlankFragment3 extends Fragment {
 
         return view;
     }
-
 }
