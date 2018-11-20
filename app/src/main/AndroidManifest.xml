@@ -29,32 +29,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".listActivity"
             android:label="전자제품"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity
-            android:name=".Trade_contents"
-             />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Trade_contents" />
         <activity
             android:name=".Notice"
             android:label="Notice"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Message"
             android:label="Message"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Market"
             android:label="Market"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Help" />
         <activity
-            android:name=".Help"></activity>
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".ProfileAdmin" />
     </application>
 
 </manifest>

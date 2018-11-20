@@ -78,9 +78,9 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
     }
 
     /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+    public boolean onCreateOptionsMenu(Menu Menu) {
+        // Inflate the Menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.Menu.menu_main, Menu);
         return true;
     }*/
 

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 
@@ -68,15 +69,15 @@ public class Alarms extends Fragment { //거래 부분
 
         //알람 부분이 들어갈 Contents
 
-        /*ImageButton btn = (ImageButton) view.findViewById(R.id.profile_background);
+        Button btn = (Button) view.findViewById(R.id.yes);
 
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),listActivity.class);
+                Intent intent = new Intent(getActivity(),MapsActivity.class);
                 startActivity(intent);
             }
-        });*/
+        });
 
         //Inflate the layout for this fragment
         return view;

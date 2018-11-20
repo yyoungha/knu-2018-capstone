@@ -100,4 +100,5 @@
     </string>
     <string name="title_activity_list">listActivity</string>
     <string name="title_activity_help">Map</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

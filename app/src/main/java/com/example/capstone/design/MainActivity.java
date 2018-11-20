@@ -1,6 +1,7 @@
 package com.example.capstone.design;
 
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -16,9 +17,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.navdrawer.SimpleSideDrawer;
+
+
 public class MainActivity extends AppCompatActivity{
+
+    SimpleSideDrawer slide_menu;
+    Button btn_slide_menu;
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -40,9 +49,36 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        slide_menu = new SimpleSideDrawer(this);
+        slide_menu.setLeftBehindContentView(R.layout.activity_menu);
+        Button btn_slide_menu = (Button) findViewById(R.id.btn_slide_menu);
+
+        //setting 버튼 누르면 슬라이드 메뉴로 세팅 화면 보여줌
+        btn_slide_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                slide_menu.toggleLeftDrawer();    // 왼쪽에서 화면이 나오게 함
+
+            }
+        });
+
+        Button btn = (Button)findViewById(R.id.profile_admin);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ProfileAdmin.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -67,11 +103,12 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
+    //오른쪽 메뉴 사용
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu Menu) {
+        // Inflate the Menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.Menu.menu_main, Menu);
         return true;
     }
 
@@ -92,7 +129,7 @@ public class MainActivity extends AppCompatActivity{
 
             return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     /**
      * A placeholder fragment containing a simple view.
@@ -165,4 +202,7 @@ public class MainActivity extends AppCompatActivity{
             return 3;
         }
     }
+
+
+
 }

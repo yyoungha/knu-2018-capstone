@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="          Menu          "
+        android:textColor="#ffff"
+        android:textSize="30dp"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/profile_admin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="프로필 관리"/>
+
+    <Button
+        android:id="@+id/campus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="학교 인증"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그아웃"/>
+
+</LinearLayout>
