@@ -21,19 +21,28 @@
             android:value="AIzaSyAqlJPJfxc3tcgYwxCeoanUVf0zp7Ujc0I" />
 
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
         <activity
             android:name=".listActivity"
             android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Trade_contents" />
+        <activity
+            android:name=".Trade_contents"
+            android:label="전자제품"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Notice"
             android:label="Notice"
@@ -46,7 +55,11 @@
             android:name=".Market"
             android:label="Market"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Help" />
+        <activity
+            android:name=".Help"
+            android:label="Help"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
