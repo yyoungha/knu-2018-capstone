@@ -9,10 +9,11 @@
 <footer class="footer">
     <div class="footerBG"></div>
     <div class="footerWeb">
-        <h2>2018 Capstond Design Project Team 0x01 | Contact us: KNU0x01@gmail.com | Coperation : 경북대학교 국제교류처</h2>
+        <h2>2018 Capstone Design Project Team 0x01 | Contact us: KNU0x01@gmail.com | Cooperation : 경북대학교 국제교류처</h2>
     </div>
 </footer>
 
 </div>
 </body>
 </html>
+

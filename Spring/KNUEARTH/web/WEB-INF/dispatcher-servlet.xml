@@ -9,14 +9,6 @@
 
 
     <mvc:annotation-driven>
-        <mvc:message-converters>
-            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
-            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-        </mvc:message-converters>
-        <!--<mvc:message-converters>-->
-            <!--&lt;!&ndash; Jackson libraray&ndash;&gt;-->
-            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>-->
-        <!--</mvc:message-converters>-->
     </mvc:annotation-driven> <!-- Annotation 활성화 -->
     <context:component-scan base-package="Controller"></context:component-scan> <!-- Component 패키지 지정 -->
 
@@ -32,4 +24,12 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
+    <!-- 다국적 언어처리-->
+    <mvc:interceptors>
+        <bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+            <property name="paramName" value="lang" />
+        </bean>
+    </mvc:interceptors>
+    <!-- 다국적 언어처리 끝-->
 </beans>
+

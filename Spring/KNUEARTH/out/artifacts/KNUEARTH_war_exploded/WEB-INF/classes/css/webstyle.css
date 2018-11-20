@@ -46,7 +46,7 @@ html,body{
     display: inline-block;
     height: 100%;
 }
-.header-logo a {
+.header-logo  a {
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -55,6 +55,7 @@ html,body{
     font-size: 0;
     line-height: 60px;
 }
+/*헤더 로고 a 로 모두다 고통 받으니까 따로 수정해줘야 함 ;*/
 .header-nav{
     display: inline-block;
     height: 100%;
@@ -86,8 +87,9 @@ html,body{
     background:linear-gradient(to right,#CB1F24,#A3191C);
     box-shadow: 0 0 5px rgba(0,0,0,0.3); /*그림자 위 오 하 왼*/
     z-index: 99;  /*우선순위*/
+    display:none;
 }
-#fixheader  .header-logo a{
+#fixheader  .header-logo  a{
     display: inline-block;
     width: 60px;
     height: 60px;
@@ -397,6 +399,9 @@ html,body{
     }
     .introExplainWrap .download img{
         width: 30%;
+    }
+    .counter{
+        font-size:40px;
     }
     .platformExplainWrap .platformExplain_web-p{
         font-size: 20px;
