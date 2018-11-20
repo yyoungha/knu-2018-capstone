@@ -63,7 +63,10 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".ProfileAdmin" />
+        <activity
+            android:name=".ProfileAdmin"
+            android:label="프로필관리"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

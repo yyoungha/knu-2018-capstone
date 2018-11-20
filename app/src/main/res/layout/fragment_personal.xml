@@ -20,15 +20,14 @@
         android:layout_marginTop="0dp"
         android:src="@drawable/profile_background" />
 
-    <TextView
-        android:id="@+id/nation"
-        android:layout_width="192dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="142dp"
+        android:layout_height="102dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColor="#ffff"
-        android:text="nation" />
+        android:layout_marginTop="28dp"
+        android:src="@drawable/profile" />
 
     <TextView
         android:id="@+id/name"
@@ -41,14 +40,19 @@
         android:textColor="#ffff"
         android:text="name" />
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="142dp"
-        android:layout_height="102dp"
-        android:layout_alignParentTop="true"
+    <TextView
+        android:id="@+id/nation"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/profile" />
+        android:gravity="center"
+        android:textColor="#ffff"
+        android:text="nation" />
+
+
+
+
 
     <TextView
         android:id="@+id/text_notice"
