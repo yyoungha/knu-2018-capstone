@@ -1,76 +1,81 @@
 package com.example.capstone.design;
 
 public class Member {
-    private String WriterId;
-    private String Name;
-    private String StudentId;
-    private String Password;
-    private String Nation;
-    private String Major;
-    private String Image;
-    private String Admin;
+    private final static double DEFAULT_LAT = 35.886903;
+    private final static double DEFAULT_LNG = 128.608485;
 
-    public String getWriterId() {
-        return WriterId;
+    private final static int PERMISSION_NORMAL_USER = 1000;
+    private final static int PERMISSION_ADMIN = 2016118246;
+
+    private String email;               // 이메일
+    private String name;                // 이름
+    private String password;            // 비밀번호
+    private String nation;              // 국가
+    private int admin;                  // Admin 여부. 기본 권한은 PERMISSION_NORMAL_USER
+    private double lat;                 // 좌표(latitute)
+    private double lng;                 // 좌표(longitute)
+
+    public Member() {
+        lat = DEFAULT_LAT;
+        lng = DEFAULT_LNG;
+        admin = PERMISSION_NORMAL_USER;
     }
 
-    public void setWriterId(String WriterId) {
-        WriterId = WriterId;
+    public Member(String email, String name, String password, String nation) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.nation = nation;
+        this.admin = PERMISSION_NORMAL_USER;
+        lat = DEFAULT_LAT;
+        lng = DEFAULT_LNG;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
-    }
-
-    public String getStudentId() {
-        return StudentId;
-    }
-
-    public void setStudentId(String StudentId) {
-        StudentId = StudentId;
-    }
-
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
+        this.name = name;
     }
 
     public String getNation() {
-        return Nation;
+        return nation;
     }
 
     public void setNation(String nation) {
-        Nation = nation;
+        this.nation = nation;
     }
 
-    public String getMajor() {
-        return Major;
+    public int getAdmin() {
+        return admin;
     }
 
-    public void setMajor(String major) {
-        Major = major;
+    public void setAdmin(int admin) {
+        this.admin = admin;
     }
 
-    public String getImage() {
-        return Image;
+    public double getLat() {
+        return lat;
     }
 
-    public void setImage(String image) {
-        Image = image;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
-    public String getAdmin() {
-        return Admin;
+    public double getLng() {
+        return lng;
     }
 
-    public void setAdmin(String admin) {
-        Admin = admin;
+    public void setLng(double lng) {
+        this.lng = lng;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -58,7 +58,10 @@ public class MainActivity extends AppCompatActivity{
     private EditText pwd_login;
     FirebaseAuth firebaseAuth;
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity{
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
-//        mFirebaseAuth.getInstance().signOut();
+       mFirebaseAuth.getInstance().signOut();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         if (mFirebaseUser == null) {
@@ -80,6 +83,7 @@ public class MainActivity extends AppCompatActivity{
             if (mFirebaseUser.getPhotoUrl() != null) {
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
+            Log.v(TAG, "mUsername is " + mUsername);
         }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

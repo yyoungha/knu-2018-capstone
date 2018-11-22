@@ -122,7 +122,7 @@ public class Help extends AppCompatActivity
 
     /**
      * 시스템은 사용자가 Activity 를 떠날 경우 onSaveInstanceState() 를 호출하여 Bundle 객체에 저장.
-     * Bundle 은 Activity instance 재생성 시 onCreate() 와 onRestoreInstanceState() 메서드 모두에 전달.
+     * Bundle 은 Activity instance 재생성 시 onCreate() 와 onRestoreInstanceState() 메서드 모두에 전달됨.
      */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
