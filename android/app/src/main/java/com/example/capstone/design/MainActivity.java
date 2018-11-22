@@ -2,6 +2,7 @@ package com.example.capstone.design;
 
 
 import android.content.Intent;
+import android.content.pm.SigningInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -36,6 +37,7 @@ import com.navdrawer.SimpleSideDrawer;
 
 import java.util.ArrayList;
 
+import static com.example.capstone.design.R.id.logout_btn;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class MainActivity extends AppCompatActivity{
@@ -94,9 +96,18 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        Button btn_logout = (Button)findViewById(R.id.logout_btn);
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebaseAuth.getInstance().signOut();
+                finish();
+            }
+        });
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
-//        mFirebaseAuth.getInstance().signOut();
+//
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
         if (mFirebaseUser == null) {
