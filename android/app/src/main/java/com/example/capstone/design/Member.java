@@ -1,76 +1,86 @@
 package com.example.capstone.design;
 
 public class Member {
-    private String WriterId;
-    private String Name;
-    private String StudentId;
-    private String Password;
-    private String Nation;
-    private String Major;
-    private String Image;
-    private String Admin;
+    private static final int PERMISSION_NORMAL_USER = 1000;
+    private static final int PERMISSION_ADMIN = 2016118246;
 
-    public String getWriterId() {
-        return WriterId;
+    private String email;
+    private String pwd;
+    private String pwd_chk;
+    private String name;
+    private String nation;
+    private double lat;
+    private double lng;
+    private int permission;
+
+    public Member(String email, String pwd, String name, String nation) {
+        this.email = email;
+        this.pwd = pwd;
+        this.name = name;
+        this.nation = nation;
     }
 
-    public void setWriterId(String WriterId) {
-        WriterId = WriterId;
+    public int getPermission() {
+        return permission;
     }
 
-    public String getName() {
-        return Name;
+    public void setPermission(int permission) {
+        this.permission = permission;
     }
 
-    public void setName(String name) {
-        Name = name;
+    public double getLng() {
+        return lng;
     }
 
-    public String getStudentId() {
-        return StudentId;
+    public void setLng(double lng) {
+        this.lng = lng;
     }
 
-    public void setStudentId(String StudentId) {
-        StudentId = StudentId;
+    public double getLat() {
+        return lat;
     }
 
-    public String getPassword() {
-        return Password;
-    }
-
-    public void setPassword(String password) {
-        Password = password;
+    public void setLat(double lat) {
+        this.lat = lat;
     }
 
     public String getNation() {
-        return Nation;
+        return nation;
     }
 
     public void setNation(String nation) {
-        Nation = nation;
+        this.nation = nation;
     }
 
-    public String getMajor() {
-        return Major;
+    public String getName() {
+        return name;
     }
 
-    public void setMajor(String major) {
-        Major = major;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getImage() {
-        return Image;
+    public String getPwd_chk() {
+        return pwd_chk;
     }
 
-    public void setImage(String image) {
-        Image = image;
+    public void setPwd_chk(String pwd_chk) {
+        this.pwd_chk = pwd_chk;
     }
 
-    public String getAdmin() {
-        return Admin;
+    public String getPwd() {
+        return pwd;
     }
 
-    public void setAdmin(String admin) {
-        Admin = admin;
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

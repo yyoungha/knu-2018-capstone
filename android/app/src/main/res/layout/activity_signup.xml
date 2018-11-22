@@ -87,7 +87,7 @@
         tools:layout_conversion_absoluteWidth="360dp" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/sign_up_username"
         android:layout_width="270dp"
         android:layout_height="35dp"
         android:layout_marginTop="2dp"
@@ -113,7 +113,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_username"
         tools:layout_conversion_absoluteHeight="41dp"
         tools:layout_conversion_absoluteWidth="360dp" />
 
@@ -150,7 +150,7 @@
         tools:layout_conversion_absoluteWidth="360dp" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/sign_up_pwdchk"
         android:layout_width="270dp"
         android:layout_height="35dp"
         android:layout_marginStart="69dp"
@@ -177,12 +177,12 @@
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_pwdchk"
         tools:layout_conversion_absoluteHeight="41dp"
         tools:layout_conversion_absoluteWidth="360dp" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/sign_up_nation"
         android:layout_width="270dp"
         android:layout_height="35dp"
         android:layout_marginStart="69dp"
@@ -215,12 +215,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_nation"
         tools:layout_conversion_absoluteHeight="41dp"
         tools:layout_conversion_absoluteWidth="180dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_cancel"
         android:layout_width="270dp"
         android:layout_height="35dp"
         android:layout_marginTop="8dp"
