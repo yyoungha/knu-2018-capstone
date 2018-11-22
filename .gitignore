@@ -18,8 +18,8 @@ app.iml*
 *.class
 
 # generated files
-bin/
-gen/
+android/bin/
+gandroid/ben/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -36,14 +36,15 @@ Thumbs.db
 
 # Android Studio
 *.iml
-.idea/
+android/.idea/
+
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-.gradle/
-build/
+android/.gradle/
+android/build/
 
-app/build/
+android/app/build/
 
-gradle/
+android/gradle/
 
 #NDK
-obj/
+android/obj/
