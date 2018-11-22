@@ -17,15 +17,13 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { //커스텀 adapter임 listview랑 비슷하지만 차이가 조금 있음 복잡함으로 여기는 잘 건드리지 않는게 좋음
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        ImageView item_Picture;
-        TextView item_Title;
-        TextView item_Date;
+        ImageView ivPicture;
+        TextView tvPrice;
 
         MyViewHolder(View view){
             super(view);
-            item_Picture = view.findViewById(R.id.item_picture);
-            item_Title = view.findViewById(R.id.item_title);
-            item_Date = view.findViewById(R.id.item_date);
+            ivPicture = view.findViewById(R.id.iv_picture);
+            tvPrice = view.findViewById(R.id.tv_price);
         }
     }
 
@@ -47,9 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
 
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-        myViewHolder.item_Picture.setImageResource(itemInfoArrayList.get(position).drawableId);
-        myViewHolder.item_Title.setText(itemInfoArrayList.get(position).txt1);
-        myViewHolder.item_Date.setText(itemInfoArrayList.get(position).date);
+        myViewHolder.ivPicture.setImageResource(itemInfoArrayList.get(position).drawableId);
+        myViewHolder.tvPrice.setText(itemInfoArrayList.get(position).text);
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
