@@ -104,7 +104,6 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/instant_run_split_apk_resources" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/javac" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/jniLibs" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/lint_jar" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/manifest-checker" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/merged_manifests" />
@@ -144,6 +143,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:monitor-1.0.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-transformation-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-snackbar-28.0.0-alpha1" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\makeastir\Desktop\1123\knu-2018-capstone\android\app\libs\slider.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-color-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-annotations:28.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-circularreveal-coordinatorlayout-28.0.0-alpha1" level="project" />
@@ -167,7 +167,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-button-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:common:1.1.1@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\zwei2\Documents\GitHub\knu-2018-capstone\android\app\libs\slider.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat-28.0.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:design-circularreveal-cardview-28.0.0-alpha1" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-location-16.0.0" level="project" />
