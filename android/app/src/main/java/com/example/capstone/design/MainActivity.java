@@ -33,6 +33,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.navdrawer.SimpleSideDrawer;
 
 import java.util.ArrayList;
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity{
                 finish();
             }
         });
+
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
 //
@@ -121,7 +123,9 @@ public class MainActivity extends AppCompatActivity{
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
         }
-
+        if (FirebaseInstanceId.getInstance().getToken() != null) {
+            Log.d(TAG, "token = " + FirebaseInstanceId.getInstance().getToken());
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
