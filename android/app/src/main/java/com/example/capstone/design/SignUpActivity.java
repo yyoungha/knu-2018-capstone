@@ -54,6 +54,7 @@ public class SignUpActivity extends AppCompatActivity {
                 String nation = nation_join.getText().toString().trim();
                 final Member member = new Member(email, pwd, username, nation);
 
+                Personal personal = new Personal();
                 if (!pwd.equals(pwdchk)) {
                     Toast.makeText(SignUpActivity.this, "비밀번호를 확인하세요.", Toast.LENGTH_LONG).show();
                     return;
