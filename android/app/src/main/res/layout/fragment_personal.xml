@@ -20,15 +20,14 @@
         android:layout_marginTop="0dp"
         android:src="@drawable/profile_background" />
 
-    <TextView
-        android:id="@+id/nation"
-        android:layout_width="192dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/name"
+    <ImageView
+        android:id="@+id/profile"
+        android:layout_width="142dp"
+        android:layout_height="102dp"
+        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:textColor="#ffff"
-        android:text="nation" />
+        android:layout_marginTop="28dp"
+        android:src="@drawable/profile" />
 
     <TextView
         android:id="@+id/name"
@@ -38,17 +37,70 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textColor="#ffff"
-        android:text="name" />
+        android:text="Wojtek"
+        android:textSize="20dp"
+        android:textColor="#ffff" />
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="142dp"
-        android:layout_height="102dp"
-        android:layout_alignParentTop="true"
+    <TextView
+        android:id="@+id/nation"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="28dp"
-        android:src="@drawable/profile" />
+        android:gravity="center"
+        android:text="Poland"
+        android:textColor="#ffff" />
+
+
+    <TextView
+        android:id="@+id/my_alarm"
+        android:layout_width="85dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nation"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-6dp"
+        android:layout_toStartOf="@+id/btn_help"
+        android:gravity="center"
+        android:text="Alarms"
+        android:textColor="#ffff" />
+
+
+    <TextView
+        android:id="@+id/my_script"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nation"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:text="Scripts"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/my_script_num"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/my_script"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:gravity="center"
+        android:text="3"
+        android:textColor="#ffff" />
+
+    <TextView
+        android:id="@+id/my_msg"
+        android:layout_width="84dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nation"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="38dp"
+        android:gravity="center"
+        android:text="Message"
+        android:textColor="#ffff" />
+
+
+
 
     <TextView
         android:id="@+id/text_notice"

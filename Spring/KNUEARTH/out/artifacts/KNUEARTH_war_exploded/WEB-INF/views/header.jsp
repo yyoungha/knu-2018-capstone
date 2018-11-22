@@ -39,7 +39,7 @@
 
                 setTimeout(function() {
                     $({ val : 0 }).animate({ val : finalNum}, {
-                        duration: 1500,
+                        duration: 2000,
                         step: function() {
                             e.text(Math.floor(this.val));
                         },

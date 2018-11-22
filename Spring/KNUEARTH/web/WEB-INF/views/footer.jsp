@@ -6,10 +6,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=EUC-KR" language="java" pageEncoding="EUC-KR" %>
+<%--<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>--%>
 <footer class="footer">
     <div class="footerBG"></div>
     <div class="footerWeb">
-        <h2>2018 Capstone Design Project Team 0x01 | Contact us: KNU0x01@gmail.com | Cooperation : <spring:message code="footer.cooperation"/></h2>
+        <h2><spring:message code="footer.cooperation"/></h2>
     </div>
 </footer>
 

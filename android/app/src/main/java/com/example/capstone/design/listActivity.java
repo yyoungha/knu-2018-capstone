@@ -1,5 +1,6 @@
 package com.example.capstone.design;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -89,17 +90,26 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         getMenuInflater().inflate(R.menu.menu_itemlist,menu);
         MenuItem searchItem = menu.findItem(R.id.menu_search);
         SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
+
+        //글자색과 힌트 색상
+        SearchView.SearchAutoComplete searchAutoComplete = (SearchView.SearchAutoComplete)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        searchAutoComplete.setHintTextColor(Color.WHITE);
+        searchAutoComplete.setTextColor(Color.WHITE);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
-                return false;
+                //쿼리 들어가야할 부분
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String s) {
-                return false;
+                //쿼리 들어가야할 부분
+                return true;
             }
         });
-        return true;
+
+        return super.onCreateOptionsMenu(menu);
     }
 }

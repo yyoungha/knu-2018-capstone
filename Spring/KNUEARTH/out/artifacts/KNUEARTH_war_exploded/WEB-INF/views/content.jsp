@@ -37,7 +37,7 @@
             <div class="platformExplainWrap">
                 <p class="platformExplain_web-p"><spring:message code="platform.title1"/></p>
 
-                <p class="counter">125000</p> <!--애니메이션 효과주기-->
+                <p class="counter">200</p> <!--애니메이션 효과주기-->
 
                 <p class="platformExplain_web-p"><spring:message code="platform.title2"/></p>
 
@@ -86,10 +86,19 @@
             </div>
         </div>
     </div>
-    <%--<div class="cooperation">--%>
-        <%--<div class="cooperationBG"></div>--%>
-        <%--<div class="cooperationWrap">--%>
-            <%--TEST--%>
-        <%--</div>--%>
-    <%--</div>--%>
+    <div class="cooperation">
+        <div class="cooperationBG"></div>
+        <div class="cooperationWrap">
+            <h2>
+                <span>PLATFORM</span>
+                <span class="light">INTRODUCE</span>
+                <span>THIRD PARTY APPLICATION</span>
+                <span>KNU</span>
+            </h2>
+            <div class="youtubeWrap">
+                <iframe width="854" height="480" src="https://www.youtube.com/embed/PT2_F-1esPk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+        </div>
+    </div>
 </div>

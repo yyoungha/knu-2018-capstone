@@ -1,6 +1,9 @@
 package com.example.capstone.design;
 
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,39 +13,107 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.navdrawer.SimpleSideDrawer;
+
+import java.util.ArrayList;
+
+import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class MainActivity extends AppCompatActivity{
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v4.app.FragmentStatePagerAdapter}.
-     */
+
+    SimpleSideDrawer slide_menu;
+    Button btn_slide_menu;
+
+    private static final String TAG = "MainActivity";
+
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
     private ViewPager mViewPager;
+
+    // Firebase instance variables
+    // 1. Auth with Google Firebase
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private String mUsername;
+    private String mPhotoUrl;
+
+    private Button join;
+    private Button login;
+    private EditText email_login;
+    private EditText pwd_login;
+    FirebaseAuth firebaseAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        slide_menu = new SimpleSideDrawer(this);
+        slide_menu.setLeftBehindContentView(R.layout.activity_menu);
+        Button btn_slide_menu = (Button) findViewById(R.id.btn_slide_menu);
+
+        //setting 버튼 누르면 슬라이드 메뉴로 세팅 화면 보여줌
+        btn_slide_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                slide_menu.toggleLeftDrawer();    // 왼쪽에서 화면이 나오게 함
+
+            }
+        });
+
+        Button btn = (Button)findViewById(R.id.profile_admin);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ProfileAdmin.class);
+                startActivity(intent);
+            }
+        });
+
+        // Initialize Firebase Auth
+        mFirebaseAuth = FirebaseAuth.getInstance();
+//        mFirebaseAuth.getInstance().signOut();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+        if (mFirebaseUser == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, SignInActivity.class));
+            finish();
+            return;
+        } else {
+            mUsername = mFirebaseUser.getDisplayName();
+            if (mFirebaseUser.getPhotoUrl() != null) {
+                mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+            }
+        }
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -64,10 +135,28 @@ public class MainActivity extends AppCompatActivity{
                         .setAction("Action", null).show();
             }
         });*/
+        // Read data from the database
+
+//        noteRef.orderByChild("Date").addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                // This method is called once with the initial value and again
+//                // whenever data at this location is updated.
+//                Notification notification = dataSnapshot.getValue(Notification.class);
+//
+//                Log.d(TAG, "NoticeTitle is: " + notification.getNoticeTitle());
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError databaseError) {
+//                // Failed to read value
+//                Log.w(TAG, "Failed to read value.", databaseError.toException());
+//            }
+//        });
     }
 
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -91,7 +180,7 @@ public class MainActivity extends AppCompatActivity{
 
             return super.onOptionsItemSelected(item);
         }
-    }
+    }*/
 
     /**
      * A placeholder fragment containing a simple view.
