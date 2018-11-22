@@ -4,6 +4,8 @@ app.iml*
 
 #local files
 *.lock
+*.bat
+*.swp
 *.ser
 *.bin
 
