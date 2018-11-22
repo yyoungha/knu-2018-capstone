@@ -86,6 +86,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        //프로필 관리
         Button btn = (Button)findViewById(R.id.profile_admin);
 
         btn.setOnClickListener(new View.OnClickListener() {
