@@ -60,6 +60,7 @@
 
     <EditText
         android:id="@+id/sign_in_pwd"
+        android:inputType="textPassword"
         android:layout_width="270dp"
         android:layout_height="35dp"
         android:layout_marginStart="69dp"

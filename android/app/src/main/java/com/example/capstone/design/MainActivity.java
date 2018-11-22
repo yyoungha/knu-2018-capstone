@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity{
                 finish();
             }
         });
+
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
 //
