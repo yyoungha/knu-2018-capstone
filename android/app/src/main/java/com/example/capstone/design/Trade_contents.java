@@ -6,6 +6,8 @@ import android.content.DialogInterface;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -19,6 +21,9 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trade_contents);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Button btn = (Button)findViewById(R.id.match);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -66,5 +71,15 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
         dialog.show();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 }

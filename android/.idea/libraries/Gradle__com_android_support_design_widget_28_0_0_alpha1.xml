@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:design-widget-28.0.0-alpha1">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/f3fdfcceecda33b5b317b46bcb35fc97/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/b714266b4863fad0aadb3c736a353481/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/f3fdfcceecda33b5b317b46bcb35fc97/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/f3fdfcceecda33b5b317b46bcb35fc97/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/b714266b4863fad0aadb3c736a353481/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/b714266b4863fad0aadb3c736a353481/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

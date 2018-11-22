@@ -1,5 +1,6 @@
 package com.example.capstone.design;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -62,8 +63,14 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+
+                //등록
+                Intent intent = new Intent(listActivity.this,Itemenroll.class);
+                startActivity(intent);
+
+
             }
         });
     }

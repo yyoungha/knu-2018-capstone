@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:design-internal-28.0.0-alpha1">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/c1c46cb00f6149fc0c41d6ce133d697a/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/501f832fabc7f22d9f3f8fc24466bb64/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/c1c46cb00f6149fc0c41d6ce133d697a/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/c1c46cb00f6149fc0c41d6ce133d697a/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/501f832fabc7f22d9f3f8fc24466bb64/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/501f832fabc7f22d9f3f8fc24466bb64/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
