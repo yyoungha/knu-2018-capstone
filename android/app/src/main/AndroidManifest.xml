@@ -65,7 +65,7 @@
             android:label="Market"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Help"
+            android:name=".HelpActivity"
             android:label="Help"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MapsActivity" />
