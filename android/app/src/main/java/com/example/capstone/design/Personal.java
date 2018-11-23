@@ -6,12 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import static com.example.capstone.design.R.id.name;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 
@@ -128,7 +125,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         btn_help.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),Help.class);
+                Intent intent = new Intent(getActivity(),HelpActivity.class);
                 startActivity(intent);
             }
         });
