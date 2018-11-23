@@ -41,7 +41,7 @@ Thumbs.db
 android/.idea/
 
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-android/.gradle/*
+android/.gradle/
 android/build/
 android/app/build/
 android/gradle/
@@ -57,3 +57,6 @@ android/.gradle/4.6/javaCompile/taskHistory.bin
 android/.gradle/4.6/javaCompile/javaCompile.lock
 android/.gradle/4.6/javaCompile/classAnalysis.bin
 android/gradlew
+android/build/
+android/app/build/
+android/gradle/
