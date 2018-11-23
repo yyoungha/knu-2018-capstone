@@ -6,6 +6,7 @@ import android.content.pm.SigningInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -63,12 +64,6 @@ public class MainActivity extends AppCompatActivity{
 
     private String mUsername;
     private String mPhotoUrl;
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        mSectionsPagerAdapter.notifyDataSetChanged();
-    }
 
 
     @Override
@@ -255,6 +250,8 @@ public class MainActivity extends AppCompatActivity{
             {
                 case 0:
                     return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
+                    //ps = new Personal();
+                    //return ps;
                 case 1:
                     return new Alarms(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:
@@ -271,4 +268,7 @@ public class MainActivity extends AppCompatActivity{
             return 3;
         }
     }
+
+
+
 }

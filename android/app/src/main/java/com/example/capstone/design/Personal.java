@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -108,23 +109,26 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
     }
 
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
+
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String UID = user.getUid();
 
         //이미지 추가하기
         final ImageView image = (ImageView)view.findViewById(R.id.profile);
+
         image.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(getActivity(), ImageActivity.class);
                 startActivity(intent);
-
+                getActivity().finish();
             }
         });
 

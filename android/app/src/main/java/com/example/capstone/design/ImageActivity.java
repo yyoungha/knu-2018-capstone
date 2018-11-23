@@ -145,6 +145,9 @@ public class ImageActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Log.d(TAG, "User profile updated.");
+                                                Intent intent = new Intent(ImageActivity.this,MainActivity.class);
+                                                startActivity(intent);
+                                                finish();
                                             }
                                         }
                                     });
