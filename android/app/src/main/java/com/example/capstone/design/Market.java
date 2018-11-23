@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item이 있고 클릭시 해당하는 카테고리로 넘어감.
 
@@ -78,6 +80,25 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
                 startActivity(intent);
             }
         });
+
+        Button posted = (Button)findViewById(R.id.posted);
+        posted.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Market.this,"There are 8", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Button market_complete = (Button)findViewById(R.id.market_complete);
+        market_complete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Market.this,"No complete trade", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
     }
 
     @Override
