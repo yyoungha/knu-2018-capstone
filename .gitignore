@@ -41,10 +41,10 @@ Thumbs.db
 android/.idea/
 
 #.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
-android/.gradle/
+android/.gradle/*
 android/build/
 android/app/build/
-android/gradle/
+android/gradle/*
 
 #NDK
 android/obj/
