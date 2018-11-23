@@ -23,6 +23,7 @@ public class HelpRequestActivity extends AppCompatActivity {
     private String requestContents;
 
     private Button helpRequestBtn;
+    private Button cancelRequestBtn;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
@@ -35,6 +36,7 @@ public class HelpRequestActivity extends AppCompatActivity {
         helpRequestTitle = (EditText)findViewById(R.id.help_request_title);
         helpRequestContents = (EditText)findViewById(R.id.help_request_contents);
         helpRequestBtn = (Button) findViewById(R.id.add_request_btn);
+        cancelRequestBtn = (Button) findViewById(R.id.help_cencel_btn);
 
         requestTitle = helpRequestTitle.getText().toString();
         requestContents = helpRequestContents.getText().toString();
@@ -51,17 +53,13 @@ public class HelpRequestActivity extends AppCompatActivity {
                 databaseReference.child("Help").push().setValue(help);
             }
         });
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{
+        
+        cancelRequestBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
                 finish();
-                return true;
             }
-        }
-        return super.onOptionsItemSelected(item);
+        });
     }
+
 }

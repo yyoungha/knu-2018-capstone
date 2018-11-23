@@ -1,6 +1,7 @@
 package com.example.capstone.design;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -128,13 +129,17 @@ public class HelpActivity extends AppCompatActivity
         addRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO : 요청 추가 버튼
-                // 1. 새 요청을 작성할 수 있는 HelpRequestActivity를 보여준다.
-                // 2. HelpRequestActivity에는 제목, 내용이 들어간다.
-                // 3. request를 누르면 firebase rdb에 요청 항목에 추가한다. (현재위치, 사용자정보를 포함하여)
-                // 4. HelpRequestActivity를 종료하고 HelpActivity를 연다.
+                Intent intent = new Intent(HelpActivity.this, HelpRequestActivity.class);
+                startActivity(intent);
             }
         });
+        // 4. HelpRequestActivity를 종료하고 HelpActivity를 연다.
+
+        // TODO HELP 목록 불러와서 화면에 MARKER로 표시하기
+
+        // TODO MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
+
+
 
     }
 

@@ -61,6 +61,9 @@ public class MainActivity extends AppCompatActivity{
     public static FirebaseAuth getmFirebaseAuth() { return mFirebaseAuth; }
     public static FirebaseUser getmFirebaseUser() { return mFirebaseUser; }
 
+    private String mUsername;
+    private String mPhotoUrl;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

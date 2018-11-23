@@ -48,7 +48,12 @@
         android:id="@+id/help_request_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="작성 완료" />
+        android:text="REQUEST" />
 
+    <Button
+        android:id="@+id/help_cencel_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CANCEL" />
 
 </LinearLayout>
