@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity{
     SimpleSideDrawer slide_menu;
     Button btn_slide_menu;
 
-    private String mUsername;
-    private String mPhotoUrl;
-
     private static final String TAG = "MainActivity";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
@@ -66,6 +63,13 @@ public class MainActivity extends AppCompatActivity{
 
     private String mUsername;
     private String mPhotoUrl;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mSectionsPagerAdapter.notifyDataSetChanged();
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
