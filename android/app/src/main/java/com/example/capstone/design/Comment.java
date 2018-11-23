@@ -31,7 +31,7 @@ public class Comment extends AppCompatActivity {
 
         lstComments = new ArrayList<>();
         for(int i = 0, j = 0; i < comments.size() && j < names.size(); i++, j++) {
-            lstComments.add(new CommentItem(R.drawable.picasso, comments.get(i), names.get(j)));
+            lstComments.add(new CommentItem(R.drawable.picasso, comments.get(i), names.get(j), "2018.11.23"));
         }
 
         ListView listView = (ListView)findViewById(R.id.listView_comment);

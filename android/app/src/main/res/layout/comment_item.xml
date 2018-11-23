@@ -42,4 +42,12 @@
         android:text="Example application"
         android:textSize="16sp" />
 
+    <TextView
+        android:id="@+id/tvDateCom"
+        android:layout_width="81dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:text="2018.11.10" />
+
 </RelativeLayout>

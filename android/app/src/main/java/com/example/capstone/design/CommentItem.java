@@ -4,11 +4,13 @@ public class CommentItem {
     private int resAvatar;
     private String strMessage;
     private String strName;
+    private String strDate;
 
-    public CommentItem(int resAvatar, String strMessage, String strName) {
+    public CommentItem(int resAvatar, String strMessage, String strName, String strDate) {
         this.resAvatar = resAvatar;
         this.strMessage = strMessage;
         this.strName = strName;
+        this.strDate = strDate;
     }
 
     public int getResAvatar() {
@@ -33,5 +35,13 @@ public class CommentItem {
 
     public void setStrName(String strName) {
         this.strName = strName;
+    }
+
+    public String getStrDate() {
+        return strDate;
+    }
+
+    public void setStrDate(String strDate) {
+        this.strDate = strDate;
     }
 }

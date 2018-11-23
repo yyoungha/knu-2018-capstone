@@ -31,6 +31,7 @@ public class CommentAdapter extends ArrayAdapter<CommentItem> {
         TextView tvNameCom;
         TextView tvMessageCom;
         ImageView ivAvatarCom;
+        TextView tvDateCom;
     }
 
     @NonNull
@@ -46,6 +47,7 @@ public class CommentAdapter extends ArrayAdapter<CommentItem> {
             holder.ivAvatarCom = (ImageView)convertView.findViewById(R.id.ivAvatarCom);
             holder.tvNameCom = (TextView)convertView.findViewById(R.id.tvNameCom);
             holder.tvMessageCom = (TextView)convertView.findViewById(R.id.tvMessageCom);
+            holder.tvDateCom = (TextView)convertView.findViewById(R.id.tvDateCom);
             convertView.setTag(holder);
         } else {
             holder =(DataHolder)convertView.getTag();
@@ -55,6 +57,7 @@ public class CommentAdapter extends ArrayAdapter<CommentItem> {
         holder.ivAvatarCom.setImageResource(commentItem.getResAvatar());
         holder.tvNameCom.setText(commentItem.getStrName());
         holder.tvMessageCom.setText(commentItem.getStrMessage());
+        holder.tvDateCom.setText(commentItem.getStrDate());
         return convertView;
     }
 
