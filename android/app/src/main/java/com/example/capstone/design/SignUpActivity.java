@@ -72,20 +72,23 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 //final Member member = new Member(email, pwd, username, nation);
 
 
-                //예외처리
-                if(email.equals("")||pwd.equals("")||pwdchk.equals("")||username.equals("")||text.equals("")){
-                    Toast.makeText(null,"please input blank", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+
 
 
                 final Member member = new Member(email, pwd, username, text);
+
+                //예외처리
+                if(text.equals("")){
+                    Toast.makeText(SignUpActivity.this,"please input blank", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Personal personal = new Personal();
                 if (!pwd.equals(pwdchk)) {
                     Toast.makeText(SignUpActivity.this, "비밀번호를 확인하세요.", Toast.LENGTH_LONG).show();
                     return;
                 }
+
 
                 firebaseAuth.createUserWithEmailAndPassword(email, pwd)
                         .addOnCompleteListener(SignUpActivity.this, new OnCompleteListener<AuthResult>() {
