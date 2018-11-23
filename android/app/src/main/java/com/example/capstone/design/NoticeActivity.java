@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,7 +33,7 @@ import static com.example.capstone.design.R.id.text_contentOfNotice;
 public class NoticeActivity extends AppCompatActivity { //공지를 어떻게 재어해줄지 고민
     private static final String TAG = "NoticeActivity";
     private DataSnapshot dataSnapshot;
-    private TextView recent_notice;
+    private TextView notice_all;
 
 
     @Override
@@ -47,29 +48,41 @@ public class NoticeActivity extends AppCompatActivity { //공지를 어떻게 �
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Notification");
-        String value = (String) dataSnapshot.getValue();
 
-        recent_notice=(TextView)findViewById(text_contentOfNotice);
-        recent_notice.setText(value);
+        notice_all=(TextView)findViewById(R.id.notice_all);
 
-        // Read data from the database
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                // This method is called once with the initial value and again
-//                // whenever data at this location is updated.
-//                String value = dataSnapshot.getValue(String.class);
-//                recent_notice.setText(value);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//                // Failed to read value
-//            }
-//        });
+        myRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Notification notification = dataSnapshot.getValue(Notification.class);
+                notice_all.append(notification.getDate()+"\n");
+                notice_all.append(notification.getContent()+"\n");
+            }
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
+
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

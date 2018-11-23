@@ -11,14 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import static com.example.capstone.design.R.id.name;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 
@@ -32,6 +35,10 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private TextView username;
+    private TextView nation;
+    private String UserID;
+    FirebaseAuth firebaseAuth;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -68,6 +75,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
     }
 
     @Override
@@ -76,6 +84,10 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
+
+        //이름 및 국적 가져오기
+
+
 
         //내 글 확인
 
@@ -136,15 +148,46 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference noteRef = database.getReference("Notification");
 
-        recent_notice = (TextView)view.findViewById(text_contentOfNotice);
+        DatabaseReference memRef = database.getReference("Member");
 
+        recent_notice = (TextView)view.findViewById(text_contentOfNotice);
+        username = (TextView)view.findViewById(R.id.name);
+        nation = (TextView)view.findViewById(com.example.capstone.design.R.id.nation);
 
         noteRef.orderByChild("Date").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Notification notification = dataSnapshot.getValue(Notification.class);
-                Log.v("Content : ", notification.getContent());
                 recent_notice.setText(notification.getContent());
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        memRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                Member member = dataSnapshot.getValue(Member.class);
+
+
             }
 
             @Override

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Itemenroll">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.OverFlow"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="물건 등록"
+            app:titleTextColor="#ffff" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제목"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <EditText
+        android:id="@+id/Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="제목을 입력하시오."
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="내용"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <EditText
+        android:id="@+id/Contents"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="내용을 입력하시오."
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="이미지 추가"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <Button
+        android:id="@+id/enroll_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/complete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="작성 완료" />
+
+
+</LinearLayout>

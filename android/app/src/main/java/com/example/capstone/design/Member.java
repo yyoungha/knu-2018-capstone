@@ -4,6 +4,9 @@ public class Member {
     private static final int PERMISSION_NORMAL_USER = 1000;
     private static final int PERMISSION_ADMIN = 2016118246;
 
+    public Member() {
+    }
+
     private String email;
     private String pwd;
     private String pwd_chk;

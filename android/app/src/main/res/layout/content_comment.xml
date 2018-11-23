@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Comment"
+    tools:showIn="@layout/activity_comment">
+
+    <RelativeLayout
+        android:id="@+id/relativeCom3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:theme="@style/AppTheme">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/AppTheme.OverFlow"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                app:title="Comment"
+                app:titleTextColor="#ffff" />
+
+        </android.support.design.widget.AppBarLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/relativeCom1"
+        android:layout_above="@+id/relativeCom2"
+        android:layout_below="@id/relativeCom3">
+
+        <ListView
+            android:id="@+id/listView_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"></ListView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeCom2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/writeCom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_centerVertical="true"
+            android:textSize="14dp"
+            android:hint="add here..."/>
+
+        <ImageView
+            android:id="@+id/sendCom"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/add"
+            android:layout_alignParentRight="true"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
