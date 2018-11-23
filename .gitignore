@@ -48,3 +48,13 @@ android/gradle/*
 
 #NDK
 android/obj/
+android/.gradle/4.6/javaCompile/classAnalysis.bin
+android/.gradle/4.6/javaCompile/javaCompile.lock
+android/.gradle/4.6/javaCompile/taskHistory.bin
+android/.gradle/4.6/javaCompile/taskJars.bin
+android/.gradle/4.6/taskHistory/taskHistory.bin
+android/.gradle/4.6/taskHistory/taskHistory.lock
+android/.gradle/buildOutputCleanup/buildOutputCleanup.lock
+android/.gradle/buildOutputCleanup/outputFiles.bin
+android/.idea/workspace.xml
+android/app/src/main/AndroidManifest.xml
