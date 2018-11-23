@@ -3,9 +3,14 @@ package com.example.capstone.design;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -22,6 +27,9 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    //List of items
+    List<CommunityItem> lstCommunity;
 
 
     public Board() {
@@ -59,7 +67,20 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_board, container, false);
+        View view = inflater.inflate(R.layout.fragment_board, container, false);
+
+        lstCommunity = new ArrayList<>();
+        for(int i = 0; i <20; i++) {
+            lstCommunity.add(new CommunityItem(R.drawable.picasso, R.drawable.picasso, "Picasso was a great artist and very talented one. His great works were famous all over the world", "Pablo Picasso"));
+        }
+
+        RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_id);
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), lstCommunity);
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        recyclerView.setAdapter(recyclerViewAdapter);
+
+        return view;
     }
+
 
 }
