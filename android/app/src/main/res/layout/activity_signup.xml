@@ -185,8 +185,8 @@
         tools:layout_conversion_absoluteHeight="41dp"
         tools:layout_conversion_absoluteWidth="360dp" />
 
-    <EditText
-        android:id="@+id/sign_up_nation"
+    <Spinner
+        android:id="@+id/spinner"
         android:layout_width="0dp"
         android:layout_height="35dp"
         android:layout_marginLeft="40dp"
@@ -219,7 +219,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sign_up_nation"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
         tools:layout_conversion_absoluteHeight="41dp"
         tools:layout_conversion_absoluteWidth="180dp" />
 

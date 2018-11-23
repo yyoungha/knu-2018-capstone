@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity{
     SimpleSideDrawer slide_menu;
     Button btn_slide_menu;
 
+    private String mUsername;
+    private String mPhotoUrl;
+
     private static final String TAG = "MainActivity";
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
