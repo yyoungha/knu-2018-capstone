@@ -38,6 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         viewHolder.tvName.setText(communityItems.get(i).getStrName());
         viewHolder.ivPicture.setImageResource(communityItems.get(i).getResPicture());
         viewHolder.ivAvatar.setImageResource(communityItems.get(i).getResAvatar());
+        viewHolder.tvDate.setText(communityItems.get(i).getStrDate());
         final int id = i;
         viewHolder.btnComments.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView ivPicture;
         ImageView ivAvatar;
         Button btnComments;
+        TextView tvDate;
 
         public viewHolder(View itemView) {
             super(itemView);
@@ -69,6 +71,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             ivAvatar = (ImageView)itemView.findViewById(R.id.ivIcon);
             ivPicture = (ImageView)itemView.findViewById(R.id.ivPicture);
             btnComments = (Button)itemView.findViewById(R.id.btnComments);
+            tvDate = (TextView)itemView.findViewById(R.id.tvDateScript);
         }
     }
 

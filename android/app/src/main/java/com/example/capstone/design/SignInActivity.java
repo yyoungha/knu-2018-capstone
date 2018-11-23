@@ -47,6 +47,7 @@ public class SignInActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                                     startActivity(intent);
+                                    finish();
                                 } else {
                                     Toast.makeText(SignInActivity.this, "로그인 오류", Toast.LENGTH_SHORT).show();
                                 }

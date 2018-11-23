@@ -71,7 +71,7 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
 
         lstCommunity = new ArrayList<>();
         for(int i = 0; i <20; i++) {
-            lstCommunity.add(new CommunityItem(R.drawable.picasso, R.drawable.picasso, "Picasso was a great artist and very talented one. His great works were famous all over the world", "Pablo Picasso"));
+            lstCommunity.add(new CommunityItem(R.drawable.picasso, R.drawable.picasso, "Picasso was a great artist and very talented one. His great works were famous all over the world", "Pablo Picasso", "2018-11-20"));
         }
 
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_id);
