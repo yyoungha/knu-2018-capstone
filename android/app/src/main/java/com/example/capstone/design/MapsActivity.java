@@ -9,6 +9,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+// 커스텀 http://gun0912.tistory.com/57
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 

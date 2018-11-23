@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/gradient"
         android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
@@ -19,7 +19,7 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/AppTheme.OverFlow"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="프로필관리"
+            app:title="PROFILE"
             app:titleTextColor="#ffff" />
 
     </android.support.design.widget.AppBarLayout>
@@ -28,18 +28,20 @@
         android:id="@+id/profile"
         android:layout_width="match_parent"
         android:layout_height="102dp"
-        android:layout_marginTop="28dp"
         android:layout_gravity="top|center"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/background_loginform"
         android:src="@drawable/profile" />
 
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/noto_sans"
         android:gravity="top|center"
         android:text="Wojtek"
-        android:textSize="30dp"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textSize="30dp" />
 
     <TextView
         android:id="@+id/nation"
@@ -53,7 +55,9 @@
     <TextView
         android:id="@+id/email"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:text="email ???@gmail.com"
         android:textColor="#000000"
         android:textSize="20dp" />
@@ -61,7 +65,9 @@
     <TextView
         android:id="@+id/phone"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:text="phone  821046212441"
         android:textColor="#000000"
         android:textSize="20dp" />
@@ -69,18 +75,19 @@
     <TextView
         android:id="@+id/my_ID"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:gravity="top|center"
         android:text="ID: kor135"
+        android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20dp" />
 
     <TextView
         android:id="@+id/change_psw"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="wrap_content"
         android:gravity="top|center"
-        android:text="비밀번호 번경"
+        android:text="CHANGE PASSWORD"
         android:textColor="#000000"
         android:textSize="20dp" />
 

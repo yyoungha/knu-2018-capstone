@@ -8,43 +8,76 @@
     tools:context=".Trade_contents">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/profile"/>
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/profile" />
+
+        <TextView
+            android:layout_width="231dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:fontFamily="@font/noto_sans"
+            android:text="wojtek"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/match"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1000"
+            android:background="@color/btn_ok"
+            android:text="match"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Cozy마우스 팔아요"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="wojtek"/>
-
-        <Button
-            android:id="@+id/match"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="match" />
+            android:text="이 마우스를 사용한지는 한 6개월 됬구요. 5처넌에 급처할께요."
+            android:textSize="18sp" />
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cozy마우스 팔아요"
-        android:textSize="20sp"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="이 마우스를 사용한지는 한 6개월 됬구요. 5처넌에 급처할께요."
-        android:textSize="18sp"/>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans"
+            android:text="PICTURE"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/mouse"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/mouse" />
+    </LinearLayout>
 
     <ListView
         android:layout_width="match_parent"

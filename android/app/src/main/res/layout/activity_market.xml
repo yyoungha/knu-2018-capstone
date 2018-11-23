@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/gradient"
         android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
@@ -29,6 +29,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="34dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/noto_sans"
+                android:text="TRADE STATUS"
+                android:textAlignment="center"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="33dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_invisible"
+                android:text="POSTED" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="33dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/background_invisible"
+                android:text="COMPLETE" />
+
+        </LinearLayout>
 
         <ImageButton
             android:id="@+id/Electronic"

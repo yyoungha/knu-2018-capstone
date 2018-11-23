@@ -12,24 +12,24 @@
         android:text="          Menu          "
         android:textColor="#ffff"
         android:textSize="30dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@drawable/gradient"/>
 
     <Button
         android:id="@+id/profile_admin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="프로필 관리"/>
+        android:text="PROFILE SETTING"/>
 
     <Button
         android:id="@+id/campus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="학교 인증"/>
+        android:text="AUTHERIZATION"/>
 
     <Button
         android:id="@+id/logout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그아웃"/>
+        android:text="LOG OUT"/>
 
 </LinearLayout>
