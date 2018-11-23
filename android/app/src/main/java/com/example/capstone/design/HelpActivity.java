@@ -46,7 +46,7 @@ import com.google.android.gms.tasks.Task;
 public class HelpActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
-    private Button requestButton;
+    private Button addRequestButton;
 
     private static final String TAG = HelpActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -60,7 +60,7 @@ public class HelpActivity extends AppCompatActivity
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     // A default location (Kyungpook Natl. Univ., Korea) and
-    // default zoom to use when location permission is not granted.
+    // default zoom to use when locatiㄱon permission is not granted.
     private final LatLng mDefaultLocation = new LatLng(35.886903, 128.608485);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -68,7 +68,9 @@ public class HelpActivity extends AppCompatActivity
 
     // The geographical location where the device is currently located.
     // That is, the last-known location retrieved by the Fused Location Provider.
-    private Location mLastKnownLocation;
+    private static Location mLastKnownLocation;
+
+    public static Location getmLastKnownLocation() { return mLastKnownLocation; }
 
     // Keys for storing activity state.
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -121,12 +123,16 @@ public class HelpActivity extends AppCompatActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        requestButton = (Button) findViewById(R.id.request_btn);
+        addRequestButton = (Button) findViewById(R.id.add_request_btn);
 
-        requestButton.setOnClickListener(new View.OnClickListener() {
+        addRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // TODO : 요청 추가 버튼
+                // 1. 새 요청을 작성할 수 있는 HelpRequestActivity를 보여준다.
+                // 2. HelpRequestActivity에는 제목, 내용이 들어간다.
+                // 3. request를 누르면 firebase rdb에 요청 항목에 추가한다. (현재위치, 사용자정보를 포함하여)
+                // 4. HelpRequestActivity를 종료하고 HelpActivity를 연다.
             }
         });
 
