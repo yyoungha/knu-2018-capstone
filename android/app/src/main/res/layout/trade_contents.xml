@@ -99,7 +99,7 @@
     <ListView
         android:id="@+id/comment_trade"
         android:layout_width="match_parent"
-        android:layout_height="146dp">
+        android:layout_height="180dp">
 
     </ListView>
 
@@ -124,7 +124,6 @@
             android:layout_weight="1.5"
             android:layout_height="match_parent"
             android:src="@drawable/add" />
-
 
     </LinearLayout>
 

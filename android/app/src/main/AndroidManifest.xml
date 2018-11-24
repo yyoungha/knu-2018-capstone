@@ -43,12 +43,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SignUpActivity"
-            android:label="로그인"
+            android:label="회원가입"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:windowSoftInputMode="adjustPan"
             android:name=".Trade_contents"
             android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -107,7 +108,6 @@
         <activity
             android:name=".Boardenroll"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Market_Image" />
         <activity android:name=".MarketImageActivity"></activity>
     </application>
 
