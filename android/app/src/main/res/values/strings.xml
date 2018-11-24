@@ -23,4 +23,13 @@
         <item>USA</item>
         <item>POLAND</item>
     </string-array>
+
+    <string-array name="table_name">
+        <item>Electronics</item>
+        <item>Bathroom</item>
+        <item>Kitchen</item>
+        <item>Office</item>
+        <item>Interior</item>
+        <item>Daily</item>
+    </string-array>
 </resources>

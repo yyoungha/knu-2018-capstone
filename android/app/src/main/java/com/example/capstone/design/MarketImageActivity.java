@@ -43,8 +43,8 @@ import com.google.firebase.storage.*;
 import java.io.IOException;
 import java.util.Date;
 
-public class MarketImage extends AppCompatActivity {
-    private static final String TAG = "MarketImage";
+public class MarketImageActivity extends AppCompatActivity {
+    private static final String TAG = "ImageActivity";
 
     private Button btChoose;
     private Button btUpload;
@@ -128,7 +128,7 @@ public class MarketImage extends AppCompatActivity {
             Date now = new Date();
             String filename = formatter.format(now) + ".png";
             //storage 주소와 폴더 파일명을 지정해 준다.
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/market").child(filename);
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/").child(filename);
             target = Uri.parse(filename);
 
             Log.i("SEX",""+target);
@@ -149,7 +149,7 @@ public class MarketImage extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Log.d(TAG, "User profile updated.");
-                                                Intent intent = new Intent(MarketImage.this,MainActivity.class);
+                                                Intent intent = new Intent(MarketImageActivity.this,Itemenroll.class);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -184,7 +184,7 @@ public class MarketImage extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:{
-                Intent intent = new Intent(MarketImage.this,MainActivity.class);
+                Intent intent = new Intent(MarketImageActivity.this,Itemenroll.class);
                 startActivity(intent);
                 finish();
                 return true;
