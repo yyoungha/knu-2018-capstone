@@ -42,15 +42,23 @@ public class HelpRequestActivity extends AppCompatActivity {
         helpRequestBtn = (Button) findViewById(R.id.help_request_btn);
         cancelRequestBtn = (Button) findViewById(R.id.help_cancel_btn);
 
-        requestTitle = helpRequestTitle.getText().toString();
-        requestContents = helpRequestContents.getText().toString();
-
         helpRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseUser mFirebaseUser = MainActivity.getmFirebaseUser();
                 Location location = HelpActivity.getmLastKnownLocation();
                 String uid = mFirebaseUser.getUid();
+
+                requestTitle = helpRequestTitle.getText().toString();
+                requestContents = helpRequestContents.getText().toString();
+
+                if ( requestTitle.equals("") ) {
+                    Toast.makeText(HelpRequestActivity.this, "Please input title.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if ( requestContents.equals("") ) {
+                    Toast.makeText(HelpRequestActivity.this, "Please input title.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 Help help = new Help(uid, requestTitle, requestContents, location.getLatitude(), location.getLongitude());
 
