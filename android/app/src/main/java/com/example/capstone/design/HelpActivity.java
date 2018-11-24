@@ -5,15 +5,12 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -32,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * OnMapReadyCallback 은 map 이 사용가능할 때의 callback interface.
@@ -71,7 +70,7 @@ public class HelpActivity extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private DatabaseReference mDatabase;
-
+    private ArrayList<Help> HelpArrayList = new ArrayList<Help>();
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -190,7 +189,10 @@ public class HelpActivity extends AppCompatActivity
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(HelpActivity.this, "Marker title is " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
+                // Marker와 일치하는 Help 객체 정보 전달
+                popUpIntent.putExtra("data", "Test Popup");
+                startActivityForResult(popUpIntent, 1);
                 return false;
             }
         });
@@ -199,12 +201,14 @@ public class HelpActivity extends AppCompatActivity
     }
 
     private void setMarkersOnMap() {
+        HelpArrayList.clear();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
                     Help help = ds.getValue(Help.class);
+                    HelpArrayList.add(help);
                     mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));;
                 }
             }
