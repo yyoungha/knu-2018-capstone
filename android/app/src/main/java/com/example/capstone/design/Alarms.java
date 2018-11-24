@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 
 /**
@@ -67,8 +71,28 @@ public class Alarms extends Fragment { //거래 부분
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_alarms, container, false);
 
-        //알람 부분이 들어갈 Contents
 
+        // 데이터 1000개 생성--------------------------------.
+        String[] strDate = {"2017-01-03", "1965-02-23", "2016-04-13", "2010-01-01", "2017-06-20",
+                "2012-07-08", "1980-04-14", "2016-09-26", "2014-10-11", "2010-12-24"};
+        int nDatCnt=0;
+        ArrayList<AlarmsData> oData = new ArrayList<>();
+        for (int i=0; i<1000; ++i)
+        {
+            AlarmsData oItem = new AlarmsData();
+            oItem.strTitle = "데이터 " + (i+1);
+            oItem.strDate = strDate[nDatCnt++];
+            oData.add(oItem);
+            if (nDatCnt >= strDate.length) nDatCnt = 0;
+        }
+
+        // ListView, Adapter 생성 및 연결 ------------------------
+        ListView m_oListView = (ListView) view.findViewById(R.id.alarm_List);
+        AlarmsAdapter oAdapter = new AlarmsAdapter(oData);
+        m_oListView.setAdapter(oAdapter);
+
+
+        //알람 부분이 들어갈 Contents
         Button btn = (Button) view.findViewById(R.id.yes);
 
         btn.setOnClickListener(new View.OnClickListener(){

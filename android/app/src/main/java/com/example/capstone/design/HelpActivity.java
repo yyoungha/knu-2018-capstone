@@ -20,6 +20,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 /**
  * OnMapReadyCallback 은 map 이 사용가능할 때의 callback interface.
@@ -67,7 +70,7 @@ public class HelpActivity extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private DatabaseReference mDatabase;
-
+    private ArrayList<Help> HelpArrayList = new ArrayList<Help>();
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -112,6 +115,22 @@ public class HelpActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+//
+//        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
+//        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
+//        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+//        behavior.setPeekHeight(100);
+//        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+//                // React to state change
+//            }
+//
+//            @Override
+//            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+//                // React to dragging events
+//            }
+//        });
 
     }
 
@@ -127,6 +146,16 @@ public class HelpActivity extends AppCompatActivity
             outState.putParcelable(KEY_CAMERA_POSITION, mMap.getCameraPosition());
             outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
             super.onSaveInstanceState(outState);
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if ( mMap != null ) {
+            mMap.clear();
+            setMarkersOnMap();
         }
     }
 
@@ -154,27 +183,38 @@ public class HelpActivity extends AppCompatActivity
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
-        // TODO - HELP 목록 불러와서 화면에 MARKER로 표시하기
-        Log.v(TAG, "ADD MARKER START");
+        setMarkersOnMap();
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
+
+                // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
+
+                popUpIntent.putExtra("username", "Young");
+                popUpIntent.putExtra("title", "help me");
+                popUpIntent.putExtra("contents", "need 5 developers");
+                startActivityForResult(popUpIntent, 1);
+
+                return false;
+            }
+        });
+
+        getDeviceLocation();
+    }
+
+    private void setMarkersOnMap() {
+        HelpArrayList.clear();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.v(TAG, "ON DATA CHANGE");
-
-                    Help help = dataSnapshot.child("Help").child("-LS4IudgaxL3UuMmDORj").getValue(Help.class);
-//                    String uid = child.child("Uid").getValue().toString();
-//                    String title = child.child("title").getValue().toString();
-//                    String contents = child.child("contents").getValue().toString();
-//                    double lat = Double.parseDouble( child.child("lat").getValue().toString() );
-//                    double lng = Double.parseDouble( child.child("lng").getValue().toString() );
-
-                    Log.v(TAG, "Load data title : " + help.getTitle());
-                    Log.v(TAG, "Load data contents : " + help.getContents());
-
+                for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
+                    Help help = ds.getValue(Help.class);
+                    HelpArrayList.add(help);
                     mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));
-
-                    Log.v(TAG, "After add marker");
+                }
             }
 
             @Override
@@ -182,8 +222,6 @@ public class HelpActivity extends AppCompatActivity
 
             }
         });
-
-        // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
     }
 
     /**
