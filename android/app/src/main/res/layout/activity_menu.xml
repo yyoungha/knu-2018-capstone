@@ -9,10 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:background="@drawable/gradient"
         android:text="          Menu          "
         android:textColor="#ffff"
-        android:textSize="30dp"
-        android:background="@drawable/gradient"/>
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ACCOUNT"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/profile_admin"
@@ -26,10 +34,37 @@
         android:layout_height="wrap_content"
         android:text="AUTHERIZATION"/>
 
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GO TO WEB"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_international"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Office of International Affairs" />
+
+    <Button
+        android:id="@+id/btn_git"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GITHUB" />
+
+    <Button
+        android:id="@+id/btn_mainweb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="KNUEARTH WEB" />
+
     <Button
         android:id="@+id/logout_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOG OUT"/>
+        android:layout_marginTop="140dp"
+        android:text="LOG OUT" />
 
 </LinearLayout>

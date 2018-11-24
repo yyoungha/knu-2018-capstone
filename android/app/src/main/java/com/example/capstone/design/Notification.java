@@ -5,6 +5,15 @@ public class Notification {
     private String Date;
     private String NoticeTitle;
 
+    public Notification(){
+
+    }
+    public Notification(String content, String date, String noticeTitle) {
+        Content = content;
+        Date = date;
+        NoticeTitle = noticeTitle;
+    }
+
     public String getContent() {
         return Content;
     }

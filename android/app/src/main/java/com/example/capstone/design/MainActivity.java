@@ -3,10 +3,14 @@ package com.example.capstone.design;
 
 import android.content.Intent;
 import android.content.pm.SigningInfo;
+import android.net.Uri;
+import android.nfc.Tag;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -25,6 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -39,6 +44,7 @@ import com.navdrawer.SimpleSideDrawer;
 
 import java.util.ArrayList;
 
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 import static com.example.capstone.design.R.id.logout_btn;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
@@ -57,13 +63,19 @@ public class MainActivity extends AppCompatActivity{
     // Firebase instance variables
     // 1. Auth with Google Firebase
     private static FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private String mUsername;
+    private String mPhotoUrl;
+
+    private Button join;
+    private Button login;
+    private EditText email_login;
+    private EditText pwd_login;
+    FirebaseAuth firebaseAuth;
     private static FirebaseUser mFirebaseUser;
 
     public static FirebaseAuth getmFirebaseAuth() { return mFirebaseAuth; }
     public static FirebaseUser getmFirebaseUser() { return mFirebaseUser; }
-
-    private String mUsername;
-    private String mPhotoUrl;
 
 
     @Override
@@ -74,6 +86,34 @@ public class MainActivity extends AppCompatActivity{
         slide_menu = new SimpleSideDrawer(this);
         slide_menu.setLeftBehindContentView(R.layout.activity_menu);
         Button btn_slide_menu = (Button) findViewById(R.id.btn_slide_menu);
+
+        //go to international affair web
+        Button btn_international = (Button)findViewById(R.id.btn_international);
+        btn_international.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent web =   new Intent(Intent.ACTION_VIEW, Uri.parse("https://gp.knu.ac.kr/"));
+                startActivity(web);
+            }
+        });
+        //go to our git
+        Button btn_git = (Button)findViewById(R.id.btn_git);
+        btn_git.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent web =   new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/zwei2/knu-2018-capstone"));
+                startActivity(web);
+            }
+        });
+        //go to our web
+        Button btn_mainweb = (Button)findViewById(R.id.btn_mainweb);
+        btn_mainweb.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent web =   new Intent(Intent.ACTION_VIEW, Uri.parse("http:iamwooki.gonetis.com:8080"));
+                startActivity(web);
+            }
+        });
 
         //setting 버튼 누르면 슬라이드 메뉴로 세팅 화면 보여줌
         btn_slide_menu.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +149,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
 //
@@ -139,10 +180,12 @@ public class MainActivity extends AppCompatActivity{
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        //여기서 부터 이전 탭 레이아웃
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+        //요기까지
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -232,6 +275,7 @@ public class MainActivity extends AppCompatActivity{
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
             return rootView;
         }
+
     }
 
     /**
@@ -269,6 +313,7 @@ public class MainActivity extends AppCompatActivity{
             // Show 3 total pages.
             return 3;
         }
+
     }
 
 
