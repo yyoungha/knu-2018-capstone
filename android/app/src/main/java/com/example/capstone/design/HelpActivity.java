@@ -233,21 +233,21 @@ public class HelpActivity extends AppCompatActivity
         }
     }
 
-    private void setMapLayout() {
-        try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
-            boolean success = mMap.setMapStyle(
-                    MapStyleOptions.loadRawResourceStyle(
-                            this, R.spring.blue_map));
-
-            if (!success) {
-                Log.e(TAG, "Style parsing failed.");
-            }
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Can't find style. Error: ", e);
-        }
-    }
+//    private void setMapLayout() {
+//        try {
+//            // Customise the styling of the base map using a JSON object defined
+//            // in a raw resource file.
+//            boolean success = mMap.setMapStyle(
+//                    MapStyleOptions.loadRawResourceStyle(
+//                            this, R.spring.blue_map));
+//
+//            if (!success) {
+//                Log.e(TAG, "Style parsing failed.");
+//            }
+//        } catch (Resources.NotFoundException e) {
+//            Log.e(TAG, "Can't find style. Error: ", e);
+//        }
+//    }
 
     private void setMarkersOnMap() {
         helpWeakHashMap.clear();
