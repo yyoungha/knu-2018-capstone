@@ -67,14 +67,15 @@ public class MainActivity extends AppCompatActivity{
     private String mUsername;
     private String mPhotoUrl;
 
-    public static FirebaseAuth getFirebaseAuth() { return mFirebaseAuth; }
-
     private Button join;
     private Button login;
     private EditText email_login;
     private EditText pwd_login;
     FirebaseAuth firebaseAuth;
+    private static FirebaseUser mFirebaseUser;
 
+    public static FirebaseAuth getmFirebaseAuth() { return mFirebaseAuth; }
+    public static FirebaseUser getmFirebaseUser() { return mFirebaseUser; }
 
 
     @Override
@@ -149,7 +150,7 @@ public class MainActivity extends AppCompatActivity{
         mFirebaseAuth = FirebaseAuth.getInstance();
 //
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-
+        
         if (mFirebaseUser == null) {
             // Not signed in, launch the Sign In activity
             startActivity(new Intent(this, SignInActivity.class));
@@ -293,6 +294,8 @@ public class MainActivity extends AppCompatActivity{
             {
                 case 0:
                     return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
+                    //ps = new Personal();
+                    //return ps;
                 case 1:
                     return new Alarms(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:
@@ -310,4 +313,7 @@ public class MainActivity extends AppCompatActivity{
         }
 
     }
+
+
+
 }

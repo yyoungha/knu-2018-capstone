@@ -64,7 +64,7 @@
             android:label="Market"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Help"
+            android:name=".HelpActivity"
             android:label="Help"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MapsActivity" />
@@ -96,6 +96,7 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ImageActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HelpRequestActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="제목"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <EditText
+        android:id="@+id/help_request_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="제목을 입력하시오."
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="내용"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <EditText
+        android:id="@+id/help_request_contents"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:hint="내용을 입력하시오."
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/help_request_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="REQUEST" />
+
+    <Button
+        android:id="@+id/help_cencel_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CANCEL" />
+
+</LinearLayout>
