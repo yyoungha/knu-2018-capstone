@@ -52,8 +52,6 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         ArrayList<ItemInfo> itemInfoArrayList = new ArrayList<>();
-        itemInfoArrayList.add(new ItemInfo(R.drawable.mouse,"마우스 팔아요~","2018-11-23"));  //여기 하드코딩으로 추가만 해주면 들어감 여기를 이제 db랑 연결 시키면 끝~
-        itemInfoArrayList.add(new ItemInfo(R.drawable.daumlogo,"마우스 팔아요~","2018-11-23"));
         itemInfoArrayList.add(new ItemInfo(R.drawable.mouse,"마우스 팔아요~","2018-11-23"));
 
         MyAdapter myAdapter = new MyAdapter(itemInfoArrayList);

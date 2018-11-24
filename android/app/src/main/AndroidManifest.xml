@@ -27,7 +27,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -36,7 +36,7 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"/>
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SignInActivity"
             android:label="로그인"
@@ -98,7 +98,8 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelpRequestActivity"
+        <activity
+            android:name=".HelpRequestActivity"
             android:label="Request help"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -106,7 +107,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Boardenroll"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Market_Image" />
+        <activity android:name=".MarketImage"></activity>
     </application>
 
 </manifest>
