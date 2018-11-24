@@ -29,7 +29,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // notification instance 추가하고 firebase에 저장하기
-        Notification notification = new Notification(remoteMessage.getData().get("Content"), new Date().toString(), remoteMessage.getData().get("title"));
+        Notification notification = new Notification(remoteMessage.getData().get("Notification"), new Date().toString(), remoteMessage.getData().get("title"));
         String hash = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         FirebaseDatabase.getInstance().getReference("Notification").child(hash).setValue(notification);
