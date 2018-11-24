@@ -10,11 +10,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Trade_contents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
 
     TextView textView;
+    List<CommentItem> lstComments;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,18 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        List<String> comments = Arrays.asList("Super!!!", "Loook Goood!", "Fantastic", "I love it");
+        List<String> names = Arrays.asList("John Ivanovich", "Klara Pumpernikiel", "Camile Nowakowski", "Harry Potter");
+
+        lstComments = new ArrayList<>();
+        for(int i = 0, j = 0; i < comments.size() && j < names.size(); i++, j++) {
+            lstComments.add(new CommentItem(R.drawable.picasso, comments.get(i), names.get(j), "2018.11.23"));
+        }
+
+        ListView listView = (ListView)findViewById(R.id.comment_trade);
+        CommentAdapter commentAdapter = new CommentAdapter(this, R.layout.comment_item, lstComments);
+        listView.setAdapter(commentAdapter);
+
         Button btn = (Button)findViewById(R.id.match);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,6 +51,15 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
                 showMsg();
             }
         });
+
+        ImageView ivAdd = (ImageView) findViewById(R.id.sendCom);
+        ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     public void showMsg(){
