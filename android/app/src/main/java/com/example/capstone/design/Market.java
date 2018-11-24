@@ -27,6 +27,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Electronics");
                 startActivity(intent);
             }
         });
@@ -37,6 +39,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Bathroom");
                 startActivity(intent);
             }
         });
@@ -47,6 +51,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Kitchen");
                 startActivity(intent);
             }
         });
@@ -57,6 +63,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Office");
                 startActivity(intent);
             }
         });
@@ -67,6 +75,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Interior");
                 startActivity(intent);
             }
         });
@@ -77,6 +87,8 @@ public class Market extends AppCompatActivity { //전자 욕실 등 6가지 item
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Market.this,listActivity.class);
+                //db electronic 전달
+                intent.putExtra("name","Daily");
                 startActivity(intent);
             }
         });

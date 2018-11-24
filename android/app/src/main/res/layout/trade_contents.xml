@@ -99,37 +99,34 @@
     <ListView
         android:id="@+id/comment_trade"
         android:layout_width="match_parent"
-        android:layout_height="128dp">
+        android:layout_height="146dp">
 
     </ListView>
 
-    <RelativeLayout
-        android:id="@+id/relativeCom2"
+    <LinearLayout
+        android:id="@+id/comment_space"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
 
         <EditText
             android:id="@+id/writeCom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="5dp"
-            android:layout_centerVertical="true"
-            android:textSize="14dp"
-            android:hint="add here..."/>
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="9"
+            android:hint="add here..."
+            android:textSize="14dp" />
 
         <ImageView
             android:id="@+id/sendCom"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_centerVertical="true"
-            android:src="@drawable/add"
-            android:layout_alignParentRight="true"/>
+            android:layout_width="0dp"
+            android:layout_weight="1.5"
+            android:layout_height="match_parent"
+            android:src="@drawable/add" />
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </LinearLayout>

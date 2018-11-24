@@ -47,7 +47,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listActivity"
-            android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trade_contents"
@@ -98,7 +97,8 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelpRequestActivity"
+        <activity
+            android:name=".HelpRequestActivity"
             android:label="Request help"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

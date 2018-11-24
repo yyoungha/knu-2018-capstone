@@ -16,6 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,15 +33,28 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
 
+    //db테이블 이름 값 저장 변수
+    String table_name;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list2);
 
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //툴바 기능 구현
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼 ,디폴트로 true만 해도 백버튼이 생김
 
+
+        //db 테이블 이름 저장
+        Intent intent = getIntent(); /*데이터 수신*/
+        String table_name = intent.getExtras().getString("name"); /*String형*/
+
+        setTitle(table_name);
 
         /*final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,LIST_ITEM);
         ListView listView = (ListView)findViewById(R.id.listView);
