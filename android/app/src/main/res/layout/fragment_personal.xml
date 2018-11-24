@@ -115,7 +115,7 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="0.33"
             android:gravity="center"
-            android:text="3"
+            android:text="0"
             android:textAlignment="center"
             android:textColor="#ffff" />
 
@@ -126,7 +126,7 @@
             android:layout_centerHorizontal="true"
             android:layout_weight="0.33"
             android:gravity="center"
-            android:text="3"
+            android:text="0"
             android:textAlignment="center"
             android:textColor="#ffff" />
 
@@ -139,7 +139,7 @@
             android:layout_weight="0.33"
             android:fontFamily="@font/noto_sans"
             android:gravity="center"
-            android:text="3"
+            android:text="0"
             android:textAlignment="center"
             android:textColor="#ffff" />
     </LinearLayout>
