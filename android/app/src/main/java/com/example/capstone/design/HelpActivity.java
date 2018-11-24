@@ -120,23 +120,6 @@ public class HelpActivity extends AppCompatActivity
             }
         });
         mDatabase = FirebaseDatabase.getInstance().getReference();
-//
-//        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
-//        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
-//        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
-//        behavior.setPeekHeight(100);
-//        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-//            @Override
-//            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-//                // React to state change
-//            }
-//
-//            @Override
-//            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-//                // React to dragging events
-//            }
-//        });
-
     }
 
     // Firebase RDB 로부터 HELP 데이터 불러오기
@@ -172,8 +155,7 @@ public class HelpActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-        setMapLayout();
-        //set map layout to custom
+
         /**
          * Provides views for customized rendering of info windows.
          * setInfoWindow, getInfoContents 메소드는 Marker 의 정보 창을 표시할 때 차례로 호출된다.
@@ -188,8 +170,6 @@ public class HelpActivity extends AppCompatActivity
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
-
-        setMarkersOnMap();
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
@@ -208,7 +188,7 @@ public class HelpActivity extends AppCompatActivity
                     popUpIntent.putExtra("contents", hp.getContents());
                 }
 
-                startActivityForResult(popUpIntent, 1);
+                startActivity(popUpIntent);
 
                 return false;
             }
@@ -216,6 +196,7 @@ public class HelpActivity extends AppCompatActivity
 
         getDeviceLocation();
         setCustomLayout();
+        setMarkersOnMap();
     }
 
     private void setCustomLayout() {
@@ -230,22 +211,6 @@ public class HelpActivity extends AppCompatActivity
             Log.d(null, "success");
         } catch (Resources.NotFoundException e) {
             Log.e(null, "Can't find style. Error: ", e);
-        }
-    }
-
-    private void setMapLayout() {
-        try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
-            boolean success = mMap.setMapStyle(
-                    MapStyleOptions.loadRawResourceStyle(
-                            this, R.raw.blue_map));
-
-            if (!success) {
-                Log.e(TAG, "Style parsing failed.");
-            }
-        } catch (Resources.NotFoundException e) {
-            Log.e(TAG, "Can't find style. Error: ", e);
         }
     }
 

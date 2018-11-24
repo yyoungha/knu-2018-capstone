@@ -250,8 +250,10 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
                     String target = chidSnap.getKey();
-                    if(target.equals("name"))
+                    if(target.equals("name")) {
                         txt_name.setText(String.valueOf(chidSnap.getValue()));
+                        my_name = txt_name.getText().toString();
+                    }
                     else if(target.equals("nation"))
                         txt_nation.setText(String.valueOf(chidSnap.getValue()));
                     else if(target.equals("email"))
