@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -130,6 +132,16 @@ public class HelpActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if ( mMap != null ) {
+            mMap.clear();
+            setMarkersOnMap();
+        }
+    }
+
     /**
      * map 이 사용가능하면 호출되는 callback method. class 상단 주석 참조.
      * Manipulates the map when it's available.
@@ -154,7 +166,21 @@ public class HelpActivity extends AppCompatActivity
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
 
-        // TODO - HELP 목록 불러와서 화면에 MARKER로 표시하기
+        setMarkersOnMap();
+
+        // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Toast.makeText(HelpActivity.this, "Marker title is " + marker.getTitle(), Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
+
+        getDeviceLocation();
+    }
+
+    private void setMarkersOnMap() {
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -170,8 +196,6 @@ public class HelpActivity extends AppCompatActivity
 
             }
         });
-
-        // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
     }
 
     /**
