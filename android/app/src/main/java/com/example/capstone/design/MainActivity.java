@@ -56,8 +56,8 @@ import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class MainActivity extends AppCompatActivity{
     SimpleSideDrawer slide_menu;
+    private TextView sm_email;
     Button btn_slide_menu;
-
     private static final String TAG = "MainActivity";
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -95,16 +95,18 @@ public class MainActivity extends AppCompatActivity{
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
+        //겟스트링으로 받아 온다.
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
-        //여기서 부터 이전 탭 레이아웃
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+    //여기서 부터 이전 탭 레이아웃
+    TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
+
 
     private void initializeFirebaseAuth() {
         // Initialize Firebase Auth
@@ -132,6 +134,8 @@ public class MainActivity extends AppCompatActivity{
         slide_menu.setLeftBehindContentView(R.layout.activity_menu);
         Button btn_slide_menu = (Button) findViewById(R.id.btn_slide_menu);
 
+        //get a email
+        sm_email = (TextView)findViewById(R.id.tv_sm_email);
         //go to international affair web
         Button btn_international = (Button) findViewById(R.id.btn_international);
         btn_international.setOnClickListener(new View.OnClickListener() {
@@ -277,11 +281,9 @@ public class MainActivity extends AppCompatActivity{
      */
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
-
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
