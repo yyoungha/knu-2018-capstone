@@ -33,9 +33,9 @@ public class Boardenroll extends AppCompatActivity {
 
         txt1 = (EditText)findViewById(R.id.Title);
         msg = txt1.getText().toString();
-
-
         btn = (Button)findViewById(R.id.complete);
+
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

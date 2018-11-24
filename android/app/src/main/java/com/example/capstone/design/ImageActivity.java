@@ -48,6 +48,7 @@ public class ImageActivity extends AppCompatActivity {
 
     private Button btChoose;
     private Button btUpload;
+    private Toolbar toolbar;
     private ImageView ivPreview;
     private Uri target;
     private Uri filePath;
@@ -58,14 +59,12 @@ public class ImageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        this.initializeValues();
+        this.addListener();
 
-        btChoose = (Button) findViewById(R.id.bt_choose);
-        btUpload = (Button) findViewById(R.id.bt_upload);
-        ivPreview = (ImageView) findViewById(R.id.iv_preview);
+    }
 
+    private void addListener() {
         //버튼 클릭 이벤트
         btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +84,17 @@ public class ImageActivity extends AppCompatActivity {
                 uploadFile();
             }
         });
+    }
 
+    private void initializeValues() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        btChoose = (Button) findViewById(R.id.bt_choose);
+        btUpload = (Button) findViewById(R.id.bt_upload);
+        ivPreview = (ImageView) findViewById(R.id.iv_preview);
 
-//        Intent intent = new Intent(getApplicationContext(),Personal.class);
-//        intent.putExtra("Image_URI",target);
-//        startActivity(intent);
     }
 
     //결과 처리
