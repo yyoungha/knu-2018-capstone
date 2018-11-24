@@ -81,8 +81,6 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
                 //등록
                 Intent intent = new Intent(listActivity.this,Itemenroll.class);
                 startActivity(intent);
-
-
             }
         });
     }

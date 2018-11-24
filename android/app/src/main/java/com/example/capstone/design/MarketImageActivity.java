@@ -44,7 +44,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class MarketImageActivity extends AppCompatActivity {
-    private static final String TAG = "ImageActivity";
+    private static final String TAG = "MarketImageActivity";
 
     private Button btChoose;
     private Button btUpload;
@@ -56,7 +56,7 @@ public class MarketImageActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image);
+        setContentView(R.layout.activity_market_image);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,11 +86,6 @@ public class MarketImageActivity extends AppCompatActivity {
             }
         });
 
-
-
-//        Intent intent = new Intent(getApplicationContext(),Personal.class);
-//        intent.putExtra("Image_URI",target);
-//        startActivity(intent);
     }
 
     //결과 처리
@@ -124,14 +119,11 @@ public class MarketImageActivity extends AppCompatActivity {
             FirebaseStorage storage = FirebaseStorage.getInstance();
 
             //Unique한 파일명을 만들자.
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMHH_mmss");
-            Date now = new Date();
-            String filename = formatter.format(now) + ".png";
-            //storage 주소와 폴더 파일명을 지정해 준다.
-            StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/").child(filename);
-            target = Uri.parse(filename);
+            final String image_hash;
+            image_hash= String.valueOf(user.hashCode());
 
-            Log.i("SEX",""+target);
+            StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/").child(image_hash);
+
             //올라가거라...
             storageRef.putFile(filePath)
                     //성공시
@@ -140,21 +132,14 @@ public class MarketImageActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss(); //업로드 진행 Dialog 상자 닫기
                             Toast.makeText(getApplicationContext(), "업로드 완료!", Toast.LENGTH_SHORT).show();
-                            UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setPhotoUri(target)
-                                    .build();
-                            user.updateProfile(profileUpdates)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Log.d(TAG, "User profile updated.");
-                                                Intent intent = new Intent(MarketImageActivity.this,Itemenroll.class);
-                                                startActivity(intent);
-                                                finish();
-                                            }
-                                        }
-                                    });
+
+                            // intent를 사용하여, 이미지의 정보를 itemnroll으로 넘겨줍니다.
+                            Intent intent99 = new Intent();
+                            intent99.putExtra("result",image_hash);
+                            Log.i("SEX_전달전 : ",""+image_hash);
+                            setResult(RESULT_OK,intent99);
+                            finish();
+
                         }
                     })
                     //실패시
