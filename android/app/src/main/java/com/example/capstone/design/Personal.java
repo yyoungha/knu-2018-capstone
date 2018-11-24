@@ -201,7 +201,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         btn_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Help.class);
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
                 startActivity(intent);
             }
         });
