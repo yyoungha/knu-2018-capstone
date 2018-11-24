@@ -26,8 +26,8 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,8 +35,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"/>
         <activity
             android:name=".SignInActivity"
             android:label="로그인"
