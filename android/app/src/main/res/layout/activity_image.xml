@@ -7,6 +7,23 @@
     tools:context=".ImageActivity"
     android:orientation="vertical">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.OverFlow"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="이미지 등록"
+            app:titleTextColor="#ffff" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <TextView
         android:layout_gravity="center_horizontal"
         android:gravity="center"

@@ -43,7 +43,7 @@ import com.google.firebase.storage.*;
 import java.io.IOException;
 import java.util.Date;
 
-public class ImageActivity extends AppCompatActivity {
+public class MarketImageActivity extends AppCompatActivity {
     private static final String TAG = "ImageActivity";
 
     private Button btChoose;
@@ -149,7 +149,7 @@ public class ImageActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Log.d(TAG, "User profile updated.");
-                                                Intent intent = new Intent(ImageActivity.this,MainActivity.class);
+                                                Intent intent = new Intent(MarketImageActivity.this,Itemenroll.class);
                                                 startActivity(intent);
                                                 finish();
                                             }
@@ -184,7 +184,7 @@ public class ImageActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:{
-                Intent intent = new Intent(ImageActivity.this,MainActivity.class);
+                Intent intent = new Intent(MarketImageActivity.this,Itemenroll.class);
                 startActivity(intent);
                 finish();
                 return true;

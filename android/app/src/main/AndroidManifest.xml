@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -23,9 +24,10 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:name=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -33,8 +35,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme" />
         <activity
             android:name=".SignInActivity"
             android:label="로그인"
@@ -45,7 +47,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listActivity"
-            android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trade_contents"
@@ -96,7 +97,18 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ImageActivity"></activity>
+        <activity
+            android:name=".HelpRequestActivity"
+            android:label="Request help"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ImageActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Boardenroll"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Market_Image" />
+        <activity android:name=".MarketImageActivity"></activity>
     </application>
 
 </manifest>

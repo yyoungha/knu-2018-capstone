@@ -7,6 +7,9 @@ public class Help {
     private double lat;
     private double lng;
 
+    public Help() {
+    }
+
     public Help(String uid, String title, String contents, double lat, double lng) {
         Uid = uid;
         this.title = title;

@@ -1,6 +1,7 @@
 package com.example.capstone.design;
 
 import android.location.Location;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -8,7 +9,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +30,7 @@ public class HelpRequestActivity extends AppCompatActivity {
     private Button cancelRequestBtn;
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference("Help");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,11 +39,8 @@ public class HelpRequestActivity extends AppCompatActivity {
 
         helpRequestTitle = (EditText)findViewById(R.id.help_request_title);
         helpRequestContents = (EditText)findViewById(R.id.help_request_contents);
-        helpRequestBtn = (Button) findViewById(R.id.add_request_btn);
-        cancelRequestBtn = (Button) findViewById(R.id.help_cencel_btn);
-
-        requestTitle = helpRequestTitle.getText().toString();
-        requestContents = helpRequestContents.getText().toString();
+        helpRequestBtn = (Button) findViewById(R.id.help_request_btn);
+        cancelRequestBtn = (Button) findViewById(R.id.help_cancel_btn);
 
         helpRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,9 +49,23 @@ public class HelpRequestActivity extends AppCompatActivity {
                 Location location = HelpActivity.getmLastKnownLocation();
                 String uid = mFirebaseUser.getUid();
 
+                requestTitle = helpRequestTitle.getText().toString();
+                requestContents = helpRequestContents.getText().toString();
+
+                if ( requestTitle.equals("") ) {
+                    Toast.makeText(HelpRequestActivity.this, "Please input title.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else if ( requestContents.equals("") ) {
+                    Toast.makeText(HelpRequestActivity.this, "Please input contents.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 Help help = new Help(uid, requestTitle, requestContents, location.getLatitude(), location.getLongitude());
 
-                databaseReference.child("Help").push().setValue(help);
+                // TODO : CREATE HASH
+                databaseReference.push().setValue(help);
+
+                Toast.makeText(HelpRequestActivity.this, "요청 성공", Toast.LENGTH_LONG).show();
             }
         });
         
@@ -61,5 +76,4 @@ public class HelpRequestActivity extends AppCompatActivity {
             }
         });
     }
-
 }

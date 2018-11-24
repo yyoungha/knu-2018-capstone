@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Itemenroll">
+    tools:context=".Boardenroll">
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -20,19 +20,10 @@
             android:layout_height="?attr/actionBarSize"
             android:theme="@style/AppTheme.OverFlow"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="물건 등록"
+            app:title="게시판 등록"
             app:titleTextColor="#ffff" />
 
     </android.support.design.widget.AppBarLayout>
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="#BFffffff"
-        android:radius="14dp"
-        android:textAlignment="center"
-        android:textColor="@android:color/black" />
 
     <TextView
         android:layout_width="match_parent"
@@ -70,20 +61,24 @@
         android:hint="내용을 입력하시오."
         android:textSize="20dp" />
 
-    <Button
-        android:id="@+id/bt_choose"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Image file"/>
-    <TextView
-        android:id="@+id/path"
+        android:text="이미지 추가"
+        android:textSize="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="#fcef99"/>
+
+    <Button
+        android:id="@+id/enroll_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/complete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="UPLOAD" />
+        android:text="작성 완료" />
 
 </LinearLayout>
