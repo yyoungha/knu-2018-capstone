@@ -56,7 +56,7 @@ public class HelpRequestActivity extends AppCompatActivity {
                     Toast.makeText(HelpRequestActivity.this, "Please input title.", Toast.LENGTH_SHORT).show();
                     return;
                 } else if ( requestContents.equals("") ) {
-                    Toast.makeText(HelpRequestActivity.this, "Please input title.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HelpRequestActivity.this, "Please input contents.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -76,5 +76,4 @@ public class HelpRequestActivity extends AppCompatActivity {
             }
         });
     }
-
 }
