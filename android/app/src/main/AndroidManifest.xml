@@ -96,6 +96,9 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HelpRequestActivity"
+            android:label="Request help"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ImageActivity"></activity>
     </application>
 
