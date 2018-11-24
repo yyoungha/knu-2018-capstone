@@ -98,7 +98,9 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelpMatchPopup" android:theme="@android:style/Theme.Material.Dialog" />
+        <activity
+	   		android:name=".HelpMatchPopup"
+	      	android:theme="@android:style/Theme.Material.Dialog" />
         <activity
             android:name=".HelpRequestActivity"
             android:label="Request help"
@@ -111,7 +113,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MarketImageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

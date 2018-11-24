@@ -172,8 +172,8 @@ public class HelpActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+        setMapLayout();
         //set map layout to custom
-
         /**
          * Provides views for customized rendering of info windows.
          * setInfoWindow, getInfoContents 메소드는 Marker 의 정보 창을 표시할 때 차례로 호출된다.
@@ -230,6 +230,22 @@ public class HelpActivity extends AppCompatActivity
             Log.d(null, "success");
         } catch (Resources.NotFoundException e) {
             Log.e(null, "Can't find style. Error: ", e);
+        }
+    }
+
+    private void setMapLayout() {
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = mMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.blue_map));
+
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.");
+            }
+        } catch (Resources.NotFoundException e) {
+            Log.e(TAG, "Can't find style. Error: ", e);
         }
     }
 
