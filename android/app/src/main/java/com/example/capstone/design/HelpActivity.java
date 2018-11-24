@@ -2,6 +2,7 @@ package com.example.capstone.design;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -167,6 +169,7 @@ public class HelpActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+        //set map layout to custom
 
         /**
          * Provides views for customized rendering of info windows.
@@ -198,6 +201,22 @@ public class HelpActivity extends AppCompatActivity
         });
 
         getDeviceLocation();
+        setCustomLayout();
+    }
+
+    private void setCustomLayout() {
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            boolean success = mMap.setMapStyle(new MapStyleOptions(getResources()
+                    .getString(R.string.blue_map)));
+            if (!success) {
+                Log.e(null, "Style parsing failed.");
+            }
+            Log.d(null, "success");
+        } catch (Resources.NotFoundException e) {
+            Log.e(null, "Can't find style. Error: ", e);
+        }
     }
 
     private void setMarkersOnMap() {
