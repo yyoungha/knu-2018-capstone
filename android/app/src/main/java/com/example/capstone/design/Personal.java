@@ -142,17 +142,24 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         final Uri Image_uri = user.getPhotoUrl(); //db안 의 storage의 url주소를 저장하겠다.
         final Task<Uri> fucking_Uri;
         StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/");
-        storageRef.child(Image_uri.toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                // Got the download URL for 'users/me/profile.png'
-                Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-            }
-        });
+
+        if ( Image_uri == null ) {
+            // 저장된 이미지 없음. 기본 이미지 설정
+        } else {
+            storageRef.child(Image_uri.toString()).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    // Got the download URL for 'users/me/profile.png'
+                    Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                }
+            });
+        }
+
+
 
 
 
