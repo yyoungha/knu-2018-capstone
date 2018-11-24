@@ -1,7 +1,9 @@
 package com.example.capstone.design;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,6 +80,18 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), lstCommunity);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(recyclerViewAdapter);
+
+        FloatingActionButton add_board = (FloatingActionButton) view.findViewById(R.id.add_board);
+        add_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                //등록
+                Intent intent = new Intent(getActivity(),Boardenroll.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
