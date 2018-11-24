@@ -47,7 +47,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".listActivity"
-            android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trade_contents"

@@ -19,7 +19,6 @@
     <string name="title_activity_comment">Comment</string>
 
     <string-array name="nation_array">
-        <item></item>
         <item>KOREA</item>
         <item>USA</item>
         <item>POLAND</item>
