@@ -20,8 +20,14 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 /**
  * OnMapReadyCallback 은 map 이 사용가능할 때의 callback interface.
@@ -44,7 +50,7 @@ public class HelpActivity extends AppCompatActivity
     private FusedLocationProviderClient mFusedLocationProviderClient;
 
     // A default location (Kyungpook Natl. Univ., Korea) and
-    // default zoom to use when locatiㄱon permission is not granted.
+    // default zoom to use when location permission is not granted.
     private final LatLng mDefaultLocation = new LatLng(35.886903, 128.608485);
     private static final int DEFAULT_ZOOM = 15;
     private static final int PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
@@ -60,12 +66,8 @@ public class HelpActivity extends AppCompatActivity
     private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
 
-    // Used for selecting the current place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
+    private DatabaseReference mDatabase;
+
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -110,15 +112,10 @@ public class HelpActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-        // 4. HelpRequestActivity를 종료하고 HelpActivity를 연다.
-
-        // TODO HELP 목록 불러와서 화면에 MARKER로 표시하기
-
-        // TODO MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
-
-
 
     }
+
+    // Firebase RDB 로부터 HELP 데이터 불러오기
 
     /**
      * 시스템은 사용자가 Activity 를 떠날 경우 onSaveInstanceState() 를 호출하여 Bundle 객체에 저장.
@@ -156,6 +153,37 @@ public class HelpActivity extends AppCompatActivity
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+        // TODO - HELP 목록 불러와서 화면에 MARKER로 표시하기
+        Log.v(TAG, "ADD MARKER START");
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Log.v(TAG, "ON DATA CHANGE");
+
+                    Help help = dataSnapshot.child("Help").child("-LS4IudgaxL3UuMmDORj").getValue(Help.class);
+//                    String uid = child.child("Uid").getValue().toString();
+//                    String title = child.child("title").getValue().toString();
+//                    String contents = child.child("contents").getValue().toString();
+//                    double lat = Double.parseDouble( child.child("lat").getValue().toString() );
+//                    double lng = Double.parseDouble( child.child("lng").getValue().toString() );
+
+                    Log.v(TAG, "Load data title : " + help.getTitle());
+                    Log.v(TAG, "Load data contents : " + help.getContents());
+
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));
+
+                    Log.v(TAG, "After add marker");
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
     }
 
     /**
