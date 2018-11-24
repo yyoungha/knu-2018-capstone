@@ -30,9 +30,9 @@
         <ImageView
             android:id="@+id/ivPicture"
             android:layout_width="match_parent"
-            android:layout_height="199dp"
-            android:layout_margin="6dp"
-            android:layout_below="@id/ivIcon" />
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivIcon"
+            android:layout_margin="6dp" />
 
         <Button
             android:id="@+id/btnComments"
