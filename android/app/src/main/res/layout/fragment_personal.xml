@@ -25,7 +25,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
-        android:src="@drawable/profile" />
+        android:src="@drawable/background_invisible" />
 
     <TextView
         android:id="@+id/name"
@@ -35,7 +35,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
         android:gravity="center"
-        android:text="Wojtek"
+        android:text=""
         android:textColor="#ffff"
         android:textSize="20dp" />
 
@@ -46,7 +46,7 @@
         android:layout_below="@+id/name"
         android:layout_centerHorizontal="true"
         android:gravity="center"
-        android:text="Poland"
+        android:text=""
         android:textColor="#ffff" />
 
 
@@ -108,7 +108,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/my_script_num"
+            android:id="@+id/my_alarm_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/my_script"
@@ -120,7 +120,7 @@
             android:textColor="#ffff" />
 
         <TextView
-            android:id="@+id/my_script_num2"
+            android:id="@+id/my_script_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -131,7 +131,7 @@
             android:textColor="#ffff" />
 
         <TextView
-            android:id="@+id/my_script_num3"
+            android:id="@+id/my_message_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/my_script"

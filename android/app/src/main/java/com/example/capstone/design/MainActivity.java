@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        //프로필 관리
         Button btn = (Button)findViewById(R.id.profile_admin);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -95,12 +96,15 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
+        //로그아웃
         Button btn_logout = (Button)findViewById(R.id.logout_btn);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mFirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(MainActivity.this,SignInActivity.class);
+                startActivity(intent);
                 finish();
             }
         });
@@ -250,8 +254,6 @@ public class MainActivity extends AppCompatActivity{
             {
                 case 0:
                     return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
-                    //ps = new Personal();
-                    //return ps;
                 case 1:
                     return new Alarms(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:
