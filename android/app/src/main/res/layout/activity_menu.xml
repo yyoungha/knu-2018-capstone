@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="280dp"
     android:layout_height="match_parent"
+    android:background="#a3191c"
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/tv_sm_email"
+        android:layout_width="360dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:background="@drawable/gradient"
-        android:text="          Menu          "
+        android:layout_marginTop="50dp"
+        android:background="#a3191c"
+        android:fontFamily="@font/noto_sans"
+        android:text="id@knu.ac.kr"
+        android:textAlignment="center"
         android:textColor="#ffff"
         android:textSize="25sp" />
 
@@ -18,53 +22,75 @@
         android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ACCOUNT"
-        android:textColor="@android:color/black"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/noto_sans"
+        android:text="ACCOUNT INFORMATION"
+        android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/profile_admin"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="PROFILE SETTING"/>
+        android:layout_height="35dp"
+        android:background="@drawable/background_invisible"
+        android:fontFamily="@font/noto_sans"
+        android:text="PROFILE SETTING"
+        android:textColor="#ffff" />
 
     <Button
         android:id="@+id/campus"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="AUTHERIZATION"/>
+        android:layout_height="35dp"
+        android:background="@drawable/background_invisible"
+        android:fontFamily="@font/noto_sans"
+        android:text="AUTHERIZATION"
+        android:textColor="#ffff" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="GO TO WEB"
-        android:textColor="@android:color/black"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/noto_sans"
+        android:text="LINK"
+        android:textColor="@android:color/white"
         android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_international"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Office of International Affairs" />
+        android:layout_height="35dp"
+        android:background="@drawable/background_invisible"
+        android:fontFamily="@font/noto_sans"
+        android:text="Office of International Affairs"
+        android:textColor="#ffff" />
 
     <Button
         android:id="@+id/btn_git"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="GITHUB" />
+        android:layout_height="35dp"
+        android:background="@drawable/background_invisible"
+        android:fontFamily="@font/noto_sans"
+        android:text="GITHUB"
+        android:textColor="#ffff" />
 
     <Button
         android:id="@+id/btn_mainweb"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="KNUEARTH WEB" />
+        android:layout_height="35dp"
+        android:background="@drawable/background_invisible"
+        android:fontFamily="@font/noto_sans"
+        android:text="KNUEARTH WEB"
+        android:textColor="#ffff" />
 
     <Button
         android:id="@+id/logout_btn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="35dp"
         android:layout_marginTop="140dp"
-        android:text="LOG OUT" />
+        android:background="@drawable/background_invisible"
+        android:text="LOG OUT"
+        android:textColor="#ffff" />
 
 </LinearLayout>

@@ -70,19 +70,20 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     //새로 추가한 값들
     private TextView txt_name;
     private TextView txt_nation;
+    private String USEREMAIL="ERROR_PERSONAL";
     private ImageView profile;
     private String UserID;
     FirebaseAuth firebaseAuth;
-    private String my_name;
+    private static String my_name;
     private String my_nation;
     private TextView recent_notice;
     //
 
 
+    // Required empty public constructor
+    public Personal(){ }
 
-    public Personal() {
-        // Required empty public constructor
-    }
+    public static String getName() { return my_name; }
 
 
     /**
@@ -140,7 +141,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
         //child를 구별하기 위해 넣어둔 파일 정보를 가져온다.
         final Uri Image_uri = user.getPhotoUrl(); //db안 의 storage의 url주소를 저장하겠다.
-        final Task<Uri> fucking_Uri;
         StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/");
 
         if ( Image_uri == null ) {
@@ -244,18 +244,18 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
             }
         });
+        //member reference : firebase instance
         memRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
                     String target = chidSnap.getKey();
-                    if(target.equals("name")){
-                        my_name = String.valueOf(chidSnap.getValue());
-                    }else if(target.equals("nation")){
-                        my_nation = String.valueOf(chidSnap.getValue());
-                    }
-                    txt_name.setText(my_name);
-                    txt_nation.setText(my_nation);
+                    if(target.equals("name"))
+                        txt_name.setText(String.valueOf(chidSnap.getValue()));
+                    else if(target.equals("nation"))
+                        txt_nation.setText(String.valueOf(chidSnap.getValue()));
+                    else if(target.equals("email"))
+                        USEREMAIL = String.valueOf(chidSnap.getValue());
                 }
             }
             @Override
@@ -267,5 +267,4 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         return view;
 
     } //onCreateView 끝
-
 }

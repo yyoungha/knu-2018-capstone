@@ -1,6 +1,7 @@
 package com.example.capstone.design;
 
 public class Help {
+    private String name;
     private String Uid;
     private String title;
     private String contents;
@@ -11,6 +12,7 @@ public class Help {
     }
 
     public Help(String uid, String title, String contents, double lat, double lng) {
+        name = Personal.getName();
         Uid = uid;
         this.title = title;
         this.contents = contents;
@@ -56,5 +58,13 @@ public class Help {
 
     public void setLng(double lng) {
         this.lng = lng;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
