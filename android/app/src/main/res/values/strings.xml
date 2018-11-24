@@ -25,6 +25,10 @@
     <string name="group_id">KNU</string>
     <string name="group_name">GROUP_KNU</string>
 
+    <!-- help part-->
+    <string name="help_request_title">Help</string>
+    <string name="help_request_confirm">MATCH</string>
+    <string name="help_request_cancel">CANCEL</string>
 
     <string-array name="nation_array">
         <item>KOREA</item>
@@ -40,4 +44,5 @@
         <item>Interior</item>
         <item>Daily</item>
     </string-array>
+
 </resources>

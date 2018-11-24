@@ -185,14 +185,18 @@ public class HelpActivity extends AppCompatActivity
 
         setMarkersOnMap();
 
-        // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                 Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
-                // Marker와 일치하는 Help 객체 정보 전달
-                popUpIntent.putExtra("data", "Test Popup");
+
+                // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
+
+                popUpIntent.putExtra("username", "Young");
+                popUpIntent.putExtra("title", "help me");
+                popUpIntent.putExtra("contents", "need 5 developers");
                 startActivityForResult(popUpIntent, 1);
+
                 return false;
             }
         });
@@ -209,7 +213,7 @@ public class HelpActivity extends AppCompatActivity
                 for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
                     Help help = ds.getValue(Help.class);
                     HelpArrayList.add(help);
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));;
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));
                 }
             }
 
