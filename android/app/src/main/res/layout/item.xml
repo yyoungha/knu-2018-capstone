@@ -47,17 +47,6 @@
                 android:gravity="right"
                 android:textSize="12sp"
                 tools:text="2018-11-23" />
-
-
-
         </LinearLayout>
-
-
-
-
-
-
     </LinearLayout>
-
-
 </android.support.v7.widget.CardView>

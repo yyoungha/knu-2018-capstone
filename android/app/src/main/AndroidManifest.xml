@@ -98,7 +98,9 @@
             android:name=".Comment"
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".HelpMatchPopup" android:theme="@android:style/Theme.Material.Dialog" />
+        <activity
+            android:name=".HelpMatchPopup"
+            android:theme="@android:style/Theme.Material.Dialog" />
         <activity
             android:name=".HelpRequestActivity"
             android:label="Request help"
@@ -109,12 +111,8 @@
         <activity
             android:name=".Boardenroll"
             android:theme="@style/AppTheme.NoActionBar" />
-<<<<<<< HEAD
         <activity android:name=".MarketImageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-=======
-        <activity android:name=".MarketImageActivity"></activity>
->>>>>>> 798ab6b5222e44993b7f6c308b7e2a30b0c98884
     </application>
 
 </manifest>

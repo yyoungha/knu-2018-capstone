@@ -122,7 +122,7 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                             String today = (new SimpleDateFormat("yyyy-MM-dd").format(date));
 
 
-                            Write write = new Write(user.getUid(), Title, Content, today, path);
+                            Write write = new Write(user.getUid(), Title, Content, today,path);
                             DatabaseReference databaseReference = firebaseDatabase.getReference(Category);
                             databaseReference.push().setValue(write);
                             Log.i("SEX_전달 후 : 푸시 성공",""+path);
