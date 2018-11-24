@@ -159,19 +159,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             });
         }
 
+        //자신이 작성한 글 개수 불러오기
 
-
-
-
-        //내가 작성한 market 요소 확인
-        TextView myscript = (TextView) view.findViewById(R.id.my_script_num);
-        myscript.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MyScript.class);
-                startActivity(intent);
-            }
-        });
 
         //전체 공지 보기
 
@@ -201,7 +190,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         btn_help.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Help.class);
+                Intent intent = new Intent(getActivity(), HelpActivity.class);
                 startActivity(intent);
             }
         });

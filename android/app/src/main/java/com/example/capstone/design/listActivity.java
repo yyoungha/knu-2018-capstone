@@ -28,10 +28,6 @@ import java.util.ArrayList;
 
 public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클릭 했을때 DB정보를 뿌려주는 listview(=recylerview) 커스텀 list를 만들었음
 
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mReference;
-    private ChildEventListener mChild;
-
     SearchView mSearchView;
     RecyclerView mRecyclerView;
     RecyclerView.LayoutManager mLayoutManager;
@@ -41,13 +37,9 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list2);
 
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); //툴바 기능 구현
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true); //뒤로가기 버튼 ,디폴트로 true만 해도 백버튼이 생김
-
-
-        initDatabase();
 
 
         /*final ArrayAdapter adapter = new ArrayAdapter(this,android.R.layout.simple_list_item_1,LIST_ITEM);
@@ -66,14 +58,6 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
 
         MyAdapter myAdapter = new MyAdapter(itemInfoArrayList);
         mRecyclerView.setAdapter(myAdapter);
-
-        /*mRecyclerView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getApplicationContext(),"선택되었습니다.",Toast.LENGTH_LONG).show();
-            }
-        });*/
-
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -101,15 +85,9 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         return super.onOptionsItemSelected(item);
     }
 
-    /*@Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }*/
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu) { // Search 기능
         getMenuInflater().inflate(R.menu.menu_itemlist,menu);
         MenuItem searchItem = menu.findItem(R.id.menu_search);
         SearchView searchView = (SearchView)MenuItemCompat.getActionView(searchItem);
@@ -136,47 +114,4 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void initDatabase(){
-
-        mDatabase = FirebaseDatabase.getInstance();
-
-        mReference = mDatabase.getReference("log");
-        mReference.child("log").setValue("check");
-
-        mChild = new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {  //항목 목록을 검색하거나 항목 목록에 대한 추가를 수신 대기 합니다.
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { //목록의 항목에 대한 변경을 수신 대기합니다.
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) { //목록의 항목 삭제를 수신 대기합니다.
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) { //순서있는 목록의 항목순서변경을 수신 대기 합니다.
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        };
-
-        mReference.addChildEventListener(mChild);
-    }
-
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mReference.removeEventListener(mChild);
-    }
 }
