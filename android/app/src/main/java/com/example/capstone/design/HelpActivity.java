@@ -172,7 +172,7 @@ public class HelpActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
-        setMapLayout();
+//        setMapLayout();
         //set map layout to custom
         /**
          * Provides views for customized rendering of info windows.
@@ -239,7 +239,7 @@ public class HelpActivity extends AppCompatActivity
             // in a raw resource file.
             boolean success = mMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
-                            this, R.raw.blue_map));
+                            this, R.spring.blue_map));
 
             if (!success) {
                 Log.e(TAG, "Style parsing failed.");
