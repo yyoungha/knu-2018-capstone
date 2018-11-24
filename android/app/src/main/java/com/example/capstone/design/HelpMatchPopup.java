@@ -31,7 +31,7 @@ public class HelpMatchPopup extends Activity {
 
         //데이터 가져오기
         intent = getIntent();
-        String username = intent.getExtras().getString("username");
+        String username = intent.getStringExtra("username");
         String title = intent.getStringExtra("title");
         String contents = intent.getStringExtra("contents");
 

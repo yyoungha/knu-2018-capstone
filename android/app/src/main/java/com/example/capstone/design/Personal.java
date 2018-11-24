@@ -73,7 +73,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     private ImageView profile;
     private String UserID;
     FirebaseAuth firebaseAuth;
-    private String my_name;
+    private static String my_name;
     private String my_nation;
     private TextView recent_notice;
     //
@@ -83,6 +83,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     public Personal() {
         // Required empty public constructor
     }
+
+    public static String getName() { return my_name; }
 
 
     /**

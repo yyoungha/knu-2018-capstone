@@ -31,6 +31,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.WeakHashMap;
 
 /**
  * OnMapReadyCallback 은 map 이 사용가능할 때의 callback interface.
@@ -70,7 +72,7 @@ public class HelpActivity extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private DatabaseReference mDatabase;
-    private ArrayList<Help> HelpArrayList = new ArrayList<Help>();
+    private WeakHashMap<String, Help> helpWeakHashMap = new WeakHashMap<>();
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -115,6 +117,7 @@ public class HelpActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 //
 //        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
 //        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
@@ -190,11 +193,18 @@ public class HelpActivity extends AppCompatActivity
             public boolean onMarkerClick(Marker marker) {
                 Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
 
-                // TODO - MARKER 에 SETONCLICKLISTENER 붙여서 아래에 창 표시하기
+                // WeakHashMap 에서 Marker와 일치하는 객체 찾기. Hash 값 비교를 통해 찾는다.
+                Help hp = helpWeakHashMap.get( marker.getSnippet() );
 
-                popUpIntent.putExtra("username", "Young");
-                popUpIntent.putExtra("title", "help me");
-                popUpIntent.putExtra("contents", "need 5 developers");
+
+                // marker와 일치하는 help instance 의 정보 표시
+                if ( hp != null )
+                {
+                    popUpIntent.putExtra("username", hp.getName());
+                    popUpIntent.putExtra("title", hp.getTitle());
+                    popUpIntent.putExtra("contents", hp.getContents());
+                }
+
                 startActivityForResult(popUpIntent, 1);
 
                 return false;
@@ -205,15 +215,20 @@ public class HelpActivity extends AppCompatActivity
     }
 
     private void setMarkersOnMap() {
-        HelpArrayList.clear();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        helpWeakHashMap.clear();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
                     Help help = ds.getValue(Help.class);
-                    HelpArrayList.add(help);
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));
+                    helpWeakHashMap.put(ds.getKey(), help);
+
+                    // create MarkerOption
+                    MarkerOptions options = new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle());
+                    options.snippet(ds.getKey());
+
+                    // add marker to map
+                    mMap.addMarker(options);
                 }
             }
 
