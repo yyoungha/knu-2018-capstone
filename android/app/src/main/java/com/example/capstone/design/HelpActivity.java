@@ -116,22 +116,22 @@ public class HelpActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
-        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
-        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
-        behavior.setPeekHeight(100);
-        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                // React to state change
-            }
-
-            @Override
-            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                // React to dragging events
-            }
-        });
+//
+//        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
+//        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
+//        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+//        behavior.setPeekHeight(100);
+//        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+//                // React to state change
+//            }
+//
+//            @Override
+//            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+//                // React to dragging events
+//            }
+//        });
 
     }
 

@@ -25,15 +25,9 @@ import java.util.Date;
 import java.util.Map;
 
 public class MyFirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
-    private static final String TAG = MyFirebaseMessagingService.class.getSimpleName();
     // 앱이 실행중이면
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-        Log.i(TAG, "앱 내에 실행");
-
-        Log.d(TAG,remoteMessage.getNotification().getBody());
-        Log.d(TAG,remoteMessage.getData().get("title"));
-        Log.d(TAG,remoteMessage.getData().get("Content"));
         // notification instance 추가하고 firebase에 저장하기
         Notification notification = new Notification(remoteMessage.getData().get("Content"), new Date().toString(), remoteMessage.getData().get("title"));
         String hash = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -71,7 +65,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
                 .setContentText(message)
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent).setChannelId("knuearth");
+                .setContentIntent(pendingIntent).setChannelId(getString(R.string.channel_id));
 
         //send push message
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());

@@ -232,6 +232,7 @@ public class MainActivity extends AppCompatActivity{
         }//target oreo or higher end
         //TOPIC/NOTIFICATION 구독
         FirebaseMessaging.getInstance().subscribeToTopic("NOTIFICATION");
+        //구독해제 unsubscribeFromTopic()
     }
 
     /**
