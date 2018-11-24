@@ -230,7 +230,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/text_category"
             android:layout_marginStart="7dp"
-            android:layout_marginTop="-1dp"
             android:layout_toEndOf="@+id/btn_help"
             android:layout_weight="1"
             android:background="@drawable/btn_msgbox" />
