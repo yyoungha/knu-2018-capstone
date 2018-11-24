@@ -63,15 +63,9 @@ public class MainActivity extends AppCompatActivity{
     // Firebase instance variables
     // 1. Auth with Google Firebase
     private static FirebaseAuth mFirebaseAuth;
-    private FirebaseUser mFirebaseUser;
     private String mUsername;
     private String mPhotoUrl;
 
-    private Button join;
-    private Button login;
-    private EditText email_login;
-    private EditText pwd_login;
-    FirebaseAuth firebaseAuth;
     private static FirebaseUser mFirebaseUser;
 
     public static FirebaseAuth getmFirebaseAuth() { return mFirebaseAuth; }
