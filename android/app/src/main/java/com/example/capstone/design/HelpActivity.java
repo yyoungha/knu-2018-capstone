@@ -155,26 +155,14 @@ public class HelpActivity extends AppCompatActivity
         getDeviceLocation();
 
         // TODO - HELP 목록 불러와서 화면에 MARKER로 표시하기
-        Log.v(TAG, "ADD MARKER START");
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.v(TAG, "ON DATA CHANGE");
-
-                    Help help = dataSnapshot.child("Help").child("-LS4IudgaxL3UuMmDORj").getValue(Help.class);
-//                    String uid = child.child("Uid").getValue().toString();
-//                    String title = child.child("title").getValue().toString();
-//                    String contents = child.child("contents").getValue().toString();
-//                    double lat = Double.parseDouble( child.child("lat").getValue().toString() );
-//                    double lng = Double.parseDouble( child.child("lng").getValue().toString() );
-
-                    Log.v(TAG, "Load data title : " + help.getTitle());
-                    Log.v(TAG, "Load data contents : " + help.getContents());
-
-                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));
-
-                    Log.v(TAG, "After add marker");
+                for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
+                    Help help = ds.getValue(Help.class);
+                    mMap.addMarker(new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle()));;
+                }
             }
 
             @Override
