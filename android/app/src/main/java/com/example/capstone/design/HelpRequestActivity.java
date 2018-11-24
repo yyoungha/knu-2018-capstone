@@ -66,6 +66,7 @@ public class HelpRequestActivity extends AppCompatActivity {
                 databaseReference.push().setValue(help);
 
                 Toast.makeText(HelpRequestActivity.this, "요청 성공", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
         
