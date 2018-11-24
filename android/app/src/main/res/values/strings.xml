@@ -18,6 +18,14 @@
     <string name="pick_place">Choose a place</string>
     <string name="title_activity_comment">Comment</string>
 
+    <!-- channel part-->
+    <string name="channel_id">KNUEARTH</string>
+    <string name="channel_name">KNUEARTH</string>
+    <string name="description">NOTIFICATION</string>
+    <string name="group_id">KNU</string>
+    <string name="group_name">GROUP_KNU</string>
+
+
     <string-array name="nation_array">
         <item>KOREA</item>
         <item>USA</item>

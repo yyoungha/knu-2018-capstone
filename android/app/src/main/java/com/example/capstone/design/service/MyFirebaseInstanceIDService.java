@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.service;
 import android.util.Log;
 
 import com.google.firebase.iid.FirebaseInstanceId;
