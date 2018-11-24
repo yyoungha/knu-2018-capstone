@@ -5,6 +5,8 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -112,6 +114,22 @@ public class HelpActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(HelpActivity.this, HelpRequestActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout)v.findViewById(R.id.coordinator_layout);
+        View bottomSheet = coordinatorLayout.findViewById(R.id.bottom_sheet);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(bottomSheet);
+        behavior.setPeekHeight(100);
+        behavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                // React to state change
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                // React to dragging events
             }
         });
 
