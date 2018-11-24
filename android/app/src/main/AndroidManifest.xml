@@ -109,12 +109,8 @@
         <activity
             android:name=".Boardenroll"
             android:theme="@style/AppTheme.NoActionBar" />
-<<<<<<< HEAD
         <activity android:name=".MarketImageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-=======
-        <activity android:name=".MarketImageActivity"></activity>
->>>>>>> 798ab6b5222e44993b7f6c308b7e2a30b0c98884
     </application>
 
 </manifest>
