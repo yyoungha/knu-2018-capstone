@@ -86,21 +86,21 @@
                     android:id="@+id/tabItem"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/home" />
+                    android:icon="@drawable/ic_tab_home" />
 
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/tabItem2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/trade" />
+                    android:icon="@drawable/ic_tab_alarm" />
 
 
                 <android.support.design.widget.TabItem
                     android:id="@+id/tabItem4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:icon="@drawable/free_bulletin" />
+                    android:icon="@drawable/ic_tab_board" />
 
             </android.support.design.widget.TabLayout>
         </android.support.design.widget.AppBarLayout>

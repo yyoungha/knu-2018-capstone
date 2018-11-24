@@ -36,6 +36,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+
         //스피너
         Spinner spinner = (Spinner)findViewById(R.id.spinner);
         //어댑터 생성
