@@ -10,9 +10,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -26,7 +29,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-public class Itemenroll extends AppCompatActivity {
+public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText txt1,txt2; //제목 내용
     public String msg;
@@ -41,6 +44,19 @@ public class Itemenroll extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itemenroll);
+
+        //스피너
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        //어댑터 생성
+        //이 예제 같은 경우 string,xml에 리스트를 추가해 놓고 그 리스트를 불러온다.
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.table_name, android.R.layout.simple_spinner_item);
+        //스피너와 어댑터 연결
+        spinner.setAdapter(adapter);
+        //이벤트를 일으킨 위젯과 리스너와 연결
+        spinner.setOnItemSelectedListener(this);
+        //선택된 값 스트링으로 받기
+        final String text = spinner.getSelectedItem().toString();
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,7 +79,7 @@ public class Itemenroll extends AppCompatActivity {
         image_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Itemenroll.this, MarketImage.class);
+                Intent intent = new Intent(Itemenroll.this, MarketImageActivity.class);
                 startActivity(intent);
             }
         });
@@ -103,5 +119,15 @@ public class Itemenroll extends AppCompatActivity {
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }
