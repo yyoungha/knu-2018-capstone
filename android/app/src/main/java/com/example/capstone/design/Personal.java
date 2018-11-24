@@ -74,12 +74,16 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     private ImageView profile;
     private String UserID;
     FirebaseAuth firebaseAuth;
+    private static String my_name;
+    private String my_nation;
     private TextView recent_notice;
     //
 
 
     // Required empty public constructor
     public Personal(){ }
+
+    public static String getName() { return my_name; }
 
 
     /**
@@ -137,7 +141,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
         //child를 구별하기 위해 넣어둔 파일 정보를 가져온다.
         final Uri Image_uri = user.getPhotoUrl(); //db안 의 storage의 url주소를 저장하겠다.
-        final Task<Uri> fucking_Uri;
         StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/");
 
         if ( Image_uri == null ) {

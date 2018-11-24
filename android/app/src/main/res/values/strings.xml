@@ -28,6 +28,11 @@
        [{\"featureType\": \"administrative\",\"elementType\": \"labels.text.fill\",\"stylers\": [{\"color\": \"#444444\"}]},{\"featureType\": \"landscape\",\"stylers\": [{\"color\": \"#f2f2f2\"}]},{\"featureType\": \"poi\",\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"road\",\"stylers\": [{\"saturation\": -100},{\"lightness\": 45}]},{\"featureType\": \"road.arterial\",\"elementType\": \"labels.icon\",\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"road.highway\",\"stylers\": [{\"visibility\": \"simplified\"}]},{\"featureType\": \"transit\",\"stylers\": [{\"visibility\": \"off\"}]},{\"featureType\": \"water\",\"stylers\": [{\"color\": \"#46bcec\"},{\"visibility\": \"on\"}]}]
     </string>
 
+    <!-- help part-->
+    <string name="help_request_title">Help</string>
+    <string name="help_request_confirm">MATCH</string>
+    <string name="help_request_cancel">CANCEL</string>
+
     <string-array name="nation_array">
         <item>KOREA</item>
         <item>USA</item>
@@ -42,4 +47,5 @@
         <item>Interior</item>
         <item>Daily</item>
     </string-array>
+
 </resources>
