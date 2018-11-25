@@ -3,7 +3,9 @@ package com.example.capstone.design;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,27 +31,24 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
         }
     }
 
-    private ArrayList<ItemInfo> itemInfoArrayList;
-    MyAdapter(ArrayList<ItemInfo> itemInfoArrayList){
+    private ArrayList<Write> itemInfoArrayList;
+    MyAdapter(ArrayList<Write> itemInfoArrayList){
         this.itemInfoArrayList = itemInfoArrayList;
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
-
-        return new MyViewHolder(v);
-    }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//
+//        Log.i("SHUTTHEFUCKUP","SEX"+itemInfoArrayList.get(position).getUrl());
+//        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getTitle());
+//        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getDate());
+
 
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-
-        myViewHolder.item_Picture.setImageResource(itemInfoArrayList.get(position).drawableId);
-        myViewHolder.item_Title.setText(itemInfoArrayList.get(position).txt1);
-        myViewHolder.item_Date.setText(itemInfoArrayList.get(position).date);
+        myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).url));
+        myViewHolder.item_Title.setText(itemInfoArrayList.get(position).Title);
+        myViewHolder.item_Date.setText(itemInfoArrayList.get(position).Date);
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -64,6 +63,13 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
         });
     }
 
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, parent, false);
+
+        return new MyViewHolder(v);
+    }
 
     @Override
     public int getItemCount() {

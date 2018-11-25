@@ -109,7 +109,7 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                             String today = (new SimpleDateFormat("yyyy-MM-dd").format(date));
 
 
-                            Write write = new Write(user.getUid(), Title, Content, today, path);
+                            Write write = new Write(user.getUid(), Title, Content, today,path);
                             DatabaseReference databaseReference = firebaseDatabase.getReference(Category);
                             databaseReference.push().setValue(write);
                             Toast.makeText(Itemenroll.this, "요청 성공", Toast.LENGTH_LONG).show();

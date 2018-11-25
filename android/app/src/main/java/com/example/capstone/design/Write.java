@@ -1,14 +1,13 @@
 package com.example.capstone.design;
 
 import android.net.Uri;
-import android.widget.Spinner;
 
-public class Write {
-    private String Uid; // 글쓴이 식별용
-    private String Title;
-    private String Content;
-    private String Date;
-    private String url;
+class Write {
+    public String Uid; // 글쓴이 식별용
+    public String Title;
+    public String Content;
+    public String Date;
+    public String url;
 
 
     public Write() {
@@ -27,7 +26,7 @@ public class Write {
         return Uid;
     }
 
-    public void setUid(String uid) { this.Uid = Uid; }
+    public void setUid(String uid) { this.Uid = uid; }
 
     public String getTitle() {
         return Title;
@@ -53,11 +52,12 @@ public class Write {
         this.Date = Date;
     }
 
-    public String getUrl() {
-        return url;
-    }
+    public String getUrl() { return url; }
 
-    public void setUrl(String Image) {
-        this.url = Image;
+    public void setUrl(String url) {
+        this.url = url;
+    }
+    public String toString(){
+        return Date + " " + Uid + " " + url + " ";
     }
 }
