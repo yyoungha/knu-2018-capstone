@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.alaram;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.example.capstone.design.R;
 
 import java.util.ArrayList;
 

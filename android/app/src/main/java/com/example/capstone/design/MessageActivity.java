@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Message extends AppCompatActivity { //현재 저장된 메시지를 뿌려주는 곳
+public class MessageActivity extends AppCompatActivity { //현재 저장된 메시지를 뿌려주는 곳
 
     List<MessageItem> lstMessage;
 

@@ -1,10 +1,9 @@
-package com.example.capstone.design;
+package com.example.capstone.design.login;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +12,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.capstone.design.MainActivity;
+import com.example.capstone.design.Member;
+import com.example.capstone.design.Personal;
+import com.example.capstone.design.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -86,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
                 Personal personal = new Personal();
                 if (!pwd.equals(pwdchk)) {
-                    Toast.makeText(SignUpActivity.this, "비밀번호를 확인하세요.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, "check your password.", Toast.LENGTH_LONG).show();
                     return;
                 }
 
@@ -102,14 +105,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                             .setValue(member).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(SignUpActivity.this, "사용자 등록 성공", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_LONG).show();
                                         }
                                     });
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    Toast.makeText(SignUpActivity.this, "사용자 등록 오류", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUpActivity.this, "Failure", Toast.LENGTH_SHORT).show();
                                     return;
                                 }
                             }

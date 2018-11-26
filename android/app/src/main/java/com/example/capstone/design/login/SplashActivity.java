@@ -1,9 +1,11 @@
-package com.example.capstone.design;
+package com.example.capstone.design.login;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
+import com.example.capstone.design.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
     @Override

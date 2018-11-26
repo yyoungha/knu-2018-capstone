@@ -6,7 +6,6 @@ public class Member {
 
     public Member() {
     }
-
     private String email;
     private String pwd;
     private String pwd_chk;

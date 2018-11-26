@@ -35,14 +35,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".login.SplashActivity"
             android:theme="@style/SplashTheme" />
         <activity
-            android:name=".SignInActivity"
+            android:name=".login.SignInActivity"
             android:label="로그인"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".login.SignUpActivity"
             android:label="회원가입"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
@@ -58,7 +58,7 @@
             android:label="Notice"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Message"
+            android:name=".MessageActivity"
             android:label="Message"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

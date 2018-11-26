@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.alaram;
 
 public class AlarmsData {
     public String strTitle;
