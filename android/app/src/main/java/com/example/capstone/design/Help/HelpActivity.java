@@ -106,7 +106,6 @@ public class HelpActivity extends AppCompatActivity
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Member member = dataSnapshot.getValue(Member.class);
-                    Toast.makeText(HelpActivity.this, "lat : " + member.getLat() + ", lng : " + member.getLng(), Toast.LENGTH_SHORT).show();
                     // 사용자 위치 정보 업데이트
                     memberRef.child("lat").setValue(latitude);
                     memberRef.child("lng").setValue(longitude);
