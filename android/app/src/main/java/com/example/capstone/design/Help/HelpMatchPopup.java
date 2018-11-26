@@ -8,7 +8,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.capstone.design.Listener.ChatListener;
 import com.example.capstone.design.R;
 
 public class HelpMatchPopup extends Activity {
@@ -16,9 +15,9 @@ public class HelpMatchPopup extends Activity {
     TextView nameTextView;
     TextView titleTextView;
     TextView contentsTextView;
-    Button chatButton;
     Button matchButton;
     Button cancelButton;
+    Button chatButton;
     Intent intent;
 
     String username;
@@ -74,6 +73,6 @@ public class HelpMatchPopup extends Activity {
                 finish();
             }
         });
-        chatButton.setOnClickListener(new ChatListener(this,uid));
+
     }
 }

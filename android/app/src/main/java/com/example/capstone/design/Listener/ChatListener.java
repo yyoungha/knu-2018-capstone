@@ -10,7 +10,8 @@ import com.example.capstone.design.message.MessageActivity;
 public class ChatListener  implements View.OnClickListener {
     private Context context;
     private String destinationUID;
-    public ChatListener(Context context,String destinationUID){
+    public ChatListener(Context context,String destinationUID){}
+    public ChatListener(Context context){
         this.context = context;
         this.destinationUID = destinationUID;
     }
