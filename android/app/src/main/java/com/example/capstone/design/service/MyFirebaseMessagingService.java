@@ -34,13 +34,13 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
         String hash = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         FirebaseDatabase.getInstance().getReference("Notification").child(hash).setValue(notification);
-        //
-        if(remoteMessage.getData().size()>0){
-            Map<String, String> data = remoteMessage.getData();
-            String title = data.get("title");
-            String message = data.get("Notification");
-            sendNotification(title, message);
-        }
+//        //
+//        if(remoteMessage.getData().size()>0){
+//            Map<String, String> data = remoteMessage.getData();
+//            String title = data.get("title");
+//            String message = data.get("Notification");
+//            sendNotification(title, message);
+//        }
     }
 
     public void sendNotification(String title, String message) {

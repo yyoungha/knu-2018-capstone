@@ -96,13 +96,26 @@ public class HelpActivity extends AppCompatActivity
     private LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-            double latitude=location.getLatitude();
-            double longitude=location.getLongitude();
+            final double latitude=location.getLatitude();
+            final double longitude=location.getLongitude();
 
             // 내 위치가 변할 때, 실시간 데이터베이스에 기록.
             if ( memberRef == null )
                 memberRef = FirebaseDatabase.getInstance().getReference("Member/"+Personal.getUid());
+            memberRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Member member = dataSnapshot.getValue(Member.class);
+                    Toast.makeText(HelpActivity.this, "lat : " + member.getLat() + ", lng : " + member.getLng(), Toast.LENGTH_SHORT).show();
+                    // 사용자 위치 정보 업데이트
+                    memberRef.child("lat").setValue(latitude);
+                    memberRef.child("lng").setValue(longitude);
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
             String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
         }
@@ -290,7 +303,6 @@ public class HelpActivity extends AppCompatActivity
                     b.setVisibility(View.VISIBLE);
 
                     // uid로 사용자 찾기
-                    Log.i("Requester uid out Listener is ", requesterUid);
                     memberRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
                     memberRef.addValueEventListener(new ValueEventListener() {
                         @Override
