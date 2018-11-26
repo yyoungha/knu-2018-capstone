@@ -55,16 +55,6 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
         item_Date.setText(DATE);
 
 
-
-
-        WeakHashMap<String, Member> memberWeakHashMap = Personal.getMemberWeakHashMap();
-        Log.i("SEX_UID",UID);
-        if ( memberWeakHashMap.isEmpty())
-            Log.i("SEX_mem","");
-        // uid 로 멤버 찾기
-        item_profile_Name.setText(memberWeakHashMap.get(UID).getName());
-        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
-
 //        List<String> comments = Arrays.asList("Super!!!", "Loook Goood!", "Fantastic", "I love it");
 //        List<String> names = Arrays.asList("John Ivanovich", "Klara Pumpernikiel", "Camile Nowakowski", "Harry Potter");
 //

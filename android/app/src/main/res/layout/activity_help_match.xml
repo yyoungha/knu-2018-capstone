@@ -139,6 +139,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/match_cinfirm_btn"
             android:text="@string/help_request_confirm"
             android:textSize="15sp"
             android:textColor="#ff7a00"

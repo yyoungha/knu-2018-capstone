@@ -56,8 +56,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     private String UID;
     //
 
-    private boolean isMemberLoaded = false;
-    private static WeakHashMap<String, Member> memberWeakHashMap = new WeakHashMap<>();
 
     // Required empty public constructor
     public Personal(){ }
@@ -101,27 +99,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         FirebaseDatabase database = FirebaseDatabase.getInstance(); //db를 인스턴스화 하겠다
         DatabaseReference noteRef = database.getReference("Notification"); //테이블이름 참조하겠다
         final DatabaseReference memRef = database.getReference("Member/"+UID); //멤버 테이블 안의 key인(UID)를 식별하겠다
-        final DatabaseReference memAllRef = database.getReference("Member");
-
-
-        if (!isMemberLoaded) memberWeakHashMap.clear();
-        memAllRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (!isMemberLoaded) {
-                    for (DataSnapshot ds : dataSnapshot.child("Member").getChildren() ) {
-                        Member member = ds.getValue(Member.class);
-                        memberWeakHashMap.put(ds.getKey(), member);
-                    }
-                    isMemberLoaded = true;
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
         //member reference : firebase instance
         memRef.addValueEventListener(new ValueEventListener() {
@@ -160,14 +137,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).transform(new CropCircle()).into(image);
-
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
-                    Log.i("SEX",uri.toString());
-                    Log.i("SEX2",UID);
-                    if ( memberWeakHashMap.isEmpty() )
-                        Log.i("SEX3 empty hash map.",UID);
-                    else
-                        memberWeakHashMap.get(UID).setimageUri(uri.toString());
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -263,5 +234,4 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
     } //onCreateView 끝
 
-    public static WeakHashMap<String, Member> getMemberWeakHashMap() { return memberWeakHashMap; }
 }
