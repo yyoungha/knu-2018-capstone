@@ -75,10 +75,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 //String nation = nation_join.getText().toString().trim();
                 //final Member member = new Member(email, pwd, username, nation);
 
-
-
-
-
                 final Member member = new Member(email, pwd, username, text);
 
                 //예외처리
@@ -87,7 +83,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                     return;
                 }
 
-                Personal personal = new Personal();
                 if (!pwd.equals(pwdchk)) {
                     Toast.makeText(SignUpActivity.this, "check your password.", Toast.LENGTH_LONG).show();
                     return;
@@ -106,6 +101,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_LONG).show();
+                                            member.setUid(firebaseAuth.getCurrentUser().getUid());
                                         }
                                     });
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);

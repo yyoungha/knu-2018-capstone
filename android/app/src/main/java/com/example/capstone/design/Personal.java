@@ -14,7 +14,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+<<<<<<< HEAD
 import com.example.capstone.design.tool.CropCircle;
+=======
+import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
+>>>>>>> 96d88298f0035e288e98064706376be79146f4b1
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,37 +37,28 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.WeakHashMap;
+
+import static android.content.Intent.getIntent;
+import static android.support.constraint.Constraints.TAG;
+import static com.example.capstone.design.R.id.name;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Personal#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 화면으로 넘어감
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     //새로 추가한 값들
     private TextView tv_NAME;
     private TextView tv_NATION;
-    private String USEREMAIL;
-    private ImageView profile;
-    private String UserID;
-    FirebaseAuth firebaseAuth;
     private static String username;
     private static String useremail;
-    private String my_nation;
     private TextView recent_notice;
+    private String UID;
     //
 
+    private boolean isMemberLoaded = false;
+    private static WeakHashMap<String, Member> memberWeakHashMap = new WeakHashMap<>();
 
     // Required empty public constructor
     public Personal(){ }
@@ -69,31 +68,10 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     public static String getEmail() { return useremail; }
 
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Personal.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Personal newInstance(String param1, String param2) {
-        Personal fragment = new Personal();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
     }
 
@@ -106,7 +84,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String UID = user.getUid();
+        UID = user.getUid();
 
         //이미지 추가하기 Imageactivity로 넘어감
         final ImageView image = (ImageView)view.findViewById(R.id.profile);
@@ -135,6 +113,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).transform(new CropCircle()).into(image);
 
+                    Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
+                    memberWeakHashMap.get(UID).setimageUri(Image_uri.toString());
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -228,6 +208,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
             }
         });
+        if (!isMemberLoaded) memberWeakHashMap.clear();
         //member reference : firebase instance
         memRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -245,6 +226,13 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                         useremail = String.valueOf(chidSnap.getValue());
                     }
                 }
+
+                if (!isMemberLoaded)
+                    for (DataSnapshot ds : dataSnapshot.child("Member").getChildren() ) {
+                        Member member = ds.getValue(Member.class);
+                        memberWeakHashMap.put(ds.getKey(), member);
+                    }
+                isMemberLoaded = true;
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -255,4 +243,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         return view;
 
     } //onCreateView 끝
+
+    public static WeakHashMap<String, Member> getMemberWeakHashMap() { return memberWeakHashMap; }
 }

@@ -6,6 +6,7 @@ public class Member {
 
     public Member() {
     }
+    private String uid;
     private String email;
     private String pwd;
     private String pwd_chk;
@@ -14,12 +15,22 @@ public class Member {
     private double lat;
     private double lng;
     private int permission;
+    private String imageUri;
 
     public Member(String email, String pwd, String name, String nation) {
         this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.nation = nation;
+        this.imageUri = null;
+    }
+
+    public Member(String email, String pwd, String name, String nation, String imageUri) {
+        this.email = email;
+        this.pwd = pwd;
+        this.name = name;
+        this.nation = nation;
+        this.imageUri = imageUri;
     }
 
     public int getPermission() {
@@ -84,5 +95,21 @@ public class Member {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getimageUri() {
+        return imageUri;
+    }
+
+    public void setimageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
