@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -75,6 +76,7 @@ public class HelpActivity extends AppCompatActivity
 
     private DatabaseReference mDatabase;
     private WeakHashMap<String, Help> helpWeakHashMap = new WeakHashMap<>();
+    private final int MATCH_REQUEST = 1000;
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -186,9 +188,10 @@ public class HelpActivity extends AppCompatActivity
                     popUpIntent.putExtra("username", hp.getName());
                     popUpIntent.putExtra("title", hp.getTitle());
                     popUpIntent.putExtra("contents", hp.getContents());
+                    popUpIntent.putExtra("uid", hp.getUid());
                 }
 
-                startActivity(popUpIntent);
+                startActivityForResult(popUpIntent, MATCH_REQUEST);
 
                 return false;
             }
@@ -197,6 +200,17 @@ public class HelpActivity extends AppCompatActivity
         getDeviceLocation();
         setCustomLayout();
         setMarkersOnMap();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MATCH_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                // 
+            }
+        }
+
     }
 
     private void setCustomLayout() {
@@ -218,6 +232,7 @@ public class HelpActivity extends AppCompatActivity
         helpWeakHashMap.clear();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
                     Help help = ds.getValue(Help.class);
