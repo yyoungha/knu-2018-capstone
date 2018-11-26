@@ -144,7 +144,7 @@ public class MessageActivity extends AppCompatActivity { //현재 저장된 메�
 
     }
     void checkChatRoom(){
-        FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("Member/"+uid).equalTo("true").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo("true").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot item : dataSnapshot.getChildren()){
@@ -267,7 +267,7 @@ public class MessageActivity extends AppCompatActivity { //현재 저장된 메�
 
         void setReadCounter(final int position, final TextView textView){
             if(peopleCount==0){
-                FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("Member").addListenerForSingleValueEvent(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("users").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         Map<String,Boolean> users = (Map<String,Boolean>)dataSnapshot.getValue();

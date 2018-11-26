@@ -34,13 +34,10 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
         String hash = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         FirebaseDatabase.getInstance().getReference("Notification").child(hash).setValue(notification);
-        //
-        if(remoteMessage.getData().size()>0){
             Map<String, String> data = remoteMessage.getData();
             String title = data.get("title");
             String message = data.get("Notification");
             sendNotification(title, message);
-        }
     }
 
     public void sendNotification(String title, String message) {
@@ -65,7 +62,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
                 .setContentText(message)
                 .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent) ;
+                .setContentIntent(pendingIntent).setChannelId(getString(R.string.channel_id)) ;
 
         //send push message
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());

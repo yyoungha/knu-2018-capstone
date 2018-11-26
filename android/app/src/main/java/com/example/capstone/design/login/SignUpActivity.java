@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 //예외처리
                 if(text.trim().equals("▼")||username.trim().equals("")||email.trim().equals("")){
 //                    Toast.makeText(SignUpActivity.this,"please input blank", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(SignUpActivity.this,"text["+text+"] "+"username["+username+"] email["+email+"]", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this,"please fill the blank", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -103,17 +103,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                             public void onComplete(@NonNull Task<AuthResult> task) {
 
                                 if (task.isSuccessful()) {
+                                    member.setUid(firebaseAuth.getCurrentUser().getUid());
                                     FirebaseDatabase.getInstance().getReference("Member")
                                             .child(firebaseAuth.getCurrentUser().getUid())
                                             .setValue(member).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_LONG).show();
-                                            member.setUid(firebaseAuth.getCurrentUser().getUid());
                                             passPushTokenToServer(member.getUid());
-
-
-
                                         }
                                     });
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);

@@ -34,7 +34,7 @@ import java.util.Map;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
-public class ChatFragment extends android.app.Fragment {
+public class ChatFragment extends Fragment {
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd hh:mm");
     @Nullable
     @Override
@@ -53,7 +53,7 @@ public class ChatFragment extends android.app.Fragment {
         private ArrayList<String> destinationUsers = new ArrayList<>();
         public ChatRecyclerViewAdapter() {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-            FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("Member/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
+            FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for(DataSnapshot item :dataSnapshot.getChildren()){

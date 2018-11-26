@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.capstone.design.Listener.ChatListener;
 import com.example.capstone.design.R;
 
 public class HelpMatchPopup extends Activity {
@@ -74,5 +75,6 @@ public class HelpMatchPopup extends Activity {
             }
         });
 
+        chatButton.setOnClickListener(new ChatListener(this,uid));
     }
 }
