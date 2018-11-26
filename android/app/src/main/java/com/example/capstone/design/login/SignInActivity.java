@@ -18,7 +18,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
-    final String EMAIL="@knu.ac.kr";
     private EditText email_join;
     private EditText pwd_join;
     private Button signin_btn;
@@ -41,7 +40,6 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String email = email_join.getText().toString().trim();
-                email.concat(EMAIL);
                 String pwd = pwd_join.getText().toString().trim();
 
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)

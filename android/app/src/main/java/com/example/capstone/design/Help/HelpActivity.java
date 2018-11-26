@@ -257,6 +257,7 @@ public class HelpActivity extends AppCompatActivity
                             Member member = dataSnapshot.getValue(Member.class);
                             Log.i("Requester uid in Event Listener is ", member.getUid());
                             Log.i("Requester name in Event Listener is ", member.getName());
+                            Toast.makeText(HelpActivity.this, "lat : " + member.getLat() + ", lng : " + member.getLng(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
