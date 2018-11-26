@@ -8,6 +8,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.capstone.design.Listener.ChatListener;
 import com.example.capstone.design.R;
 
 public class HelpMatchPopup extends Activity {
@@ -15,6 +16,7 @@ public class HelpMatchPopup extends Activity {
     TextView nameTextView;
     TextView titleTextView;
     TextView contentsTextView;
+    Button chatButton;
     Button matchButton;
     Button cancelButton;
     Intent intent;
@@ -38,6 +40,7 @@ public class HelpMatchPopup extends Activity {
         contentsTextView = (TextView)findViewById(R.id.contentsTextView);
         matchButton = (Button)findViewById(R.id.match_cinfirm_btn);
         cancelButton = (Button)findViewById(R.id.match_cancel_btn);
+        chatButton = (Button)findViewById(R.id.chat_cinfirm_btn);
 
         //데이터 가져오기
         intent = getIntent();
@@ -71,6 +74,6 @@ public class HelpMatchPopup extends Activity {
                 finish();
             }
         });
-
+        chatButton.setOnClickListener(new ChatListener(this,uid));
     }
 }
