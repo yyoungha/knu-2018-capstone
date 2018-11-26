@@ -7,16 +7,35 @@ public class CommunityWrite {
     private String Content;
     private String Date;
     private String url;
+    private String object_info;
 
     public CommunityWrite(){
 
     }
 
-    public CommunityWrite(String Uid, String Title, String Content, String Date, String url) {
+    public CommunityWrite(String Uid,String Content,String Date){
+        this.Uid = Uid;
+        this.Content = Content;
+        this.Date = Date;
+
+    }
+
+    public CommunityWrite(String Uid, String Title, String Content, String Date, String url){
         this.Uid = Uid;
         this.Title = Title;
         this.Content = Content;
         this.Date = Date;
+        this.object_info=null;
+        this.url = url;
+    }
+
+
+    public CommunityWrite(String Uid, String Title, String Content, String Date, String url,String object_info) {
+        this.Uid = Uid;
+        this.Title = Title;
+        this.Content = Content;
+        this.Date = Date;
+        this.object_info=object_info;
         this.url = url;
 
     }
@@ -60,6 +79,16 @@ public class CommunityWrite {
     public String toString(){
         return Date + " " + Uid + " " + url + " ";
     }
+
+    public String getObjInfo(){
+        return object_info;
+    }
+
+    public void setObject_info(String ob_info){
+        this.object_info=ob_info;
+    }
+
+
 
 
 }
