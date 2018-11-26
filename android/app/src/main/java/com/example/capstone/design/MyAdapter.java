@@ -48,12 +48,12 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
 
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        Uri uri = Uri.parse(itemInfoArrayList.get(position).getUrl());
+        final Uri uri = Uri.parse(itemInfoArrayList.get(position).getUrl());
         MyViewHolder myViewHolder = (MyViewHolder) holder;
+
         Picasso.with(myViewHolder.view.getContext()).load(uri).into(myViewHolder.item_Picture);
-        //myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).getUrl()));
         myViewHolder.item_Title.setText(itemInfoArrayList.get(position).getTitle());
         myViewHolder.item_Date.setText(itemInfoArrayList.get(position).getDate());
 
@@ -61,6 +61,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(),Trade_contents.class);
+                intent.putExtra("CONTENT",itemInfoArrayList.get(position).getContent());
+                intent.putExtra("DATE",itemInfoArrayList.get(position).getDate());
+                intent.putExtra("TITLE",itemInfoArrayList.get(position).getTitle());
+                intent.putExtra("UID",itemInfoArrayList.get(position).getUid());
+                intent.putExtra("URL",itemInfoArrayList.get(position).getUrl());
                 v.getContext().startActivity(intent);
             }
         });

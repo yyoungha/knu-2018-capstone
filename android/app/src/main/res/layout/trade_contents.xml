@@ -30,17 +30,17 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/Profile_image"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:src="@drawable/profile" />
+            android:layout_weight="1" />
 
         <TextView
+            android:id="@+id/Name"
             android:layout_width="231dp"
             android:layout_height="match_parent"
             android:layout_weight="0.1"
             android:fontFamily="@font/noto_sans"
-            android:text="wojtek"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="30sp" />
@@ -62,17 +62,17 @@
         android:weightSum="1"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/Title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:text="Cozy마우스 팔아요"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/Content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="이 마우스를 사용한지는 한 6개월 됬구요. 5처넌에 급처할께요."
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -82,15 +82,15 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/noto_sans"
-            android:text="PICTURE"
             android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
+            android:id="@+id/item_Image"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:src="@drawable/mouse" />
