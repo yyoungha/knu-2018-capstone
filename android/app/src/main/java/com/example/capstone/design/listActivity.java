@@ -37,7 +37,7 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
     String[] array = new String[5];
     //db테이블 이름 값 저장 변수
     String table_name;
-    public Write write = new Write();
+
     ArrayList<Write> itemInfoArrayList = new ArrayList<>();
     private MyAdapter myAdapter;
 
@@ -61,13 +61,9 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-
-
         // 테마를 테이블 이름으로 설정해준다.
         setTitle(table_name);
         //Log.i("SHUTTHEFUCKUP : ",table_name);
-
-
 
         // 카테고리에 맞게 각각 입력된 값 가져오기
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -76,31 +72,42 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //table_name에 해당하는 값만 for-each문으로 불러온다.
                 for( DataSnapshot ds : dataSnapshot.child(table_name).getChildren() ) {
+                    Write write = new Write();
                     HashMap<String,String> td = (HashMap)(ds.getValue());
+                    Log.i("SEX", String.valueOf(ds.getValue()));
                     Iterator<String> keys = td.keySet().iterator();
+                    Log.i("SEX", String.valueOf(td.keySet().iterator()));
                     //모든 게시판 내용 값 불러오기
                     while( keys.hasNext() ){
                         String key = keys.next(); //key값 순차적으로 찍힐 거임
                         if(key.equals("date")){
                             array[0]=td.get(key);
                             write.setDate(array[0]);
+                            //Log.i("SEX",write.getDate());
                         }if(key.equals("uid")){
                             array[1]=td.get(key);
                             write.setUid(array[1]);
+                            //Log.i("SEX",write.getUid());
                         }if(key.equals("title")){
                             array[2]=td.get(key);
                             write.setTitle(array[2]);
+                            //Log.i("SEX",write.getTitle());
                         }if(key.equals("content")){
                             array[3]=td.get(key);
                             write.setContent(array[3]);
+                           // Log.i("SEX",write.getContent());
                         }if(key.equals("url")){
                             array[4]=td.get(key);
                             write.setUrl(array[4]);
+                            //Log.i("SEX",write.getUrl());
                         }
 //                        String value = td.get(key); //value 값
                     }
                     itemInfoArrayList.add(write);
-                   myAdapter = new MyAdapter(itemInfoArrayList);
+                    int total = itemInfoArrayList.size();
+                    for(int i =0; i<total; i++)
+                        Log.i("SEX_출력", String.valueOf(itemInfoArrayList.get(i)));
+                    myAdapter = new MyAdapter(itemInfoArrayList);
                     mRecyclerView.setAdapter(myAdapter);
                 }
             }
@@ -109,7 +116,7 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
 
             }
         });
-        
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

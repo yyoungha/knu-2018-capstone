@@ -3,11 +3,11 @@ package com.example.capstone.design;
 import android.net.Uri;
 
 class Write {
-    public String Uid; // 글쓴이 식별용
-    public String Title;
-    public String Content;
-    public String Date;
-    public String url;
+    private String Uid; // 글쓴이 식별용
+    private String Title;
+    private String Content;
+    private String Date;
+    private String url;
 
 
     public Write() {

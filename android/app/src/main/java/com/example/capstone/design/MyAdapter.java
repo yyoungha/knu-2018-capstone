@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { //커스텀 adapter임 listview랑 비슷하지만 차이가 조금 있음 복잡함으로 여기는 잘 건드리지 않는게 좋음
 
@@ -44,11 +45,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
 //        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getTitle());
 //        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getDate());
 
-
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).url));
-        myViewHolder.item_Title.setText(itemInfoArrayList.get(position).Title);
-        myViewHolder.item_Date.setText(itemInfoArrayList.get(position).Date);
+        myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).getUrl()));
+        myViewHolder.item_Title.setText(itemInfoArrayList.get(position).getTitle());
+        myViewHolder.item_Date.setText(itemInfoArrayList.get(position).getDate());
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
