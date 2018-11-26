@@ -1,30 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#eeeeee"
     android:orientation="vertical"
     android:layout_width="300dp"
     android:layout_height="wrap_content">
 
-    <!-- 타이틀바 -->
+    <!-- Title bar -->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <TextView
-            android:text="@string/help_request_title"
-            android:textSize="20sp"
-            android:textColor="#fff"
-            android:gravity="center"
-            android:background="#ff7a00"
-            android:layout_width="match_parent"
-            android:layout_height="53dp" />
-    </LinearLayout>
-    <!-- //end 타이틀바 -->
 
-    <!-- Notice -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:background="#da2127"
+            android:gravity="center"
+            android:text="@string/help_request_title"
+            android:textColor="#fff"
+            android:textSize="24sp" />
+    </LinearLayout>
+    <!-- Title bar -->
+
     <LinearLayout
-        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8a8a8a"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.87"
+            android:gravity="center"
+            android:text="Username"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:padding="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -38,10 +58,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-    <!-- Notice -->
 
     <LinearLayout
-        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8a8a8a"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.87"
+            android:gravity="center"
+            android:text="Title"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -57,7 +94,25 @@
     </LinearLayout>
 
     <LinearLayout
-        android:padding="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#8a8a8a"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:alpha="0.87"
+            android:gravity="center"
+            android:text="Contents"
+            android:textColor="#000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="20dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

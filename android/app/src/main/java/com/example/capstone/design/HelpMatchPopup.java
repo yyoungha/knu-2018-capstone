@@ -3,8 +3,6 @@ package com.example.capstone.design;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -22,7 +20,7 @@ public class HelpMatchPopup extends Activity {
 
         //타이틀바 없애기
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_match_help);
+        setContentView(R.layout.activity_help_match);
 
         //UI 객체생성
         nameTextView = (TextView)findViewById(R.id.nameTextView);
