@@ -79,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.7"
-                android:background="#dedbdb"
+                android:background="@color/colorPrimaryDark"
                 app:tabIndicatorColor="@color/colorAccent">
 
                 <android.support.design.widget.TabItem
