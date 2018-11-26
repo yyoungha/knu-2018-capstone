@@ -44,21 +44,22 @@
             android:layout_margin="6dp"
             android:text="TextView" />
 
-        <TextView
-            android:id="@+id/tvDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvTitle"
-            android:layout_centerHorizontal="true"
-            android:layout_margin="6dp"
-            android:text="TextView" />
 
         <ImageView
             android:id="@+id/ivPicture"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvDescription"
+            android:layout_below="@id/tvTitle"
             android:layout_margin="6dp" />
+
+        <TextView
+            android:id="@+id/tvDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivPicture"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="6dp"
+            android:text="TextView" />
 
 
 
@@ -68,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="52dp"
             android:layout_margin="6dp"
-            android:layout_below="@id/ivPicture"
+            android:layout_below="@id/tvDescription"
             android:layout_centerHorizontal="true"
             android:text="Comments"
             android:textColor="#ffffff"

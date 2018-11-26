@@ -23,6 +23,14 @@ class Write {
 
     }
 
+    public Write(String Uid, String Content, String Date) {
+        //this.member = member;
+        this.Uid = Uid;
+        this.Content = Content;
+        this.Date = Date;
+
+    }
+
     public String getUid() {
         return Uid;
     }
