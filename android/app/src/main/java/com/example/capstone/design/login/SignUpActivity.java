@@ -69,6 +69,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                 String email = email_join.getText().toString().trim();
+                email.concat("@knu.ac.kr");
                 String pwd = pwd_join.getText().toString().trim();
                 String pwdchk = pwdchk_join.getText().toString().trim();
                 String username = username_join.getText().toString().trim();
