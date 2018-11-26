@@ -14,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,11 +26,18 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
         TextView item_Title;
         TextView item_Date;
 
+        View view;
+
         MyViewHolder(View view){
             super(view);
+            this.view = view;
             item_Picture = view.findViewById(R.id.item_picture);
             item_Title = view.findViewById(R.id.item_title);
             item_Date = view.findViewById(R.id.item_date);
+        }
+
+        protected View getView(){
+            return view;
         }
     }
 
@@ -40,25 +49,19 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-//
-//        Log.i("SHUTTHEFUCKUP","SEX"+itemInfoArrayList.get(position).getUrl());
-//        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getTitle());
-//        Log.i("SHUTTHEFUCKUP",itemInfoArrayList.get(position).getDate());
 
+        Uri uri = Uri.parse(itemInfoArrayList.get(position).getUrl());
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).getUrl()));
+        Picasso.with(myViewHolder.view.getContext()).load(uri).into(myViewHolder.item_Picture);
+        //myViewHolder.item_Picture.setImageURI(Uri.parse(itemInfoArrayList.get(position).getUrl()));
         myViewHolder.item_Title.setText(itemInfoArrayList.get(position).getTitle());
         myViewHolder.item_Date.setText(itemInfoArrayList.get(position).getDate());
 
         myViewHolder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                /*Context context = v.getContext();
-                Toast.makeText(context,"선택되었습니다.",Toast.LENGTH_LONG).show();*/
-
                 Intent intent = new Intent(v.getContext(),Trade_contents.class);
                 v.getContext().startActivity(intent);
-
             }
         });
     }

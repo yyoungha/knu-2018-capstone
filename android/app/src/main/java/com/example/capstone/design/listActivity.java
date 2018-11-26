@@ -63,7 +63,6 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
 
         // 테마를 테이블 이름으로 설정해준다.
         setTitle(table_name);
-        //Log.i("SHUTTHEFUCKUP : ",table_name);
 
         // 카테고리에 맞게 각각 입력된 값 가져오기
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -83,30 +82,21 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
                         if(key.equals("date")){
                             array[0]=td.get(key);
                             write.setDate(array[0]);
-                            //Log.i("SEX",write.getDate());
                         }if(key.equals("uid")){
                             array[1]=td.get(key);
                             write.setUid(array[1]);
-                            //Log.i("SEX",write.getUid());
                         }if(key.equals("title")){
                             array[2]=td.get(key);
                             write.setTitle(array[2]);
-                            //Log.i("SEX",write.getTitle());
                         }if(key.equals("content")){
                             array[3]=td.get(key);
                             write.setContent(array[3]);
-                           // Log.i("SEX",write.getContent());
                         }if(key.equals("url")){
                             array[4]=td.get(key);
                             write.setUrl(array[4]);
-                            //Log.i("SEX",write.getUrl());
                         }
-//                        String value = td.get(key); //value 값
                     }
                     itemInfoArrayList.add(write);
-                    int total = itemInfoArrayList.size();
-                    for(int i =0; i<total; i++)
-                        Log.i("SEX_출력", String.valueOf(itemInfoArrayList.get(i)));
                     myAdapter = new MyAdapter(itemInfoArrayList);
                     mRecyclerView.setAdapter(myAdapter);
                 }
