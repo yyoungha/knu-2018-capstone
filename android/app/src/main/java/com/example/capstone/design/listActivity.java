@@ -73,9 +73,7 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
                 for( DataSnapshot ds : dataSnapshot.child(table_name).getChildren() ) {
                     Write write = new Write();
                     HashMap<String,String> td = (HashMap)(ds.getValue());
-                    Log.i("SEX", String.valueOf(ds.getValue()));
                     Iterator<String> keys = td.keySet().iterator();
-                    Log.i("SEX", String.valueOf(td.keySet().iterator()));
                     //모든 게시판 내용 값 불러오기
                     while( keys.hasNext() ){
                         String key = keys.next(); //key값 순차적으로 찍힐 거임
@@ -111,12 +109,10 @@ public class listActivity extends AppCompatActivity { //전자 or 욕실 등 클
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
-
                 //등록
                 Intent intent = new Intent(listActivity.this,Itemenroll.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
