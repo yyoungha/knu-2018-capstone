@@ -84,6 +84,7 @@ public class HelpActivity extends AppCompatActivity
     private static final String KEY_LOCATION = "location";
 
     private DatabaseReference mDatabase;
+    private DatabaseReference memberRef;
     private WeakHashMap<String, Help> helpWeakHashMap = new WeakHashMap<>();
     private ArrayList<MarkerOptions> markerOptionsArrayList = new ArrayList<>();
     private final int MATCH_REQUEST = 1000;
@@ -99,8 +100,8 @@ public class HelpActivity extends AppCompatActivity
             double longitude=location.getLongitude();
 
             // 내 위치가 변할 때, 실시간 데이터베이스에 기록.
-            if ( mDatabase == null )
-                mDatabase = FirebaseDatabase.getInstance().getReference();
+            if ( memberRef == null )
+                memberRef = FirebaseDatabase.getInstance().getReference("Member/"+Personal.getUid());
 
             String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
             Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
@@ -290,8 +291,8 @@ public class HelpActivity extends AppCompatActivity
 
                     // uid로 사용자 찾기
                     Log.i("Requester uid out Listener is ", requesterUid);
-                    final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
-                    dbRef.addValueEventListener(new ValueEventListener() {
+                    memberRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
+                    memberRef.addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             Member member = dataSnapshot.getValue(Member.class);

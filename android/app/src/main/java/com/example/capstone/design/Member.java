@@ -50,6 +50,15 @@ public class Member {
         this.uid = null;
     }
 
+    public Member(String email, String pwd, String name, String nation, String imageUri, String uid) {
+        this.email = email;
+        this.pwd = pwd;
+        this.name = name;
+        this.nation = nation;
+        this.imageUri = imageUri;
+        this.uid = uid;
+    }
+
     public int getPermission() {
         return permission;
     }
