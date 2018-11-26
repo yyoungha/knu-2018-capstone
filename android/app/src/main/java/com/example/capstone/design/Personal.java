@@ -106,6 +106,55 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             }
         });
 
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); //db를 인스턴스화 하겠다
+        DatabaseReference noteRef = database.getReference("Notification"); //테이블이름 참조하겠다
+        final DatabaseReference memRef = database.getReference("Member/"+UID); //멤버 테이블 안의 key인(UID)를 식별하겠다
+        final DatabaseReference memAllRef = database.getReference("Member");
+
+
+        if (!isMemberLoaded) memberWeakHashMap.clear();
+        memAllRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (!isMemberLoaded) {
+                    for (DataSnapshot ds : dataSnapshot.child("Member").getChildren() ) {
+                        Member member = ds.getValue(Member.class);
+                        memberWeakHashMap.put(ds.getKey(), member);
+                    }
+                    isMemberLoaded = true;
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //member reference : firebase instance
+        memRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
+                    String target = chidSnap.getKey();
+                    if (target.equals("name")) {
+                        tv_NAME.setText(String.valueOf(chidSnap.getValue()));
+                        username = tv_NAME.getText().toString();
+                    } else if (target.equals("nation")) {
+                        tv_NATION.setText(String.valueOf(chidSnap.getValue()));
+                    }
+                    else if (target.equals("email")) {
+                        // email 받아오기
+                        useremail = String.valueOf(chidSnap.getValue());
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         //이미지 받기
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
         //child를 구별하기 위해 넣어둔 파일 정보를 가져온다.
@@ -120,7 +169,12 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
-                    memberWeakHashMap.get(UID).setimageUri(Image_uri.toString());
+                    Log.i("SEX",uri.toString());
+                    Log.i("SEX2",UID);
+                    if ( memberWeakHashMap.isEmpty() )
+                        Log.i("SEX3 empty hash map.",UID);
+                    else
+                        memberWeakHashMap.get(UID).setimageUri(uri.toString());
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -177,10 +231,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
 
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance(); //db를 인스턴스화 하겠다
-        DatabaseReference noteRef = database.getReference("Notification"); //테이블이름 참조하겠다
-        final DatabaseReference memRef = database.getReference("Member/"+UID); //멤버 테이블 안의 key인(UID)를 식별하겠다
 
 
         recent_notice = (TextView) view.findViewById(text_contentOfNotice);
@@ -214,37 +264,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
             }
         });
-        if (!isMemberLoaded) memberWeakHashMap.clear();
-        //member reference : firebase instance
-        memRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
-                    String target = chidSnap.getKey();
-                    if (target.equals("name")) {
-                        tv_NAME.setText(String.valueOf(chidSnap.getValue()));
-                        username = tv_NAME.getText().toString();
-                    } else if (target.equals("nation")) {
-                        tv_NATION.setText(String.valueOf(chidSnap.getValue()));
-                    }
-                    else if (target.equals("email")) {
-                        // email 받아오기
-                        useremail = String.valueOf(chidSnap.getValue());
-                    }
-                }
 
-                if (!isMemberLoaded)
-                    for (DataSnapshot ds : dataSnapshot.child("Member").getChildren() ) {
-                        Member member = ds.getValue(Member.class);
-                        memberWeakHashMap.put(ds.getKey(), member);
-                    }
-                isMemberLoaded = true;
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         //Inflate the layout for this fragment
         return view;
 

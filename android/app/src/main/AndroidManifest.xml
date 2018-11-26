@@ -50,7 +50,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:windowSoftInputMode="adjustPan"
-            android:name=".Trade_contents"
+            android:name=".TradeContents"
             android:label="전자제품"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

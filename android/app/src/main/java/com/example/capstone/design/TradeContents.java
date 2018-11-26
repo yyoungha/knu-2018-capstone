@@ -1,29 +1,23 @@
 package com.example.capstone.design;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.WeakHashMap;
 
-public class Trade_contents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
+public class TradeContents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
 
     List<CommentItem> lstComments;
     String UID;
@@ -31,6 +25,7 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
     String CONTENT;
     String TITLE;
     String URL;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +53,18 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
         item_Title.setText(TITLE);
         item_Content.setText(CONTENT);
         item_Date.setText(DATE);
-        Picasso.with(Trade_contents.this).load(URL).into(item_URL);
-        
+
+
+
+
+        WeakHashMap<String, Member> memberWeakHashMap = Personal.getMemberWeakHashMap();
+        Log.i("SEX_UID",UID);
+        if ( memberWeakHashMap.isEmpty())
+            Log.i("SEX_mem","");
+        // uid 로 멤버 찾기
+        item_profile_Name.setText(memberWeakHashMap.get(UID).getName());
+        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
+
 //        List<String> comments = Arrays.asList("Super!!!", "Loook Goood!", "Fantastic", "I love it");
 //        List<String> names = Arrays.asList("John Ivanovich", "Klara Pumpernikiel", "Camile Nowakowski", "Harry Potter");
 //
