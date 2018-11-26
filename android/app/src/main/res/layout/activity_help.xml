@@ -13,12 +13,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-
     <Button
         android:id="@+id/add_request_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Request Help" />
+
+    <Button
+        android:id="@+id/stop_sharing_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="13dp"
+        android:visibility="gone"
+        android:text="Stop Sharing" />
 
 </RelativeLayout>

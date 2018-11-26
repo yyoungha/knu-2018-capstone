@@ -1,4 +1,6 @@
-package com.example.capstone.design;
+package com.example.capstone.design.Help;
+
+import com.example.capstone.design.Personal;
 
 public class Help {
     private String name;

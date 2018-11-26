@@ -1,29 +1,33 @@
 package com.example.capstone.design;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.WeakHashMap;
 
-public class Trade_contents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
+public class TradeContents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
 
     List<CommentItem> lstComments;
     String UID;
@@ -31,11 +35,16 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
     String CONTENT;
     String TITLE;
     String URL;
+    FirebaseAuth firebaseAuth;
+    FirebaseDatabase database;
+    private DatabaseReference memRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trade_contents);
+
+//        WeakHashMap<String, Member> memberWeakHashMap = Personal.getMemberWeakHashMap();
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -48,18 +57,45 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
         TITLE=intent.getStringExtra("TITLE");
         URL=intent.getStringExtra("URL");
 
-        ImageView item_Profile_Image = (ImageView)findViewById(R.id.Profile_image);
-        TextView item_profile_Name = (TextView)findViewById(R.id.Name);
+        final ImageView item_Profile_Image = (ImageView)findViewById(R.id.Profile_image);
+        final TextView item_profile_Name = (TextView)findViewById(R.id.Name);
         TextView item_Title = (TextView)findViewById(R.id.Title);
         TextView item_Content = (TextView)findViewById(R.id.Content);
         TextView item_Date = (TextView)findViewById(R.id.Date);
-        ImageView item_URL = (ImageView) findViewById(R.id.item_Image);
+        final ImageView item_URL = (ImageView) findViewById(R.id.item_Image);
+
 
         item_Title.setText(TITLE);
         item_Content.setText(CONTENT);
         item_Date.setText(DATE);
-        Picasso.with(Trade_contents.this).load(URL).into(item_URL);
-        
+        Picasso.with(TradeContents.this).load(URL).into(item_URL);
+
+        // uid 로 멤버 찾기
+        memRef = database.getInstance().getReference(); //멤버 테이블 안의 key인(UID)를 식별하겠다
+        memRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.child("Member/"+UID).getChildren()) {
+                    String value = ds.getKey();
+                    if (value.equals("name")){
+                        item_profile_Name.setText(ds.getValue().toString());
+                    }
+                    if(value.equals("imageUri")){
+                        Picasso.with(TradeContents.this).load(Uri.parse(ds.getValue().toString())).into(item_Profile_Image);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+//        item_profile_Name.setText(memberWeakHashMap.get(UID).getName());
+//        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
+//        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
+
+
 //        List<String> comments = Arrays.asList("Super!!!", "Loook Goood!", "Fantastic", "I love it");
 //        List<String> names = Arrays.asList("John Ivanovich", "Klara Pumpernikiel", "Camile Nowakowski", "Harry Potter");
 //
@@ -87,8 +123,8 @@ public class Trade_contents extends AppCompatActivity { //trade내용 올라온 
 //
 //            }
 //        });
+        });
     }
-
     public void showMsg(){
 
         //다이얼로그 객체 생성

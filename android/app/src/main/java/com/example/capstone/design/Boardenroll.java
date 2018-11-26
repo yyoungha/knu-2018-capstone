@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -97,9 +98,13 @@ public class Boardenroll extends AppCompatActivity implements AdapterView.OnItem
                             String today = (new SimpleDateFormat("yyyy-MM-dd").format(date));
 
 
-                            Write write = new Write(user.getUid(), Title, Content, today, path);
+                            CommunityWrite write = new CommunityWrite(user.getUid(), Title, Content, today, path);
                             DatabaseReference databaseReference = firebaseDatabase.getReference("Board");
                             databaseReference.push().setValue(write);
+                            write.setObject_info(databaseReference.getKey());
+
+                            //Log.i("SEX_table",databaseReference.getKey());
+
                             Toast.makeText(Boardenroll.this, "요청 성공", Toast.LENGTH_LONG).show();
                             finish();
                         }

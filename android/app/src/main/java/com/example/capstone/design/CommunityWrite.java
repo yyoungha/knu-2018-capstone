@@ -1,33 +1,42 @@
 package com.example.capstone.design;
 
-import android.net.Uri;
+public class CommunityWrite {
 
-class Write {
     private String Uid; // 글쓴이 식별용
     private String Title;
     private String Content;
     private String Date;
     private String url;
+    private String object_info;
 
-    public Write() {
+    public CommunityWrite(){
+
     }
 
-    public Write(String uid, String Title, String Content, String Date, String url) {
-    public Write(String Uid, String Title, String Content, String Date, String url) {
-        //this.member = member;
+    public CommunityWrite(String Uid,String Content,String Date){
+        this.Uid = Uid;
+        this.Content = Content;
+        this.Date = Date;
+
+    }
+
+    public CommunityWrite(String Uid, String Title, String Content, String Date, String url){
         this.Uid = Uid;
         this.Title = Title;
         this.Content = Content;
         this.Date = Date;
+        this.object_info=null;
         this.url = url;
-
     }
 
-    public Write(String Uid, String Content, String Date) {
-        //this.member = member;
+
+    public CommunityWrite(String Uid, String Title, String Content, String Date, String url,String object_info) {
         this.Uid = Uid;
+        this.Title = Title;
         this.Content = Content;
         this.Date = Date;
+        this.object_info=object_info;
+        this.url = url;
 
     }
 
@@ -66,7 +75,20 @@ class Write {
     public void setUrl(String url) {
         this.url = url;
     }
+
     public String toString(){
         return Date + " " + Uid + " " + url + " ";
     }
+
+    public String getObjInfo(){
+        return object_info;
+    }
+
+    public void setObject_info(String ob_info){
+        this.object_info=ob_info;
+    }
+
+
+
+
 }

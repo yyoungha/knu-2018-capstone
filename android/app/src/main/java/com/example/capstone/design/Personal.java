@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.example.capstone.design.message.MessageActivity;
 import com.example.capstone.design.tool.CropCircle;
+import com.example.capstone.design.Help.HelpActivity;
+import com.example.capstone.design.tool.CropCircle;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +32,12 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.WeakHashMap;
 
 import static com.example.capstone.design.R.id.text_contentOfNotice;
@@ -39,14 +47,14 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     //새로 추가한 값들
     private TextView tv_NAME;
     private TextView tv_NATION;
+    TextView script;
     private static String username;
     private static String useremail;
     private TextView recent_notice;
-    private String UID;
+    private static String UID;
+    private int total_count=0;
     //
 
-    private boolean isMemberLoaded = false;
-    private static WeakHashMap<String, Member> memberWeakHashMap = new WeakHashMap<>();
 
     // Required empty public constructor
     public Personal(){ }
@@ -54,6 +62,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     public static String getName() { return username; }
 
     public static String getEmail() { return useremail; }
+
+    public static String getUid() { return UID; }
 
 
 
@@ -71,6 +81,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
 
+        script = (TextView)view.findViewById(R.id.my_script_num);
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
 
@@ -86,6 +97,37 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             }
         });
 
+        // Write a message to the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); //db를 인스턴스화 하겠다
+        DatabaseReference countRef = database.getReference();
+        DatabaseReference noteRef = database.getReference("Notification"); //테이블이름 참조하겠다
+        final DatabaseReference memRef = database.getReference("Member/"+UID); //멤버 테이블 안의 key인(UID)를 식별하겠다
+
+        //member reference : firebase instance
+        memRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
+                    String target = chidSnap.getKey();
+                    if (target.equals("name")) {
+                        tv_NAME.setText(String.valueOf(chidSnap.getValue()));
+                        username = tv_NAME.getText().toString();
+                    } else if (target.equals("nation")) {
+                        tv_NATION.setText(String.valueOf(chidSnap.getValue()));
+                    }
+                    else if (target.equals("email")) {
+                        // email 받아오기
+                        useremail = String.valueOf(chidSnap.getValue());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
         //이미지 받기
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
         //child를 구별하기 위해 넣어둔 파일 정보를 가져온다.
@@ -100,9 +142,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).transform(new CropCircle()).into(image);
-
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
-                    memberWeakHashMap.get(UID).setimageUri(Image_uri.toString());
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -111,7 +151,47 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             });
         }
 
-        //자신이 작성한 글 개수 불러오기
+        // 자신이 작성한 글 개수
+        countRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    String value = ds.getKey();
+                    if (value.equals("Electronics")||value.equals("Board")||value.equals("Daily")||value.equals("Office")||value.equals("Kitchen")||value.equals("Bathroom")||value.equals("Interior")) {
+                        String target = ds.getValue().toString();
+                            for (DataSnapshot ds2 : dataSnapshot.child(value).getChildren()) {
+                                String value2 = ds2.getKey();
+                                HashMap<String,String> td = (HashMap)(ds2.getValue());
+                                Iterator<String> keys = td.keySet().iterator();
+                                while( keys.hasNext() ) {
+                                    String key = keys.next(); //key값 순차적으로 찍힐 거임
+                                    if (key.equals("uid")) {
+                                        String power = td.get(key);
+                                        if(power.equals(UID))
+                                            total_count++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                script.setText(String.valueOf(total_count));
+                }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            } //공지를 날짜순으로 정렬 후 리스터 생성
+        });
+
+
+
+        // 자신이 작성한 글 보러가기
+//        script.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), MyScript.class);
+//                startActivity(intent);
+//            }
+//        });
 
 
         //전체 공지 보기
@@ -159,10 +239,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
 
 
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance(); //db를 인스턴스화 하겠다
-        DatabaseReference noteRef = database.getReference("Notification"); //테이블이름 참조하겠다
-        final DatabaseReference memRef = database.getReference("Member/"+UID); //멤버 테이블 안의 key인(UID)를 식별하겠다
 
 
         recent_notice = (TextView) view.findViewById(text_contentOfNotice);
@@ -196,41 +272,10 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
 
             }
         });
-        if (!isMemberLoaded) memberWeakHashMap.clear();
-        //member reference : firebase instance
-        memRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot chidSnap : dataSnapshot.getChildren()) {
-                    String target = chidSnap.getKey();
-                    if (target.equals("name")) {
-                        tv_NAME.setText(String.valueOf(chidSnap.getValue()));
-                        username = tv_NAME.getText().toString();
-                    } else if (target.equals("nation")) {
-                        tv_NATION.setText(String.valueOf(chidSnap.getValue()));
-                    }
-                    else if (target.equals("email")) {
-                        // email 받아오기
-                        useremail = String.valueOf(chidSnap.getValue());
-                    }
-                }
 
-                if (!isMemberLoaded)
-                    for (DataSnapshot ds : dataSnapshot.child("Member").getChildren() ) {
-                        Member member = ds.getValue(Member.class);
-                        memberWeakHashMap.put(ds.getKey(), member);
-                    }
-                isMemberLoaded = true;
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         //Inflate the layout for this fragment
         return view;
 
     } //onCreateView 끝
 
-    public static WeakHashMap<String, Member> getMemberWeakHashMap() { return memberWeakHashMap; }
 }

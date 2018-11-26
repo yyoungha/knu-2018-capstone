@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.Help;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -6,13 +6,18 @@ import android.content.res.Resources;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.example.capstone.design.Member;
+import com.example.capstone.design.Personal;
+import com.example.capstone.design.R;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -48,6 +53,7 @@ public class HelpActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
     private Button addRequestButton;
+    private Button stopSharingButton;
 
     private static final String TAG = HelpActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -67,7 +73,9 @@ public class HelpActivity extends AppCompatActivity
     // That is, the last-known location retrieved by the Fused Location Provider.
     private static Location mLastKnownLocation;
 
-    public static Location getmLastKnownLocation() { return mLastKnownLocation; }
+    public static Location getmLastKnownLocation() {
+        return mLastKnownLocation;
+    }
 
     // Keys for storing activity state.
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -75,6 +83,11 @@ public class HelpActivity extends AppCompatActivity
 
     private DatabaseReference mDatabase;
     private WeakHashMap<String, Help> helpWeakHashMap = new WeakHashMap<>();
+    private ArrayList<MarkerOptions> markerOptionsArrayList = new ArrayList<>();
+    private final int MATCH_REQUEST = 1000;
+
+    private final boolean LOCATION_PERMISSION_ACCEPT = true;
+    private final boolean LOCATION_PERMISSION_DENY = false;
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -111,12 +124,22 @@ public class HelpActivity extends AppCompatActivity
         mapFragment.getMapAsync(this);
 
         addRequestButton = (Button) findViewById(R.id.add_request_btn);
+        stopSharingButton = (Button) findViewById(R.id.stop_sharing_btn);
 
         addRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HelpActivity.this, HelpRequestActivity.class);
                 startActivity(intent);
+            }
+        });
+        stopSharingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMap.clear();
+                addRequestButton.setVisibility(v.VISIBLE);
+                stopSharingButton.setVisibility(v.GONE);
+                addMarkersOnMap();
             }
         });
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -141,9 +164,9 @@ public class HelpActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
-        if ( mMap != null ) {
+        if (mMap != null) {
             mMap.clear();
-            setMarkersOnMap();
+            loadHelpData();
         }
     }
 
@@ -177,66 +200,129 @@ public class HelpActivity extends AppCompatActivity
                 Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
 
                 // WeakHashMap 에서 Marker와 일치하는 객체 찾기. Hash 값 비교를 통해 찾는다.
-                Help hp = helpWeakHashMap.get( marker.getSnippet() );
-
+                Help hp = helpWeakHashMap.get(marker.getSnippet());
 
                 // marker와 일치하는 help instance 의 정보 표시
-                if ( hp != null )
-                {
-                    popUpIntent.putExtra("username", hp.getName());
-                    popUpIntent.putExtra("title", hp.getTitle());
-                    popUpIntent.putExtra("contents", hp.getContents());
+                if (hp == null) {
+                    loadHelpData();
+                    hp = helpWeakHashMap.get(marker.getSnippet());
                 }
 
-                startActivity(popUpIntent);
+                popUpIntent.putExtra("username", hp.getName());
+                popUpIntent.putExtra("title", hp.getTitle());
+                popUpIntent.putExtra("contents", hp.getContents());
+                popUpIntent.putExtra("uid", hp.getUid());
+
+                startActivityForResult(popUpIntent, MATCH_REQUEST);
 
                 return false;
             }
         });
 
         getDeviceLocation();
-        setCustomLayout();
-        setMarkersOnMap();
+        loadHelpData();
     }
 
-    private void setCustomLayout() {
-        try {
-            // Customise the styling of the base map using a JSON object defined
-            // in a raw resource file.
-            boolean success = mMap.setMapStyle(new MapStyleOptions(getResources()
-                    .getString(R.string.blue_map)));
-            if (!success) {
-                Log.e(null, "Style parsing failed.");
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == MATCH_REQUEST) {
+            if (resultCode == RESULT_OK) {
+                // 1. 마커에 등록된 Help 의 작성자 파악, 현재 사용자와 동일인물인지 확인
+                String requesterUid = data.getStringExtra("uid");
+                if ( Personal.getUid().equals(requesterUid) )
+                    Toast.makeText(HelpActivity.this, "It's your request!", Toast.LENGTH_SHORT).show();
+
+                // 2. 작성자에게 푸쉬 알림 으로 권한 받기.
+                // 아래 getReceivedPermission 구현하면 됩니다. 보낼때 requesterUid로 보내세용~
+                boolean receivedPermission = getReceivedPermission(requesterUid);
+
+                // 3-1. (동의 시 LOCATION_PERMISSION_ACCEPT )
+                if (receivedPermission == LOCATION_PERMISSION_ACCEPT) {
+                    // 위치 공유 시작,
+
+                    // 맵 초기화 후 버튼 표시 설정
+                    mMap.clear();
+                    View b = findViewById(R.id.add_request_btn);
+                    b.setVisibility(View.GONE);
+                    b = findViewById(R.id.stop_sharing_btn);
+                    b.setVisibility(View.VISIBLE);
+
+                    // uid로 사용자 찾기
+                    Log.i("Requester uid out Listener is ", requesterUid);
+                    final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
+                    dbRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Member member = dataSnapshot.getValue(Member.class);
+                            Log.i("Requester uid in Event Listener is ", member.getUid());
+                            Log.i("Requester name in Event Listener is ", member.getName());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    // 그 사용자의 위치 데이터 불러오기
+
+                    // 불러온 위치와 나의 위치 지도에 출력하기.
+                }
+                // 3-2. (상대방 동의를 받는다. 거절 시 LOCATION_PERMISSION_DENY)
+                else {
+                    Toast.makeText(HelpActivity.this, "Location request denied", Toast.LENGTH_LONG).show();
+                }
             }
-            Log.d(null, "success");
-        } catch (Resources.NotFoundException e) {
-            Log.e(null, "Can't find style. Error: ", e);
         }
     }
 
-    private void setMarkersOnMap() {
+    private boolean getReceivedPermission(String requesterUid) {
+        // 요청 수락 혹은 거절에 따라 값 리턴
+        if (true)
+            return LOCATION_PERMISSION_ACCEPT;
+        return LOCATION_PERMISSION_DENY;
+    }
+
+    private void loadHelpData() {
+
+        // Help 객체가 Firebase 로부터 읽어온 상태이면 Marker만 표시
+        if (!markerOptionsArrayList.isEmpty()) {
+            addMarkersOnMap();
+            return;
+        }
+
         helpWeakHashMap.clear();
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
+
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
+                for (DataSnapshot ds : dataSnapshot.child("Help").getChildren()) {
                     Help help = ds.getValue(Help.class);
                     helpWeakHashMap.put(ds.getKey(), help);
 
+                    String hashKey = ds.getKey();
                     // create MarkerOption
                     MarkerOptions options = new MarkerOptions().position(new LatLng(help.getLat(), help.getLng())).title(help.getTitle());
-                    options.snippet(ds.getKey());
+                    options.snippet(hashKey);
 
                     // add marker to map
-                    mMap.addMarker(options);
+                    markerOptionsArrayList.add(options);
+                    addMarkersOnMap();
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
+    }
+
+    private void addMarkersOnMap() {
+        Iterator<MarkerOptions> itr = markerOptionsArrayList.iterator();
+
+        while (itr.hasNext()) {
+            mMap.addMarker(itr.next());
+        }
     }
 
     /**
@@ -259,8 +345,6 @@ public class HelpActivity extends AppCompatActivity
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
                         } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
                             mMap.moveCamera(CameraUpdateFactory
                                     .newLatLngZoom(mDefaultLocation, DEFAULT_ZOOM));
                             mMap.getUiSettings().setMyLocationButtonEnabled(false);
@@ -268,7 +352,7 @@ public class HelpActivity extends AppCompatActivity
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -334,7 +418,7 @@ public class HelpActivity extends AppCompatActivity
                 mLastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
