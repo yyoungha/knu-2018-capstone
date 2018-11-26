@@ -29,8 +29,6 @@ public class Member {
         this.imageUri = imageUri;
     }
 
-    public Member() {
-    }
 
     public Member(String email, String pwd, String name, String nation) {
         this.email = email;
