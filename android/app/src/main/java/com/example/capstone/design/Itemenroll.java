@@ -45,6 +45,8 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
     private String image_hash;
     private String path;
     private Spinner spinner;
+    private String object_info;
+    private String table_name;
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
@@ -122,9 +124,15 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                             String today = (new SimpleDateFormat("yyyy-MM-dd").format(date));
 
 
-                            Write write = new Write(user.getUid(), Title, Content, today,path);
+                            Write write = new Write(user.getUid(), Title, Content, today, path,object_info,table_name);
                             DatabaseReference databaseReference = firebaseDatabase.getReference(Category);
                             databaseReference.push().setValue(write);
+                            write.setObject_info(databaseReference.getKey());
+                            write.setTable_name(Category);
+
+                            Log.i("SEX_key", write.getObjInfo()); //이거 넘겨야함 객체 테이블 밑에 있는 구별하는거
+                            Log.i("SEX_table",Category); //table 이름 잘나옴
+
                             Log.i("SEX_전달 후 : 푸시 성공",""+path);
                             Toast.makeText(Itemenroll.this, "요청 성공", Toast.LENGTH_LONG).show();
                             finish();

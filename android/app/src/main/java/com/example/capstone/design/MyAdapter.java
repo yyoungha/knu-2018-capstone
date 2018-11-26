@@ -19,6 +19,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
         ImageView item_Picture;
         TextView item_Title;
         TextView item_Date;
+        String UID;
+        String Obj_info;
 
         View view;
 
@@ -60,6 +62,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> { /
                 intent.putExtra("TITLE",itemInfoArrayList.get(position).getTitle());
                 intent.putExtra("UID",itemInfoArrayList.get(position).getUid());
                 intent.putExtra("URL",itemInfoArrayList.get(position).getUrl());
+                intent.putExtra("UID",itemInfoArrayList.get(position).getUid());
+                intent.putExtra("Board_info",itemInfoArrayList.get(position).getObjInfo());
+                intent.putExtra("Table_name",itemInfoArrayList.get(position).getTable_name());
                 v.getContext().startActivity(intent);
             }
         });

@@ -8,17 +8,21 @@ class Write {
     private String Content;
     private String Date;
     private String url;
+    private String object_info;
+    private String table_name;
 
     public Write() {
     }
 
-    public Write(String uid, String Title, String Content, String Date, String url) {
+    public Write(String uid, String Title, String Content, String Date, String url,String object_info,String table_name) {
         //this.member = member;
         this.Uid = Uid;
         this.Title = Title;
         this.Content = Content;
         this.Date = Date;
         this.url = url;
+        this.object_info = object_info;
+        this.table_name = table_name;
 
     }
 
@@ -67,5 +71,21 @@ class Write {
     }
     public String toString(){
         return Date + " " + Uid + " " + url + " ";
+    }
+
+    public String getObjInfo(){
+        return object_info;
+    }
+
+    public void setObject_info(String ob_info){
+        this.object_info=ob_info;
+    }
+
+    public String getTable_name(){
+        return table_name;
+    }
+
+    public void setTable_name(String table_name){
+        this.table_name=table_name;
     }
 }
