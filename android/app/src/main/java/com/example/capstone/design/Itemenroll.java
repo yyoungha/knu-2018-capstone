@@ -42,28 +42,40 @@ import java.util.Date;
 public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Uri Image_uri;
-    private Toolbar toolbar;
     private String image_hash;
     private String path;
-    private String text;
     private Spinner spinner;
-    private Button image_button;
-    private Button upload_button;
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    private FirebaseUser user;
-    private FirebaseDatabase firebaseDatabase;
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itemenroll);
 
-        this.initializeValues();
-        this.addListener();
+        //스피너
+        spinner = (Spinner) findViewById(R.id.spinner);
+        //어댑터 생성
+        //이 예제 같은 경우 string,xml에 리스트를 추가해 놓고 그 리스트를 불러온다.
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.table_name, android.R.layout.simple_spinner_item);
+        //스피너와 어댑터 연결
+        spinner.setAdapter(adapter);
+        //이벤트를 일으킨 위젯과 리스너와 연결
+        spinner.setOnItemSelectedListener(this);
+        //선택된 값 스트링으로 받기
+        final String text = spinner.getSelectedItem().toString();
 
-    }
 
-    private void addListener() {
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        final Button image_button = (Button) findViewById(R.id.bt_choose);
+        final Button upload_button = (Button)findViewById(R.id.complete);
+
         //이미지 등록을 위한 activity를 띄워준다.
         image_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,6 +108,7 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                         @Override
                         public void onSuccess(Uri uri) {
                             path = uri.toString(); // path에 다운로드 이미지 링크를 넣어준다.
+                            Log.i("SEX_uri다운로드 주소","sex"+path);
 
                             final String Category = spinner.getSelectedItem().toString();
                             TextView fuck = (TextView)findViewById(R.id.path);
@@ -112,6 +125,7 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                             Write write = new Write(user.getUid(), Title, Content, today,path);
                             DatabaseReference databaseReference = firebaseDatabase.getReference(Category);
                             databaseReference.push().setValue(write);
+                            Log.i("SEX_전달 후 : 푸시 성공",""+path);
                             Toast.makeText(Itemenroll.this, "요청 성공", Toast.LENGTH_LONG).show();
                             finish();
                         }
@@ -124,30 +138,6 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
 
             }
         });
-    }
-
-    private void initializeValues() {
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-
-        //스피너
-        spinner = (Spinner) findViewById(R.id.spinner);
-        //어댑터 생성
-        //이 예제 같은 경우 string,xml에 리스트를 추가해 놓고 그 리스트를 불러온다.
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.table_name, android.R.layout.simple_spinner_item);
-        //스피너와 어댑터 연결
-        spinner.setAdapter(adapter);
-        //이벤트를 일으킨 위젯과 리스너와 연결
-        spinner.setOnItemSelectedListener(this);
-        //선택된 값 스트링으로 받기
-        text = spinner.getSelectedItem().toString();
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        image_button = (Button) findViewById(R.id.bt_choose);
-        upload_button = (Button)findViewById(R.id.complete);
     }
 
     @Override

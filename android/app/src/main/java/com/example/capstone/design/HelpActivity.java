@@ -155,6 +155,7 @@ public class HelpActivity extends AppCompatActivity
     @Override
     public void onMapReady(GoogleMap map) {
         mMap = map;
+
         /**
          * Provides views for customized rendering of info windows.
          * setInfoWindow, getInfoContents 메소드는 Marker 의 정보 창을 표시할 때 차례로 호출된다.

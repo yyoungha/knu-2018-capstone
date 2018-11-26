@@ -34,13 +34,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder viewHolder, int i) {
-        viewHolder.tv_DESCRIPTION.setText(communityItems.get(i).getStrDescription());
-        viewHolder.tv_NAME.setText(communityItems.get(i).getStrName());
-        viewHolder.img_PICTURE.setImageResource(communityItems.get(i).getResPicture());
-        viewHolder.img_AVATAR.setImageResource(communityItems.get(i).getResAvatar());
-        viewHolder.tv_DATE.setText(communityItems.get(i).getStrDate());
+        viewHolder.tvDescription.setText(communityItems.get(i).getStrDescription());
+        viewHolder.tvName.setText(communityItems.get(i).getStrName());
+        viewHolder.ivPicture.setImageResource(communityItems.get(i).getResPicture());
+        viewHolder.ivAvatar.setImageResource(communityItems.get(i).getResAvatar());
+        viewHolder.tvDate.setText(communityItems.get(i).getStrDate());
         final int id = i;
-        viewHolder.btn_COMMENTS.setOnClickListener(new View.OnClickListener() {
+        viewHolder.btnComments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Comment.class);
@@ -57,21 +57,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public  static class viewHolder extends RecyclerView.ViewHolder {
-        TextView tv_NAME;
-        TextView tv_DESCRIPTION;
-        ImageView img_PICTURE;
-        ImageView img_AVATAR;
-        Button btn_COMMENTS;
-        TextView tv_DATE;
+        TextView tvName;
+        TextView tvDescription;
+        ImageView ivPicture;
+        ImageView ivAvatar;
+        Button btnComments;
+        TextView tvDate;
 
         public viewHolder(View itemView) {
             super(itemView);
-            tv_DESCRIPTION = (TextView)itemView.findViewById(R.id.tvDescription);
-            tv_NAME = (TextView)itemView.findViewById(R.id.tvName);
-            img_AVATAR = (ImageView)itemView.findViewById(R.id.ivIcon);
-            img_PICTURE = (ImageView)itemView.findViewById(R.id.ivPicture);
-            btn_COMMENTS = (Button)itemView.findViewById(R.id.btnComments);
-            tv_DATE = (TextView)itemView.findViewById(R.id.tvDateScript);
+            tvDescription = (TextView)itemView.findViewById(R.id.tvDescription);
+            tvName = (TextView)itemView.findViewById(R.id.tvName);
+            ivAvatar = (ImageView)itemView.findViewById(R.id.ivIcon);
+            ivPicture = (ImageView)itemView.findViewById(R.id.ivPicture);
+            btnComments = (Button)itemView.findViewById(R.id.btnComments);
+            tvDate = (TextView)itemView.findViewById(R.id.tvDateScript);
         }
     }
 

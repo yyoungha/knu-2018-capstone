@@ -99,13 +99,8 @@
             android:label="@string/title_activity_comment"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-<<<<<<< HEAD
             android:name=".HelpMatchPopup"
             android:theme="@android:style/Theme.Material.Dialog" />
-=======
-	   		android:name=".HelpMatchPopup"
-	      	android:theme="@android:style/Theme.Material.Dialog" />
->>>>>>> 568b5a6ae68df1e44a88d6a52f1bc705434a9e65
         <activity
             android:name=".HelpRequestActivity"
             android:label="Request help"
