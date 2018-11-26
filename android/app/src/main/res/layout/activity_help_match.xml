@@ -138,17 +138,30 @@
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/match_cinfirm_btn"
-            android:text="@string/help_request_confirm"
-            android:textSize="15sp"
-            android:textColor="#ff7a00"
-            android:padding="16dp"
+            android:layout_width="0dp"
+            android:layout_height="53dp"
+            android:layout_weight="1"
+            android:background="#00000000"
             android:gravity="center"
+            android:padding="16dp"
+            android:text="@string/help_request_confirm"
+            android:textColor="#ff7a00"
+            android:textSize="15sp" />
+
+        <Button
+            android:id="@+id/chat_cinfirm_btn"
             android:background="#00000000"
             android:layout_width="0dp"
+            android:textColor="#ff7a00"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
             android:layout_weight="1"
-            android:layout_height="53dp"/>
+            android:text="CHAT" />
+
         <Button
             android:id="@+id/match_cancel_btn"
             android:text="@string/help_request_cancel"
