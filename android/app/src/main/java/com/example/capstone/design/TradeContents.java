@@ -95,7 +95,6 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
 //        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
 //        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
 
-
 //        List<String> comments = Arrays.asList("Super!!!", "Loook Goood!", "Fantastic", "I love it");
 //        List<String> names = Arrays.asList("John Ivanovich", "Klara Pumpernikiel", "Camile Nowakowski", "Harry Potter");
 //
@@ -123,7 +122,6 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
 //
 //            }
 //        });
-        });
     }
     public void showMsg(){
 

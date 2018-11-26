@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
     RecyclerView.LayoutManager mLayoutManager;
     List<CommunityWrite> lstCommunity;
     private DatabaseReference mDatabase;
-    String[] array = new String[5];
+    String[] array = new String[6];
     private BoardAdapter boardAdapter;
     ArrayList<CommunityWrite> itemInfoArrayList = new ArrayList<>();
     //
@@ -103,9 +104,12 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //table_name에 해당하는 값만 for-each문으로 불러온다.
                 for( DataSnapshot ds : dataSnapshot.child("Board").getChildren() ) {
-                    CommunityWrite communityWrite = new CommunityWrite();
-                    HashMap<String,String> td = (HashMap)(ds.getValue());
-                    Iterator<String> keys = td.keySet().iterator();
+                        CommunityWrite communityWrite = new CommunityWrite();
+                        HashMap<String,String> td = (HashMap)(ds.getValue());
+                        Iterator<String> keys = td.keySet().iterator();
+                        array[5]=ds.getKey();
+                        communityWrite.setObject_info(array[5]);
+                    //Log.i("SEX_THIS",array[5]);
                     //모든 게시판 내용 값 불러오기
                     while( keys.hasNext() ){
                         String key = keys.next(); //key값 순차적으로 찍힐 거임
@@ -124,6 +128,7 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
                         }if(key.equals("url")){
                             array[4]=td.get(key);
                             communityWrite.setUrl(array[4]);
+                           // Log.i("SEX_END",array[4]);
                         }
                     }
                     itemInfoArrayList.add(communityWrite);
@@ -136,16 +141,6 @@ public class Board extends Fragment { //게시판 자유게시판 or 정보 등
 
             }
         });
-
-        /*lstCommunity = new ArrayList<>();
-        for(int i = 0; i <20; i++) {
-            lstCommunity.add(new CommunityWrite(R.drawable.picasso, R.drawable.picasso, "Picasso was a great artist and very talented one. His great works were famous all over the world", "Pablo Picasso", "2018-11-20"));
-        }*/
-
-        /*RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recyclerview_id);
-        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(getContext(), lstCommunity);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        recyclerView.setAdapter(recyclerViewAdapter);*/
 
         FloatingActionButton add_board = (FloatingActionButton) view.findViewById(R.id.add_board);
         add_board.setOnClickListener(new View.OnClickListener() {

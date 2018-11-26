@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,11 @@ import android.widget.TextView;
 import com.example.capstone.design.login.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.navdrawer.SimpleSideDrawer;
@@ -52,7 +58,6 @@ public class MainActivity extends AppCompatActivity{
     public static FirebaseAuth getmFirebaseAuth() { return mFirebaseAuth; }
     public static FirebaseUser getmFirebaseUser() { return mFirebaseUser; }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,7 +67,6 @@ public class MainActivity extends AppCompatActivity{
         this.addSlideMenu();
         this.initializeFirebaseAuth();
         this.setActivityLayout();
-
     }
 
     private void setActivityLayout() {
@@ -84,7 +88,6 @@ public class MainActivity extends AppCompatActivity{
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }
-
 
     private void initializeFirebaseAuth() {
         // Initialize Firebase Auth
@@ -288,7 +291,4 @@ public class MainActivity extends AppCompatActivity{
         }
 
     }
-
-
-
 }
