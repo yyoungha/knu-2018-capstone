@@ -14,6 +14,7 @@ public class HelpMatchPopup extends Activity {
     TextView titleTextView;
     TextView contentsTextView;
     Button matchButton;
+    Button cancelButton;
     Intent intent;
 
     String username;
@@ -34,6 +35,7 @@ public class HelpMatchPopup extends Activity {
         titleTextView = (TextView)findViewById(R.id.titleTextView);
         contentsTextView = (TextView)findViewById(R.id.contentsTextView);
         matchButton = (Button)findViewById(R.id.match_cinfirm_btn);
+        cancelButton = (Button)findViewById(R.id.match_cancel_btn);
 
         //데이터 가져오기
         intent = getIntent();
@@ -52,12 +54,21 @@ public class HelpMatchPopup extends Activity {
             public void onClick(View v) {
                 //데이터 전달하기
                 Intent intent = new Intent();
-                intent.putExtra("result", "Close Popup");
+                intent.putExtra("uid", uid);
                 setResult(RESULT_OK, intent);
 
                 //액티비티(팝업) 닫기
                 finish();
             }
         });
+
+        // CANCEL 버튼 리스너 추가
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 }

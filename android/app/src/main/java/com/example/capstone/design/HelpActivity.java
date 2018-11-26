@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -68,7 +69,9 @@ public class HelpActivity extends AppCompatActivity
     // That is, the last-known location retrieved by the Fused Location Provider.
     private static Location mLastKnownLocation;
 
-    public static Location getmLastKnownLocation() { return mLastKnownLocation; }
+    public static Location getmLastKnownLocation() {
+        return mLastKnownLocation;
+    }
 
     // Keys for storing activity state.
     private static final String KEY_CAMERA_POSITION = "camera_position";
@@ -77,6 +80,12 @@ public class HelpActivity extends AppCompatActivity
     private DatabaseReference mDatabase;
     private WeakHashMap<String, Help> helpWeakHashMap = new WeakHashMap<>();
     private final int MATCH_REQUEST = 1000;
+
+    private final boolean LOCATION_PERMISSION_ACCEPT = true;
+    private final boolean LOCATION_PERMISSION_DENY = false;
+
+    private boolean markerSetted = false;
+    private boolean isMarkerSetted() { return markerSetted; }
 
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
@@ -143,7 +152,7 @@ public class HelpActivity extends AppCompatActivity
     protected void onResume() {
         super.onResume();
 
-        if ( mMap != null ) {
+        if (mMap != null) {
             mMap.clear();
             setMarkersOnMap();
         }
@@ -179,12 +188,11 @@ public class HelpActivity extends AppCompatActivity
                 Intent popUpIntent = new Intent(HelpActivity.this, HelpMatchPopup.class);
 
                 // WeakHashMap 에서 Marker와 일치하는 객체 찾기. Hash 값 비교를 통해 찾는다.
-                Help hp = helpWeakHashMap.get( marker.getSnippet() );
+                Help hp = helpWeakHashMap.get(marker.getSnippet());
 
 
                 // marker와 일치하는 help instance 의 정보 표시
-                if ( hp != null )
-                {
+                if (hp != null) {
                     popUpIntent.putExtra("username", hp.getName());
                     popUpIntent.putExtra("title", hp.getTitle());
                     popUpIntent.putExtra("contents", hp.getContents());
@@ -207,10 +215,52 @@ public class HelpActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == MATCH_REQUEST) {
             if (resultCode == RESULT_OK) {
-                // 
+                // 1. 마커에 등록된 Help 의 작성자 파악
+                String requesterUid = data.getStringExtra("uid");
+
+                // 2. 작성자에게 푸쉬 알림 으로 권한 받기.
+                // 아래 getReceivedPermission 구현하면 됩니다. 보낼때 requesterUid로 보내세용~
+                boolean receivedPermission = getReceivedPermission(requesterUid);
+
+                // 3-1. (동의 시 LOCATION_PERMISSION_ACCEPT )
+                if (receivedPermission == LOCATION_PERMISSION_ACCEPT) {
+                    // 위치 공유 시작,
+
+                    // 위치 공유 종료 버튼 표시
+
+                    // uid로 사용자 찾기
+                    Log.i("Requester uid out Listener is ", requesterUid);
+                    final DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
+                    dbRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            Member member = dataSnapshot.getValue(Member.class);
+                            Log.i("Requester uid in Event Listener is ", member.getUid());
+                            Log.i("Requester name in Event Listener is ", member.getName());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    // 그 사용자의 위치 데이터 불러오기
+
+                    // 불러온 위치와 나의 위치 지도에 출력하기.
+                }
+                // 3-2. (상대방 동의를 받는다. 거절 시 LOCATION_PERMISSION_DENY)
+                else {
+                    Toast.makeText(HelpActivity.this, "Location request denied", Toast.LENGTH_LONG).show();
+                }
             }
         }
+    }
 
+    private boolean getReceivedPermission(String requesterUid) {
+        // 요청 수락 혹은 거절에 따라 값 리턴
+        if (true)
+            return LOCATION_PERMISSION_ACCEPT;
+        return LOCATION_PERMISSION_DENY;
     }
 
     private void setCustomLayout() {
@@ -229,12 +279,14 @@ public class HelpActivity extends AppCompatActivity
     }
 
     private void setMarkersOnMap() {
+        if (markerSetted) return;
+
         helpWeakHashMap.clear();
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
 
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for( DataSnapshot ds : dataSnapshot.child("Help").getChildren() ) {
+                for (DataSnapshot ds : dataSnapshot.child("Help").getChildren()) {
                     Help help = ds.getValue(Help.class);
                     helpWeakHashMap.put(ds.getKey(), help);
 
@@ -245,11 +297,11 @@ public class HelpActivity extends AppCompatActivity
                     // add marker to map
                     mMap.addMarker(options);
                 }
+                markerSetted = true;
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
     }
@@ -283,7 +335,7 @@ public class HelpActivity extends AppCompatActivity
                     }
                 });
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
@@ -349,7 +401,7 @@ public class HelpActivity extends AppCompatActivity
                 mLastKnownLocation = null;
                 getLocationPermission();
             }
-        } catch (SecurityException e)  {
+        } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
         }
     }
