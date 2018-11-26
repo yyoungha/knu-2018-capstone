@@ -46,27 +46,28 @@ import java.util.Date;
 public class MarketImageActivity extends AppCompatActivity {
     private static final String TAG = "MarketImageActivity";
 
-    private Button btn_CHOOSE;
-    private Button btn_UPLOAD;
-    private ImageView iv_PREVIEW;
+    private Button btChoose;
+    private Button btUpload;
+    private ImageView ivPreview;
+    private Uri target;
     private Uri filePath;
     final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    Toolbar toolbar;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market_image);
 
-        this.initializeValues();
-        this.addListener();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        btChoose = (Button) findViewById(R.id.bt_choose);
+        btUpload = (Button) findViewById(R.id.bt_upload);
+        ivPreview = (ImageView) findViewById(R.id.iv_preview);
 
-    }
-
-    private void addListener() {
         //버튼 클릭 이벤트
-        btn_CHOOSE.setOnClickListener(new View.OnClickListener() {
+        btChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //이미지를 선택
@@ -77,24 +78,13 @@ public class MarketImageActivity extends AppCompatActivity {
             }
         });
 
-        btn_UPLOAD.setOnClickListener(new View.OnClickListener() {
+        btUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //업로드
                 uploadFile();
             }
         });
-
-    }
-
-    private void initializeValues() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        btn_CHOOSE = (Button) findViewById(R.id.bt_choose);
-        btn_UPLOAD = (Button) findViewById(R.id.bt_upload);
-        iv_PREVIEW = (ImageView) findViewById(R.id.iv_preview);
 
     }
 
@@ -109,7 +99,7 @@ public class MarketImageActivity extends AppCompatActivity {
             try {
                 //Uri 파일을 Bitmap으로 만들어서 ImageView에 집어 넣는다.
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                iv_PREVIEW.setImageBitmap(bitmap);
+                ivPreview.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
             }

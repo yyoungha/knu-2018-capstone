@@ -6,17 +6,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 public class ProfileAdmin extends AppCompatActivity {
-    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_admin);
-        this.initailizeValues();
 
-    }
-
-    private void initailizeValues() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }

@@ -14,7 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Message extends AppCompatActivity { //현재 저장된 메시지를 뿌려주는 곳
-    private Toolbar toolbar;
+
     List<MessageItem> lstMessage;
 
     @Override
@@ -23,7 +23,7 @@ public class Message extends AppCompatActivity { //현재 저장된 메시지를
         setContentView(R.layout.activity_message);
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

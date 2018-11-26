@@ -32,30 +32,31 @@ import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class NoticeActivity extends AppCompatActivity { //공지를 어떻게 재어해줄지 고민
     private static final String TAG = "NoticeActivity";
-    private TextView tv_NOTICEALL;
-    private Toolbar toolbar;
-    private FirebaseDatabase database;
-    private DatabaseReference myRef;
+    private DataSnapshot dataSnapshot;
+    private TextView notice_all;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice);
 
-        this.initializeValues();
-        this.addListener();
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-    }
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Notification");
 
+        notice_all=(TextView)findViewById(R.id.notice_all);
 
-    private void addListener() {
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Notification notification = dataSnapshot.getValue(Notification.class);
-                tv_NOTICEALL.append(notification.getDate()+"\n");
-                tv_NOTICEALL.append(notification.getContent()+"\n");
+                notice_all.append(notification.getDate()+"\n");
+                notice_all.append(notification.getContent()+"\n");
             }
 
             @Override
@@ -80,17 +81,7 @@ public class NoticeActivity extends AppCompatActivity { //공지를 어떻게 �
         });
     }
 
-    private void initializeValues() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
-        database = FirebaseDatabase.getInstance();
-        myRef = database.getReference("Notification");
-
-        tv_NOTICEALL=(TextView)findViewById(R.id.notice_all);
-    }
 
 
     @Override
