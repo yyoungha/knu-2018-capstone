@@ -1,33 +1,23 @@
 package com.example.capstone.design;
 
-import android.net.Uri;
+public class CommunityWrite {
 
-class Write {
     private String Uid; // 글쓴이 식별용
     private String Title;
     private String Content;
     private String Date;
     private String url;
-    private Member member;
 
-    public Write() {
+    public CommunityWrite(){
+
     }
 
-    public Write(String Uid, String Title, String Content, String Date, String url) {
-        //this.member = member;
+    public CommunityWrite(String Uid, String Title, String Content, String Date, String url) {
         this.Uid = Uid;
         this.Title = Title;
         this.Content = Content;
         this.Date = Date;
         this.url = url;
-
-    }
-
-    public Write(String Uid, String Content, String Date) {
-        //this.member = member;
-        this.Uid = Uid;
-        this.Content = Content;
-        this.Date = Date;
 
     }
 
@@ -66,7 +56,10 @@ class Write {
     public void setUrl(String url) {
         this.url = url;
     }
+
     public String toString(){
         return Date + " " + Uid + " " + url + " ";
     }
+
+
 }
