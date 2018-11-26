@@ -12,7 +12,7 @@ class Write {
     public Write() {
     }
 
-    public Write(String Uid, String Title, String Content, String Date, String url) {
+    public Write(String uid, String Title, String Content, String Date, String url) {
         //this.member = member;
         this.Uid = Uid;
         this.Title = Title;
