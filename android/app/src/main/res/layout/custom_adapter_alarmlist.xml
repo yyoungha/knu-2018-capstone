@@ -14,34 +14,42 @@
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="제목"
+            android:layout_height="wrap_content"
             android:layout_weight="60"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            android:textStyle="bold"
+            android:text="제목"
             android:textColor="#33aabb"
-            />
+            android:textStyle="bold" />
+
         <TextView
             android:id="@+id/textDate"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:text="날짜"
+            android:layout_height="wrap_content"
             android:layout_weight="40"
             android:gravity="center_vertical"
             android:paddingLeft="10dp"
-            />
+            android:text="날짜" />
     </LinearLayout>
 
-    <Button
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:text="선택"
-        android:layout_weight="20"
-        />
-    <View
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="5"
-        />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="CHAT" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:text="Location sharing" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
     android:orientation="vertical"
-    tools:context=".Alarms">
+    tools:context=".alaram.Alarms">
 
     <!-- TODO: Update blank fragment layout -->
 

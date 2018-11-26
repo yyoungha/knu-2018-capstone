@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.alaram;
 
 
 import android.app.Activity;
@@ -9,9 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.example.capstone.design.MapsActivity;
+import com.example.capstone.design.MessageActivity;
+import com.example.capstone.design.R;
 
 import java.util.ArrayList;
 
@@ -72,6 +74,9 @@ public class Alarms extends Fragment { //거래 부분
         View view = inflater.inflate(R.layout.fragment_alarms, container, false);
 
 
+        Button btn_chat = (Button)view.findViewById(R.id.btn_chat);
+
+
         // 데이터 1000개 생성--------------------------------.
         String[] strDate = {"2017-01-03", "1965-02-23", "2016-04-13", "2010-01-01", "2017-06-20",
                 "2012-07-08", "1980-04-14", "2016-09-26", "2014-10-11", "2010-12-24"};
@@ -92,13 +97,12 @@ public class Alarms extends Fragment { //거래 부분
         m_oListView.setAdapter(oAdapter);
 
 
-        //알람 부분이 들어갈 Contents
-        Button btn = (Button) view.findViewById(R.id.yes);
-
-        btn.setOnClickListener(new View.OnClickListener(){
+        //채팅 부분
+        btn_chat.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(),MapsActivity.class);
+                Intent intent = new Intent(getActivity(),MessageActivity.class);
+//                intent.putExtra("destinationUID",);
                 startActivity(intent);
             }
         });
