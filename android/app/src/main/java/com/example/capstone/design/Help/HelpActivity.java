@@ -96,8 +96,22 @@ public class HelpActivity extends AppCompatActivity
     private LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
+
+            // Location Listener 설정
+            locationManager = (LocationManager) HelpActivity.this.getSystemService(LOCATION_SERVICE);
+            try {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 200, 1, locationListener);
+                Log.i("please", " print lm1");
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 200, 1, locationListener);
+                Log.i("please", " print lm2");
+                locationManager.removeUpdates(locationListener);
+            } catch ( SecurityException e ) {
+                Log.d (TAG, e.toString() );
+            }
+
             final double latitude=location.getLatitude();
             final double longitude=location.getLongitude();
+            Log.i("please", "on location changed");
 
             // 내 위치가 변할 때, 실시간 데이터베이스에 기록.
             if ( memberRef == null )
@@ -109,6 +123,8 @@ public class HelpActivity extends AppCompatActivity
                     // 사용자 위치 정보 업데이트
                     memberRef.child("lat").setValue(latitude);
                     memberRef.child("lng").setValue(longitude);
+
+                    Log.i("", "please print once");
                 }
 
                 @Override
@@ -184,15 +200,6 @@ public class HelpActivity extends AppCompatActivity
                 addMarkersOnMap();
             }
         });
-
-        // Location Listener 설정
-        locationManager = (LocationManager) HelpActivity.this.getSystemService(LOCATION_SERVICE);
-        try {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
-        } catch ( SecurityException e ) {
-            Log.d (TAG, e.toString() );
-        }
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
