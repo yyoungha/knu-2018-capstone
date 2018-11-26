@@ -6,7 +6,7 @@ public class Member {
 
     public Member() {
     }
-
+    private String uid;
     private String email;
     private String pwd;
     private String pwd_chk;
@@ -103,5 +103,13 @@ public class Member {
 
     public void setimageUri(String imageUri) {
         this.imageUri = imageUri;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }

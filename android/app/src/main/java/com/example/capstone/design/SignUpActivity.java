@@ -97,6 +97,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                             .setValue(member).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
+                                            member.setUid(firebaseAuth.getCurrentUser().getUid());
                                             Toast.makeText(SignUpActivity.this, "사용자 등록 성공", Toast.LENGTH_LONG).show();
                                         }
                                     });
