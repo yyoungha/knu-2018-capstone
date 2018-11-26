@@ -17,6 +17,7 @@ public class HelpMatchPopup extends Activity {
     TextView contentsTextView;
     Button matchButton;
     Button cancelButton;
+    Button chatButton;
     Intent intent;
 
     String username;
@@ -38,6 +39,7 @@ public class HelpMatchPopup extends Activity {
         contentsTextView = (TextView)findViewById(R.id.contentsTextView);
         matchButton = (Button)findViewById(R.id.match_cinfirm_btn);
         cancelButton = (Button)findViewById(R.id.match_cancel_btn);
+        chatButton = (Button)findViewById(R.id.chat_cinfirm_btn);
 
         //데이터 가져오기
         intent = getIntent();

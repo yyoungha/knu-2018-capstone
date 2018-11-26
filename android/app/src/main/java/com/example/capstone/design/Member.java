@@ -15,6 +15,10 @@ public class Member {
     private String imageUri;
     private String token;
 
+    public Member() {
+
+    }
+
     public Member(String uid, String email, String pwd, String name, String nation, double lat, double lng, int permission, String imageUri) {
         this.uid = uid;
         this.email = email;

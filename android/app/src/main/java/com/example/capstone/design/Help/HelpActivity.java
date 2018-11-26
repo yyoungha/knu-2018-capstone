@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -89,6 +91,34 @@ public class HelpActivity extends AppCompatActivity
     private final boolean LOCATION_PERMISSION_ACCEPT = true;
     private final boolean LOCATION_PERMISSION_DENY = false;
 
+    private LocationManager locationManager;
+    private LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            double latitude=location.getLatitude();
+            double longitude=location.getLongitude();
+
+            // 내 위치가 변할 때, 실시간 데이터베이스에 기록.
+            if ( mDatabase == null )
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+
+            String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
+            Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+        }
+    };
+
     /**
      * onCreate() 는 Activity 가 생성되어 처음 시작될 때 처음으로 호출되는 메소드.
      * Activity 의 resource initialize, layout & data binding 등 초기 설정 작업을 수행한다.
@@ -126,6 +156,7 @@ public class HelpActivity extends AppCompatActivity
         addRequestButton = (Button) findViewById(R.id.add_request_btn);
         stopSharingButton = (Button) findViewById(R.id.stop_sharing_btn);
 
+        // 버튼 리스너 설정
         addRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +173,15 @@ public class HelpActivity extends AppCompatActivity
                 addMarkersOnMap();
             }
         });
+
+        // Location Listener 설정
+        locationManager = (LocationManager) HelpActivity.this.getSystemService(LOCATION_SERVICE);
+        try {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 1, locationListener);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 1, locationListener);
+        } catch ( SecurityException e ) {
+            Log.d (TAG, e.toString() );
+        }
         mDatabase = FirebaseDatabase.getInstance().getReference();
     }
 
@@ -262,7 +302,6 @@ public class HelpActivity extends AppCompatActivity
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
                     // 그 사용자의 위치 데이터 불러오기

@@ -47,10 +47,12 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     //새로 추가한 값들
     private TextView tv_NAME;
     private TextView tv_NATION;
+    TextView script;
     private static String username;
     private static String useremail;
     private TextView recent_notice;
     private static String UID;
+    private int total_count=0;
     //
 
 
@@ -78,6 +80,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_personal, container, false);
+        script = (TextView)view.findViewById(R.id.my_script_num);
 
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         UID = user.getUid();
@@ -126,6 +129,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         });
         //이미지 받기
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
+        DatabaseReference countRef = database.getReference();
         //child를 구별하기 위해 넣어둔 파일 정보를 가져온다.
         final Uri Image_uri = user.getPhotoUrl(); //db안 의 storage의 url주소를 저장하겠다.
         StorageReference storageRef = storage.getReferenceFromUrl("gs://knu-2018-capstone.appspot.com/");
@@ -147,8 +151,47 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
             });
         }
 
-        //자신이 작성한 글 개수 불러오기
+           // 자신이 작성한 글 개수
+                countRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String value = ds.getKey();
+                            if (value.equals("Electronics")||value.equals("Board")||value.equals("Daily")||value.equals("Office")||value.equals("Kitchen")||value.equals("Bathroom")||value.equals("Interior")) {
+                                String target = ds.getValue().toString();
+                                for (DataSnapshot ds2 : dataSnapshot.child(value).getChildren()) {
+                                    String value2 = ds2.getKey();
+                                    HashMap<String,String> td = (HashMap)(ds2.getValue());
+                                    Iterator<String> keys = td.keySet().iterator();
+                                    while( keys.hasNext() ) {
+                                        String key = keys.next(); //key값 순차적으로 찍힐 거임
+                                        if (key.equals("uid")) {
+                                            String power = td.get(key);
+                                            if(power.equals(UID))
+                                                total_count++;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        script.setText(String.valueOf(total_count));
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                    } //공지를 날짜순으로 정렬 후 리스터 생성
+                });
+
+
+
+        // 자신이 작성한 글 보러가기
+//        script.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), MyScript.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //전체 공지 보기
 

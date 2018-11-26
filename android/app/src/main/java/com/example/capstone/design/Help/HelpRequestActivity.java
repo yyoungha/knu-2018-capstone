@@ -58,7 +58,6 @@ public class HelpRequestActivity extends AppCompatActivity {
 
                 Help help = new Help(uid, requestTitle, requestContents, location.getLatitude(), location.getLongitude());
 
-                // TODO : CREATE HASH
                 databaseReference.push().setValue(help);
 
                 Toast.makeText(HelpRequestActivity.this, "Request Success", Toast.LENGTH_LONG).show();

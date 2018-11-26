@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity{
         this.addSlideMenu();
         this.initializeFirebaseAuth();
         this.setActivityLayout();
-
-
     }
     void passPushTokenToServer(){
 
