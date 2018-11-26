@@ -115,8 +115,6 @@ public class HelpActivity extends AppCompatActivity
                 public void onCancelled(@NonNull DatabaseError databaseError) {
                 }
             });
-            String msg="New Latitude: "+latitude + "New Longitude: "+longitude;
-            Toast.makeText(getBaseContext(),msg,Toast.LENGTH_LONG).show();
         }
 
         @Override
