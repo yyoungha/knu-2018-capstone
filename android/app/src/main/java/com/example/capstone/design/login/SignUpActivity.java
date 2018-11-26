@@ -87,7 +87,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 //예외처리
                 if(text.trim().equals("▼")||username.trim().equals("")||email.trim().equals("")){
 //                    Toast.makeText(SignUpActivity.this,"please input blank", Toast.LENGTH_SHORT).show();
-                    Toast.makeText(SignUpActivity.this,"text["+text+"] "+"username["+username+"] email["+email+"]", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this,"please fill the blank", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
