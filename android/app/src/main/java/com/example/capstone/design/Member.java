@@ -4,12 +4,9 @@ public class Member {
     private static final int PERMISSION_NORMAL_USER = 1000;
     private static final int PERMISSION_ADMIN = 2016118246;
 
-    public Member() {
-    }
     private String uid;
     private String email;
     private String pwd;
-    private String pwd_chk;
     private String name;
     private String nation;
     private double lat;
@@ -17,12 +14,28 @@ public class Member {
     private int permission;
     private String imageUri;
 
+    public Member(String uid, String email, String pwd, String name, String nation, double lat, double lng, int permission, String imageUri) {
+        this.uid = uid;
+        this.email = email;
+        this.pwd = pwd;
+        this.name = name;
+        this.nation = nation;
+        this.lat = lat;
+        this.lng = lng;
+        this.permission = permission;
+        this.imageUri = imageUri;
+    }
+
+    public Member() {
+    }
+
     public Member(String email, String pwd, String name, String nation) {
         this.email = email;
         this.pwd = pwd;
         this.name = name;
         this.nation = nation;
         this.imageUri = null;
+        this.uid = null;
     }
 
     public Member(String email, String pwd, String name, String nation, String imageUri) {
@@ -31,6 +44,7 @@ public class Member {
         this.name = name;
         this.nation = nation;
         this.imageUri = imageUri;
+        this.uid = null;
     }
 
     public int getPermission() {
@@ -71,14 +85,6 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getPwd_chk() {
-        return pwd_chk;
-    }
-
-    public void setPwd_chk(String pwd_chk) {
-        this.pwd_chk = pwd_chk;
     }
 
     public String getPwd() {
