@@ -130,7 +130,7 @@ public class Itemenroll extends AppCompatActivity implements AdapterView.OnItemS
                             write.setObject_info(databaseReference.getKey());
                             write.setTable_name(Category);
 
-                            Log.i("SEX_key", write.getObjInfo()); //이거 넘겨야함 객체 테이블 밑에 있는 구별하는거
+                            Log.i("SEX_key", databaseReference.getKey()); //이거 넘겨야함 객체 테이블 밑에 있는 구별하는거
                             Log.i("SEX_table",Category); //table 이름 잘나옴
 
                             Log.i("SEX_전달 후 : 푸시 성공",""+path);

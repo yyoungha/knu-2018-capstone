@@ -77,8 +77,8 @@ class Write {
         return object_info;
     }
 
-    public void setObject_info(String ob_info){
-        this.object_info=ob_info;
+    public void setObject_info(String obj_info){
+        this.object_info=obj_info;
     }
 
     public String getTable_name(){
