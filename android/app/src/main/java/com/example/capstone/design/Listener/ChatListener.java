@@ -8,7 +8,6 @@ import com.example.capstone.design.Member;
 import com.example.capstone.design.message.MessageActivity;
 
 public class ChatListener  implements View.OnClickListener {
-    private Member member;
     private Context context;
     private String destinationUID;
     public ChatListener(Context context,String destinationUID){
@@ -18,11 +17,7 @@ public class ChatListener  implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(context,MessageActivity.class);
-        intent.putExtra("destinationUID",member.getUid());
+        intent.putExtra("destinationUID",destinationUID);
         context.startActivity(intent);
-    }
-
-    public void setMember(Member member) {
-        this.member = member;
     }
 }

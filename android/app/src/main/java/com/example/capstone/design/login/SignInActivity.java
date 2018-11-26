@@ -40,8 +40,9 @@ public class SignInActivity extends AppCompatActivity {
         signin_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = email_join.getText().toString().trim();
-                email.concat(EMAIL);
+                StringBuffer tmpEmail = new StringBuffer(email_join.getText().toString().trim());
+                tmpEmail.append(EMAIL);
+                String email = tmpEmail.toString();
                 String pwd = pwd_join.getText().toString().trim();
 
                 firebaseAuth.signInWithEmailAndPassword(email, pwd)

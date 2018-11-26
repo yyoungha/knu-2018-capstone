@@ -28,6 +28,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -38,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.WeakHashMap;
 
 import static com.example.capstone.design.R.id.text_contentOfNotice;
@@ -72,7 +74,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         super.onCreate(savedInstanceState);
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -142,7 +143,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                 public void onSuccess(Uri uri) {
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).transform(new CropCircle()).into(image);
-                    Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override

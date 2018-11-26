@@ -21,6 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private EditText email_join;
@@ -41,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
 
         //스피너
-        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner)findViewById(R.id.spinner);
         //어댑터 생성
         //이 예제 같은 경우 string,xml에 리스트를 추가해 놓고 그 리스트를 불러온다.
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.nation_array, android.R.layout.simple_spinner_item);
@@ -50,7 +54,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         //이벤트를 일으킨 위젯과 리스너와 연결
         spinner.setOnItemSelectedListener(this);
         //선택된 값 스트링으로 받기
-        final String text = spinner.getSelectedItem().toString();
 
 
 
@@ -68,8 +71,11 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = email_join.getText().toString().trim();
-                email.concat("@knu.ac.kr");
+                String text = spinner.getSelectedItem().toString();
+                StringBuffer tmpEmail = new StringBuffer(email_join.getText().toString().trim());
+                tmpEmail.append("@knu.ac.kr");
+                String email = tmpEmail.toString();
+                Toast.makeText(SignUpActivity.this,email,Toast.LENGTH_SHORT).show();
                 String pwd = pwd_join.getText().toString().trim();
                 String pwdchk = pwdchk_join.getText().toString().trim();
                 String username = username_join.getText().toString().trim();
@@ -79,8 +85,9 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 final Member member = new Member(email, pwd, username, text);
 
                 //예외처리
-                if(text.equals("")){
-                    Toast.makeText(SignUpActivity.this,"please input blank", Toast.LENGTH_SHORT).show();
+                if(text.trim().equals("▼")||username.trim().equals("")||email.trim().equals("")){
+//                    Toast.makeText(SignUpActivity.this,"please input blank", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this,"text["+text+"] "+"username["+username+"] email["+email+"]", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -103,6 +110,10 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                                         public void onComplete(@NonNull Task<Void> task) {
                                             Toast.makeText(SignUpActivity.this, "Success", Toast.LENGTH_LONG).show();
                                             member.setUid(firebaseAuth.getCurrentUser().getUid());
+                                            passPushTokenToServer(member.getUid());
+
+
+
                                         }
                                     });
                                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
@@ -123,6 +134,13 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+    }
+    void passPushTokenToServer(String UID){
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Map<String,Object> map = new HashMap<>();
+        map.put("pushToken",token);
+        //setvalue시 기준 data가 다날라감
+        FirebaseDatabase.getInstance().getReference().child("Member").child(UID).updateChildren(map);
     }
 
     //아이템 중 하나를 선택 했을때 호출되는 콜백 메서드

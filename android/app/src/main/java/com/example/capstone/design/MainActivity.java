@@ -68,22 +68,14 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.addfirebaseMessagingService();
-        this.addSlideMenu();
         this.initializeFirebaseAuth();
+        this.addfirebaseMessagingService();
         this.setActivityLayout();
+        this.addSlideMenu();
 
 
     }
-    void passPushTokenToServer(){
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        String token = FirebaseInstanceId.getInstance().getToken();
-        Map<String,Object> map = new HashMap<>();
-        map.put("pushToken",token);
-        //setvalue시 기준 data가 다날라감
-        FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
-    }
 
     private void setActivityLayout() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -121,9 +113,6 @@ public class MainActivity extends AppCompatActivity{
                 mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             }
         }
-        if (FirebaseInstanceId.getInstance().getToken() != null) {
-            Log.d(TAG, "token = " + FirebaseInstanceId.getInstance().getToken());
-        }
     }
 
     private void addSlideMenu() {
@@ -133,6 +122,7 @@ public class MainActivity extends AppCompatActivity{
 
         //get a email
         sm_email = (TextView)findViewById(R.id.tv_sm_email);
+        sm_email.setText(Personal.getEmail());
         //go to international affair web
         Button btn_international = (Button) findViewById(R.id.btn_international);
         btn_international.setOnClickListener(new View.OnClickListener() {
@@ -234,7 +224,6 @@ public class MainActivity extends AppCompatActivity{
         //TOPIC/NOTIFICATION 구독
         FirebaseMessaging.getInstance().subscribeToTopic("NOTIFICATION");
         //구독해제 unsubscribeFromTopic()
-        passPushTokenToServer();
     }
 
     /**
@@ -286,6 +275,7 @@ public class MainActivity extends AppCompatActivity{
             {
                 case 0:
                     return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
+
                 case 1:
                   //  return new Alarms(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:

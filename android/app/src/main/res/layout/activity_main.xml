@@ -40,13 +40,14 @@
                     <Button
                         android:id="@+id/btn_slide_menu"
                         android:layout_width="30dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentStart="true"
+                        android:layout_height="30dp"
                         android:layout_alignParentBottom="true"
+                        android:layout_alignParentStart="true"
                         android:layout_gravity="left|center"
-                        android:layout_marginStart="0dp"
                         android:layout_marginBottom="15dp"
-                        android:background="@drawable/menu" />
+                        android:layout_marginStart="0dp"
+                        android:background="@drawable/menu"
+                        android:paddingTop="15dp" />
 
                     <TextView
                         android:layout_width="match_parent"

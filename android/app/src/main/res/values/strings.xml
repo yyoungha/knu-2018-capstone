@@ -34,7 +34,8 @@
     <string name="help_request_cancel">CANCEL</string>
 
     <string-array name="nation_array">
-        <item>KOREA</item>
+        <item>▼</item>
+        <item>SOUTH KOREA</item>
         <item>USA</item>
         <item>POLAND</item>
     </string-array>
