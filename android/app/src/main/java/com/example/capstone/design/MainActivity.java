@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity{
         this.addfirebaseMessagingService();
         this.setActivityLayout();
         this.addSlideMenu();
-
     }
 
 
