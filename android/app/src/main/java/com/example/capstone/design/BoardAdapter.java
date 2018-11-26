@@ -73,9 +73,6 @@ public class BoardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         final Uri uri = Uri.parse(itemInfoArrayList.get(position).getUrl());
         MyViewHolder myViewHolder = (MyViewHolder) holder;
 
-
-        WeakHashMap<String, Member> memberWeakHashMap = Personal.getMemberWeakHashMap();
-
         Picasso.with(myViewHolder.view.getContext()).load(uri).into(myViewHolder.item_Picture);
         myViewHolder.item_Title.setText(itemInfoArrayList.get(position).getTitle());
         myViewHolder.item_Date.setText(itemInfoArrayList.get(position).getDate());

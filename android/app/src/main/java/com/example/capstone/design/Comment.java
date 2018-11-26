@@ -72,13 +72,6 @@ public class Comment extends AppCompatActivity implements AdapterView.OnItemSele
         TextView item_profile_Name = (TextView)findViewById(R.id.Name);
         ImageView item_URL = (ImageView) findViewById(R.id.item_Image);
 
-        WeakHashMap<String, Member> memberWeakHashMap = Personal.getMemberWeakHashMap();
-        Log.i("SEX_UID",UID);
-        Log.i("SEX_table",Obj_info);
-        if ( memberWeakHashMap.isEmpty())
-            Log.i("SEX_mem","");
-
-
         // uid 로 멤버 찾기
         /*item_profile_Name.setText(memberWeakHashMap.get(UID).getName());
         Picasso.with(Comment.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);*/
