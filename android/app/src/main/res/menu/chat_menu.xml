@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.capstone.design.MainActivity">
+    <item
+        android:id="@+id/action_people"
+        android:title="People"/>
+
+    <item
+        android:id="@+id/action_chat"
+        android:title="chat"/>
+
+    <item
+        android:id="@+id/action_account"
+        android:title="Account"/>
+</menu>

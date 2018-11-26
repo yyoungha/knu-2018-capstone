@@ -14,15 +14,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-<<<<<<< HEAD
+import com.example.capstone.design.message.MessageActivity;
 import com.example.capstone.design.tool.CropCircle;
-=======
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
->>>>>>> 96d88298f0035e288e98064706376be79146f4b1
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,13 +30,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.WeakHashMap;
 
-import static android.content.Intent.getIntent;
-import static android.support.constraint.Constraints.TAG;
-import static com.example.capstone.design.R.id.name;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 화면으로 넘어감

@@ -29,11 +29,16 @@ import com.example.capstone.design.alaram.Alarms;
 import com.example.capstone.design.login.SignInActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.navdrawer.SimpleSideDrawer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity{
+    Context context = this;
     SimpleSideDrawer slide_menu;
     private TextView sm_email;
     Button btn_slide_menu;
@@ -64,6 +69,16 @@ public class MainActivity extends AppCompatActivity{
         this.initializeFirebaseAuth();
         this.setActivityLayout();
 
+
+    }
+    void passPushTokenToServer(){
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Map<String,Object> map = new HashMap<>();
+        map.put("pushToken",token);
+        //setvalue시 기준 data가 다날라감
+        FirebaseDatabase.getInstance().getReference().child("users").child(uid).updateChildren(map);
     }
 
     private void setActivityLayout() {
@@ -216,6 +231,7 @@ public class MainActivity extends AppCompatActivity{
         //TOPIC/NOTIFICATION 구독
         FirebaseMessaging.getInstance().subscribeToTopic("NOTIFICATION");
         //구독해제 unsubscribeFromTopic()
+        passPushTokenToServer();
     }
 
     /**
@@ -254,11 +270,6 @@ public class MainActivity extends AppCompatActivity{
 
     }
 
-    /**
-     * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-     * one of the sections/tabs/pages.
-     */
-
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
@@ -289,7 +300,4 @@ public class MainActivity extends AppCompatActivity{
         }
 
     }
-
-
-
 }

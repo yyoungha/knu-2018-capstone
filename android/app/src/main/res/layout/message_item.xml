@@ -1,54 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/ivAvatarCom"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_margin="3dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginEnd="6dip"
-        android:layout_marginRight="6dip"
-        android:contentDescription="TODO"
-        android:src="@mipmap/ic_launcher" />
-
-    <TextView
-        android:id="@+id/tvMessageCom"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivAvatarCom"
-        android:layout_margin="3dp"
-        android:text="Message"
-        android:textSize="18sp" />
-
-    <TextView
-        android:id="@+id/tvNameCom"
-        android:layout_margin="3dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/messageItem_linearlayout_main"
+    >
+    <LinearLayout
+        android:id="@+id/messageItem_linearlayout_destination"
+        android:orientation="vertical"
+        android:gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignWithParentIfMissing="true"
-        android:layout_above="@id/tvMessageCom"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_toEndOf="@id/ivAvatarCom"
-        android:layout_toRightOf="@id/ivAvatarCom"
-        android:gravity="center_vertical"
-        android:text="Example application"
-        android:textSize="16sp" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/tvDateCom"
-        android:layout_width="81dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:text="2018.11.10" />
-
-</RelativeLayout>
+        <ImageView
+            android:id="@+id/messageItem_imageview_profile"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+        <TextView
+            android:id="@+id/messageItem_textview_name"
+            android:text="name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:text="message"
+            android:id="@+id/messageItem_textView_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/messageItem_textView_readCounter_left"
+                android:text="1"
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="9dp"
+                android:layout_margin="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="2011.11.11 11.11"
+                android:textSize="9dp"
+                android:textColor="@android:color/darker_gray"
+                android:id="@+id/messageItem_textView_timestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisibles"/>
+            <TextView
+                android:id="@+id/messageItem_textView_readCounter_right"
+                android:text="1"
+                android:textColor="@android:color/holo_orange_light"
+                android:textSize="9dp"
+                android:layout_margin="2dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

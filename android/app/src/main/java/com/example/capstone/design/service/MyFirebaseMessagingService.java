@@ -29,18 +29,18 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         // notification instance 추가하고 firebase에 저장하기
-        Notification notification = new Notification(remoteMessage.getData().get("Notification"), new Date().toString(), remoteMessage.getData().get("title"));
+
+         Notification notification = new Notification(remoteMessage.getData().get("Notification"), new Date().toString(), remoteMessage.getData().get("title"));
         String hash = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         FirebaseDatabase.getInstance().getReference("Notification").child(hash).setValue(notification);
         //
-
-        Map<String, String> data = remoteMessage.getData();
-        String title = data.get("title");
-        String message = data.get("Notification");
-
-        sendNotification(title, message);
-
+        if(remoteMessage.getData().size()>0){
+            Map<String, String> data = remoteMessage.getData();
+            String title = data.get("title");
+            String message = data.get("Notification");
+            sendNotification(title, message);
+        }
     }
 
     public void sendNotification(String title, String message) {
@@ -63,9 +63,9 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setAutoCancel(true)
+                .setAutoCancel(true).setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setSound(defaultSoundUri)
-                .setContentIntent(pendingIntent).setChannelId(getString(R.string.channel_id));
+                .setContentIntent(pendingIntent) ;
 
         //send push message
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());

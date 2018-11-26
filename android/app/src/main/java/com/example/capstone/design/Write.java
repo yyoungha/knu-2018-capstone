@@ -8,13 +8,11 @@ class Write {
     private String Content;
     private String Date;
     private String url;
-    private Member member;
 
     public Write() {
     }
 
-    public Write(Member member, String Title, String Content, String Date, String url) {
-        this.member = member;
+    public Write(String uid, String Title, String Content, String Date, String url) {
         this.Uid = Uid;
         this.Title = Title;
         this.Content = Content;

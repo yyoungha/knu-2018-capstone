@@ -1,34 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MessageActivity">
+    tools:context=".message.MessageActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/messageActivity_recyclerview"
         android:layout_width="match_parent"
+        android:layout_height="520dp"></android.support.v7.widget.RecyclerView>
+
+    <EditText
+        android:layout_toLeftOf="@+id/messageActivity_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/messageActivity_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/messageActivity_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/gradient"
-        android:theme="@style/AppTheme">
+        android:text="전송"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            android:theme="@style/AppTheme.OverFlow"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Message"
-            app:titleTextColor="#ffff" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <ListView
-        android:id="@+id/listview_message"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+    <!--<ListView-->
+        <!--android:id="@+id/listview_message"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"></ListView>-->
 
 
 
-</LinearLayout>
+
+</RelativeLayout>

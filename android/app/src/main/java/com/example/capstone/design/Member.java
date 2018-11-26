@@ -4,8 +4,6 @@ public class Member {
     private static final int PERMISSION_NORMAL_USER = 1000;
     private static final int PERMISSION_ADMIN = 2016118246;
 
-    public Member() {
-    }
     private String uid;
     private String email;
     private String pwd;
@@ -16,7 +14,9 @@ public class Member {
     private double lng;
     private int permission;
     private String imageUri;
-
+    private String token;
+    public Member() {
+    }
     public Member(String email, String pwd, String name, String nation) {
         this.email = email;
         this.pwd = pwd;
@@ -111,5 +111,13 @@ public class Member {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getToken() {
+        return token;
     }
 }

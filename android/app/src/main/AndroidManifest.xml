@@ -58,7 +58,7 @@
             android:label="Notice"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".MessageActivity"
+            android:name=".message.MessageActivity"
             android:label="Message"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
