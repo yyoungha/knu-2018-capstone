@@ -118,10 +118,12 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                     }
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
         //이미지 받기
         final FirebaseStorage storage = FirebaseStorage.getInstance(); //DB안의 storage를 인스턴스화 하겠다.
@@ -138,7 +140,6 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
                     // Got the download URL for 'users/me/profile.png'
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).transform(new CropCircle()).into(image);
                     Picasso.with(Personal.this.getContext()).load(uri.toString()).into(image);
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
