@@ -1,4 +1,4 @@
-package com.example.capstone.design;
+package com.example.capstone.design.Help;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.capstone.design.R;
 
 public class HelpMatchPopup extends Activity {
 

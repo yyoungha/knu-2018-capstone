@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,13 +14,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.capstone.design.Help.HelpActivity;
 import com.example.capstone.design.tool.CropCircle;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -36,13 +31,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.WeakHashMap;
-
-import static android.content.Intent.getIntent;
-import static android.support.constraint.Constraints.TAG;
-import static com.example.capstone.design.R.id.name;
 import static com.example.capstone.design.R.id.text_contentOfNotice;
 
 public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 화면으로 넘어감
@@ -53,7 +41,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     private static String username;
     private static String useremail;
     private TextView recent_notice;
-    private String UID;
+    private static String UID;
     //
 
 
@@ -63,6 +51,8 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
     public static String getName() { return username; }
 
     public static String getEmail() { return useremail; }
+
+    public static String getUid() { return UID; }
 
 
 
