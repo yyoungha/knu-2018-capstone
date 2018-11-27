@@ -84,7 +84,7 @@ public class MessageActivity extends AppCompatActivity { //현재 저장된 메�
                 chatModel.users.put(destinationUid,true);
 
                 if(chatRoomUid ==null){
-                    //button.setEnabled(false);
+                    button.setEnabled(false);
                     //push()를 넣어줘야 임의적으로 이름이 생기는 채팅방이 만들어짐
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").push().setValue(chatModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
@@ -144,7 +144,7 @@ public class MessageActivity extends AppCompatActivity { //현재 저장된 메�
 
     }
     void checkChatRoom(){
-        FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo("true").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/"+uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot item : dataSnapshot.getChildren()){

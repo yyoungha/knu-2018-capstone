@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.capstone.design.message.MessageActivity;
+import com.example.capstone.design.message.MsgMainActivity;
 import com.example.capstone.design.tool.CropCircle;
 import com.example.capstone.design.Help.HelpActivity;
 import com.example.capstone.design.tool.CropCircle;
@@ -231,7 +232,7 @@ public class Personal extends Fragment { //main화면 창 각 버튼 클릭시 �
         btn_msg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MessageActivity.class);
+                Intent intent = new Intent(getActivity(), MsgMainActivity.class);
                 startActivity(intent);
             }
         });

@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity{
                     return new Personal(); //맨처음 화면 키자 마자 뜨는 화면
 
                 case 1:
-                    return new ChatFragment(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
+                    //return new ChatFragment(); //오른쪽으로 드래그 했을때 뜨는 화면 알람
                 case 2:
                     return new Board(); //게시판
 

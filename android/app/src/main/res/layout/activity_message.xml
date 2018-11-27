@@ -7,10 +7,10 @@
     android:orientation="vertical"
     tools:context=".message.MessageActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <RecyclerView
         android:id="@+id/messageActivity_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="520dp"></android.support.v7.widget.RecyclerView>
+        android:layout_height="520dp"></RecyclerView>
 
     <EditText
         android:layout_toLeftOf="@+id/messageActivity_button"

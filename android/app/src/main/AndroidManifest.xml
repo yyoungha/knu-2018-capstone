@@ -113,6 +113,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MarketImageActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".message.MsgMainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
