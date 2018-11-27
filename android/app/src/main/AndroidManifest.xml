@@ -69,7 +69,7 @@
             android:name=".Help.HelpActivity"
             android:label="Help"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MapsActivity" />
+        <activity android:name=".Help.MapsActivity" />
         <activity
             android:name=".ProfileAdmin"
             android:label="프로필관리"

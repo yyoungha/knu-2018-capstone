@@ -55,7 +55,6 @@ public class HelpActivity extends AppCompatActivity
         implements OnMapReadyCallback {
 
     private Button addRequestButton;
-    private Button stopSharingButton;
 
     private static final String TAG = HelpActivity.class.getSimpleName();
     private GoogleMap mMap;
@@ -115,7 +114,7 @@ public class HelpActivity extends AppCompatActivity
 
             // 내 위치가 변할 때, 실시간 데이터베이스에 기록.
             if ( memberRef == null )
-                memberRef = FirebaseDatabase.getInstance().getReference("Member/"+Personal.getUid());
+            memberRef = FirebaseDatabase.getInstance().getReference("Member/"+Personal.getUid());
             memberRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -181,7 +180,6 @@ public class HelpActivity extends AppCompatActivity
         mapFragment.getMapAsync(this);
 
         addRequestButton = (Button) findViewById(R.id.add_request_btn);
-        stopSharingButton = (Button) findViewById(R.id.stop_sharing_btn);
 
         // 버튼 리스너 설정
         addRequestButton.setOnClickListener(new View.OnClickListener() {
@@ -189,15 +187,6 @@ public class HelpActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent intent = new Intent(HelpActivity.this, HelpRequestActivity.class);
                 startActivity(intent);
-            }
-        });
-        stopSharingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMap.clear();
-                addRequestButton.setVisibility(v.VISIBLE);
-                stopSharingButton.setVisibility(v.GONE);
-                addMarkersOnMap();
             }
         });
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -297,14 +286,10 @@ public class HelpActivity extends AppCompatActivity
 
                 // 3-1. (동의 시 LOCATION_PERMISSION_ACCEPT )
                 if (receivedPermission == LOCATION_PERMISSION_ACCEPT) {
-                    // 위치 공유 시작,
-
                     // 맵 초기화 후 버튼 표시 설정
-                    mMap.clear();
-                    View b = findViewById(R.id.add_request_btn);
-                    b.setVisibility(View.GONE);
-                    b = findViewById(R.id.stop_sharing_btn);
-                    b.setVisibility(View.VISIBLE);
+                    // 위치 공유 시작,
+                    Intent intent = new Intent(HelpActivity.this, MapsActivity.class);
+                    startActivity(intent);
 
                     // uid로 사용자 찾기
                     memberRef = FirebaseDatabase.getInstance().getReference("Member/"+requesterUid); //멤버 테이블 안의 key인(UID)를 식별하겠다
@@ -314,7 +299,6 @@ public class HelpActivity extends AppCompatActivity
                             Member member = dataSnapshot.getValue(Member.class);
                             Log.i("Requester uid in Event Listener is ", member.getUid());
                             Log.i("Requester name in Event Listener is ", member.getName());
-                            Toast.makeText(HelpActivity.this, "lat : " + member.getLat() + ", lng : " + member.getLng(), Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
