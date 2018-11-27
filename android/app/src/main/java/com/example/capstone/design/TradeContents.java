@@ -10,10 +10,15 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +27,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.net.URI;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -30,13 +37,19 @@ import java.util.WeakHashMap;
 public class TradeContents extends AppCompatActivity { //trade내용 올라온 아이템의 내용에서 match버튼을 클릭할시 나오는 dialog match 할 것인지 아닌지 나뉨
 
     List<CommentItem> lstComments;
-    String UID;
     String DATE;
     String CONTENT;
     String TITLE;
     String URL;
+    String UID;
+    String Obj_info;
+    String Table_name;
     FirebaseAuth firebaseAuth;
     FirebaseDatabase database;
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private DatabaseReference memRef;
 
     @Override
@@ -56,6 +69,13 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
         CONTENT=intent.getStringExtra("CONTENT");
         TITLE=intent.getStringExtra("TITLE");
         URL=intent.getStringExtra("URL");
+        Obj_info=intent.getStringExtra("Board_info");
+        Table_name=intent.getStringExtra("Table_name");
+
+
+        Log.i("SEX_table",Obj_info);
+        Log.i("SEX_table1",Table_name);
+
 
         final ImageView item_Profile_Image = (ImageView)findViewById(R.id.Profile_image);
         final TextView item_profile_Name = (TextView)findViewById(R.id.Name);
@@ -91,6 +111,7 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
 
             }
 
+
 //        item_profile_Name.setText(memberWeakHashMap.get(UID).getName());
 //        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
 //        Picasso.with(TradeContents.this).load(memberWeakHashMap.get(UID).getimageUri()).into(item_URL);
@@ -124,6 +145,30 @@ public class TradeContents extends AppCompatActivity { //trade내용 올라온 �
 //            }
 //        });
         });
+
+        //댓글추가
+        ImageView ivAdd = (ImageView) findViewById(R.id.sendCom);
+        ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                EditText Content_selected = (EditText) findViewById(R.id.writeCom);
+                final String Content = Content_selected.getText().toString();
+
+                Calendar cal = Calendar.getInstance();
+                Date date = cal.getTime();
+                String today = (new java.text.SimpleDateFormat("yyyy-MM-dd").format(date));
+
+                CommunityWrite write = new CommunityWrite(user.getUid(), Content, today);
+                //DatabaseReference databaseReference = firebaseDatabase.getReference(Table_name).child(Obj_info).child("comment");
+                //databaseReference.push().setValue(write);
+                Toast.makeText(TradeContents.this, "작성 완료", Toast.LENGTH_LONG).show();
+                //finish();
+
+            }
+        });
+
+
     }
     public void showMsg(){
 
