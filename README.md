@@ -45,7 +45,7 @@
 | IDE | Inteli J | jetbrains |
 | JDK | java 8 | |  
 
-전체적인 시스템 동작은 안드로이드 환경에서 서비스된다. 데이터 전송은 Google Firebase를 이용해 실시간-데이터베이스 환경에서 동작하게 된다. Spring framework를 이용해 홈페이지를 구축하고, 안드로이드는 servlet을 이용해 cloud의 http-request를 요청할 수 있다. 
+전체적인 시스템 동작은 안드로이드 환경에서 서비스된다. 데이터 전송은 ```Google Firebase```를 이용해 실시간-데이터베이스 환경에서 동작하게 된다. ```Spring framework```를 이용해 홈페이지를 구축하고, 안드로이드는 ```servlet```을 이용해 cloud의 ```http-request```를 요청할 수 있다. 
 <br/>
 
 ----
@@ -56,7 +56,7 @@
 - 외국인과 소통을 통해 외국어 실력을 향상시킬 수 있다.
 ### 외국인 유학생 입장의 기대효과
 - 초기 정착에 어려움을 해소할 수 있다.
-- Buddy와 소통하면서 한국어 실력을 향상시킬 수 있다.
+- ```Buddy```와 소통하면서 한국어 실력을 향상시킬 수 있다.
 - 커뮤니티 플랫폼을 통해 한국문화를 쉽게 접할 수 있다.
 - 병원 진료, 은행 업무 등의 서비스를 이용하는데 발생하는 어려움을 해소할 수 있다.
 
@@ -66,7 +66,7 @@
 - 외국인 유학생은 플랫폼을 통해 자신이 배정받은 Buddy 뿐만 아니라 다른 Buddy또는 플랫폼을 이용하 는 재학생에게도 도움을 받을 수 있다.
 
 ### 비즈니스 모델 및 기업의 활용 방안
-- 플랫폼 내의 스폰서 배너 광고를 통한 서비스 제공 업체 홍보.(배달의 민족 벤치마킹)
+- 플랫폼 내의 스폰서 배너 광고를 통한 서비스 제공 업체 홍보.
 - 서비스를 제공해주는 기업의 입장에서는 기업 이미지를 향상할 수 있는 기회가 될 수 있다.
 
 ### 사용자 규모 확장
@@ -76,7 +76,7 @@
 ### 개발
 - [yyoungha](https://github.com/yyoungha) (Android, GoogleMAP, firebase)
 - [bobmukza](https://github.com/bobmukza) (Android)
-- [wwolny](https://github.com/wwolny) (Android)
+- [wwolny](https://github.com/wwolny) (Android) // 외국인 교환학생
 - [makeastir](https://github.com/makeastir) (Android, firebase)
 - [iamwooki](https://iamwooki.github.io) (Android, Spring, Project Manager)
 - [n1rasat](https://github.com/n1rasat) (Spring)
@@ -84,3 +84,11 @@
 ### 도움
 -  (주)더인(경북대학교 컴퓨터학부 고석주교수님 산학협력프로젝트)
 - 경북대학교 국제교류처
+
+### 주요산출물
+|분류| 제목 | 구별 번호 |주최| 날짜 | 비고 |
+|--------|--------|--------|--------|--------|--------|
+|논문|O2O기반의 공유물류배송 시스템 | P4-19 |한국방송미디어 공학회|2018년 11월 3일(토)|장려상|
+|논문|O2O기반의 외국인 교환학생 커뮤니티 플랫폼|9A-40|한국통신학회|2018년 11월 17일(토)|
+|  |  |  |  |  |  |
+|프로그램등록|KNUEARTH|	C-2018-037939|한국저작권위원회|2018-12-13||
